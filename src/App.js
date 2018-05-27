@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import 
+import userRegistrationForm from './components/userRegistrationForm'
+
 
 class App extends Component {
   render() {
