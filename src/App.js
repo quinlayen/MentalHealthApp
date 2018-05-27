@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import "./App.css";
-import 
+import React, { Component } from 'react';
+import './App.css';
+import UserRegistrationForm from './components/userRegistrationForm';
 
 class App extends Component {
   render() {
-    return <div>
-      <NavBar />,
-      <UserRegistration />
-
+    return (
+      <div>
+        <UserRegistrationForm />
       </div>
+    );
   }
 }
 
