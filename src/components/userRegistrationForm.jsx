@@ -7,6 +7,9 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import classNames from 'classnames';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 const styles = theme => ({
   container: {
@@ -68,7 +71,7 @@ class UserRegistrationForm extends Component {
 
   render() {
     const { classes } = this.props;
-    return;
+    return(
     <div className={classes.root}>
       <TextField
         label="Name"
@@ -94,7 +97,7 @@ class UserRegistrationForm extends Component {
           )
         }}
       >
-        {ranges.map(option => (
+        {contactOptions.map(option => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>
@@ -121,10 +124,11 @@ class UserRegistrationForm extends Component {
           }
         />
       </FormControl>
-    </div>;
+    </div>
+    )
   }
 }
-InputAdornments.propTypes = {
+InputAdornment.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
