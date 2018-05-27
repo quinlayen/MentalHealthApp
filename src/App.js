@@ -4,8 +4,11 @@ import
 
 class App extends Component {
   render() {
-    return <div />
-    <;
+    return <div>
+      <NavBar />,
+      <UserRegistration />
+
+      </div>
   }
 }
 
