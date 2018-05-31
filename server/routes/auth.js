@@ -52,7 +52,7 @@ passport.use(
 );
 
 router.post("/register", (req, res) => {
-  const { email, password } = req.body;
+  const { first_name, last_name, phone, email, password } = req.body;
   bcrypt
     .genSalt(12)
     .then(salt => {
@@ -61,17 +61,20 @@ router.post("/register", (req, res) => {
     })
     .then(hash => {
       console.log("hash", hash);
-      return Client.forge({ email, password: hash }).save();
+      return Client.forge({
+        first_name,
+        last_name,
+        phone,
+        email,
+        password: hash
+      }).save();
     })
     .then(user => {
       console.log("new user registered");
       user = user.toJSON();
-      return res.redirect("/");
+      return res.send("new user registered");
     })
-    .catch(err => {
-      console.log("err", err);
-      return res.redirect("/auth/register");
-    });
+    .catch(err => res.status(400).json({ message: err.message }));
 });
 
 router.post(
@@ -79,14 +82,14 @@ router.post(
   passport.authenticate("local", { failureRedirect: "/auth/login" }),
   (req, res) => {
     console.log("logggggged in!!");
-    return res.redirect("/");
+    return res.send("user is logged in!!");
   }
 );
 
 router.post("/logout", (req, res) => {
   console.log("logggged out!!!");
   req.logout();
-  return res.redirect("/");
+  return res.send("user is logged out!!");
 });
 
 router.get("/secret", isAuthenticated, (req, res) => {
@@ -97,7 +100,7 @@ function isAuthenticated(req, res, done) {
   if (req.isAuthenticated()) {
     done();
   } else {
-    return res.redirect("/");
+    return res.send("not a valid user");
   }
 }
 

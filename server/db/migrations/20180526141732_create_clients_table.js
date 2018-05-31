@@ -3,8 +3,11 @@ exports.up = function(knex, Promise) {
     table.increments("client_id").primary();
     table.string("first_name").notNullable();
     table.string("last_name").notNullable();
-    table.string("phone").unique();
-    table.string("email").unique();
+    table.string("phone");
+    table
+      .string("email")
+      .unique()
+      .notNullable();
     table.string("password").notNullable();
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").defaultTo(knex.fn.now());
