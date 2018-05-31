@@ -5,9 +5,81 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       // Inserts seed entries
       return knex("clients").insert([
-        { id: 1, colName: "rowValue1" },
-        { id: 2, colName: "rowValue2" },
-        { id: 3, colName: "rowValue3" }
+        {
+          first_name: "",
+          last_name: "",
+          phone: "",
+          username: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          email: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          email: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          email: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          phone: "",
+          username: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          phone: "",
+          username: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          email: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          phone: "",
+          username: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          phone: "",
+          username: "",
+          location: "",
+          password: ""
+        },
+        {
+          first_name: "",
+          last_name: "",
+          email: "",
+          location: "",
+          password: ""
+        }
       ]);
     });
 };
