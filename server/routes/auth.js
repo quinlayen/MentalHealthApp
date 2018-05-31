@@ -27,25 +27,28 @@ passport.deserializeUser((user, done) => {
 });
 
 passport.use(
-  new localStrat({ usernameField: "email" }, (email, password, done) => {
-    console.log("local is being called");
-    Client.where({ email })
-      .fetch()
-      .then(user => {
-        console.log("user in local strategy", user);
-        user = user.toJSON();
-        bcrypt.compare(password, user.password).then(res => {
-          if (res) {
-            done(null, user);
-          } else {
-            done(null, false);
-          }
+  new localStrat(
+    { usernameField: "email", passwordField: "password" },
+    (email, password, done) => {
+      console.log("local is being called");
+      Client.where({ email })
+        .fetch()
+        .then(user => {
+          console.log("user in local strategy", user);
+          user = user.toJSON();
+          bcrypt.compare(password, user.password).then(res => {
+            if (res) {
+              done(null, user);
+            } else {
+              done(null, false);
+            }
+          });
+        })
+        .catch(err => {
+          done(null, false);
         });
-      })
-      .catch(err => {
-        done(null, false);
-      });
-  })
+    }
+  )
 );
 
 router.post("/register", (req, res) => {
@@ -63,7 +66,7 @@ router.post("/register", (req, res) => {
     .then(user => {
       console.log("new user registered");
       user = user.toJSON();
-      return res.redirect("/profile");
+      return res.redirect("/");
     })
     .catch(err => {
       console.log("err", err);
@@ -76,7 +79,7 @@ router.post(
   passport.authenticate("local", { failureRedirect: "/auth/login" }),
   (req, res) => {
     console.log("logggggged in!!");
-    return res.redirect("/profile");
+    return res.redirect("/");
   }
 );
 
