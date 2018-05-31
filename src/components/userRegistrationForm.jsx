@@ -14,12 +14,13 @@ import FormControl from '@material-ui/core/FormControl';
 const styles = theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    margin: '50px'
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200
+    width: 800
   },
   menu: {
     width: 200
@@ -107,7 +108,7 @@ class UserRegistrationForm extends Component {
             type={this.state.showPassword ? 'text' : 'password'}
             value={this.state.password}
             onChange={this.handleChange('password')}
-            endAdornment={
+            endadornment={
               <InputAdornment position="end">
                 <IconButton
                   aria-label="Toggle password visibility"
