@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
-class ChatBox extends Component{
-    constructor(props){
-        super(props);
-    }
+class ChatBox extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-    render(){
-        return(
-            <div></div>
-        )
-    }
+  render() {
+    return <div />;
+  }
 }
 export default ChatBox;
