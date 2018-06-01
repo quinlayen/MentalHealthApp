@@ -6,125 +6,34 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex("care_providers").insert([
         {
-          first_name: "James",
-          last_name: "Jenkins",
-          phone: "(808)-000-8000",
-          email: "jjenkins@yahoo.com",
+          first_name: "John",
+          last_name: "Seed",
+          phone: "808-382-7133",
+          email: "jseed@yahoo.com",
           location: "Honolulu",
           type: "Therapist",
-          specialties: "Depression, ADHD, Anxiety",
-          insurance: "HMSA, HMSS, AETNA",
-          password: "jenkins"
+          specialties: "ADHD, depression",
+          insurance: "HMSA"
         },
         {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
+          first_name: "James",
+          last_name: "Duncan",
+          phone: "808-333-3333",
+          email: "jdd@yahoo.com",
+          location: "Kailua",
+          type: "Psychiatrist",
+          specialties: "anxiety, depression",
+          insurance: "Aetna"
         },
         {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
-        },
-        {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
-        },
-        {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
-        },
-        {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
-        },
-        {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
-        },
-        {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
-        },
-        {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
-        },
-        {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
-        },
-        {
-          first_name: "",
-          last_name: "",
-          phone: "",
-          email: "",
-          location: "",
-          type: "",
-          specialties: "",
-          insurance: "",
-          password: ""
+          first_name: "Hamilton",
+          last_name: "Sons",
+          phone: "808-222-0000",
+          email: "hams@yahoo.com",
+          location: "Honolulu",
+          type: "Psychiatrist",
+          specialties: "PTSD, ADHD",
+          insurance: "HMSA"
         }
       ]);
     });
