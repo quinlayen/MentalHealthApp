@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {toggleDrawer} from '../actions/index';
 
 const styles = {
     list: {
@@ -26,11 +27,7 @@ const styles = {
      
     };
   
-    toggleDrawer = (side, open) => () => {
-      this.setState({
-        [side]: open,
-      });
-    };
+
   
     render() {
       const { classes } = this.props;
@@ -53,18 +50,18 @@ const styles = {
   
       return (
         <div>
-          <Button onClick={this.toggleDrawer('left', true)}>Open Left</Button>
+          <Button onClick={this.props.toggleDrawer('left', true)}>Open Left</Button>
          
           <SwipeableDrawer
             open={this.state.left}
-            onClose={this.toggleDrawer('left', false)}
-            onOpen={this.toggleDrawer('left', true)}
+            onClose={this.props.toggleDrawer('left', false)}
+            onOpen={this.props.toggleDrawer('left', true)}
           >
             <div
               tabIndex={0}
               role="button"
-              onClick={this.toggleDrawer('left', false)}
-              onKeyDown={this.toggleDrawer('left', false)}
+              onClick={this.props.toggleDrawer('left', false)}
+              onKeyDown={this.props.toggleDrawer('left', false)}
             >
               {sideList}
             </div>
@@ -79,4 +76,12 @@ const styles = {
     classes: PropTypes.object.isRequired,
   };
   
-  export default withStyles(styles)(NavDrawer);
+  function mapDispatchToProps(dispatch){
+    return bindActionCreators({toggleDrawer}, dispatch)
+  }
+
+  function mapStateToProps({drawer}){
+    return {drawer};
+  }
+
+  export default withStyles(styles, mapDispatchToProps, mapStateToProps)(NavDrawer);

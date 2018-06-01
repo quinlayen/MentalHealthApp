@@ -8,7 +8,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux'
+import {bindActionCreators} from 'redux';
+import {toggleDrawer} from '../actions/index';
 
 
     const styles = {
@@ -35,7 +36,7 @@ class NavBar extends Component {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+          <IconButton onClick={this.props.toggleDrawer('left', true)} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
@@ -53,8 +54,15 @@ class NavBar extends Component {
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({toggleDrawer}, dispatch)
+}
 
-export default withStyles(styles)(NavBar);
+function mapStateToProps({drawer}){
+  return {drawer};
+}
+
+export default withStyles(styles, mapDispatchToProps, mapStateToProps)(NavBar);
 
 
 
