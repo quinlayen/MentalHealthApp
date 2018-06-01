@@ -5,6 +5,8 @@ import {SwipeableDrawer, Button} from '@material-ui/core'
 import {} from '@material-ui/icons';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 const styles = {
     list: {
