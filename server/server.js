@@ -23,13 +23,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/doctors", providersRoute);
 app.use("/auth", authRoute);
+app.use("/doctors", providersRoute);
 
-// app.get("/", (req, res) => {
-//   console.log("sanity check");
-//   return res.json("hewwwwwwo");
-// });
+app.get("/", (req, res) => {
+  console.log("sanity check");
+  return res.json("hewwwwwwo");
+});
 
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);

@@ -2,30 +2,27 @@ const express = require("express");
 const router = express.Router();
 const Care_Provider = require("../db/models/Care_Provider.js");
 
-router.route("/").get((req, res) => {
-  return Care_Provider.where({ location })
-    .fetch()
+// gets all the docs from the database //
+router.get("/", (req, res) => {
+  return Care_Provider.fetchAll()
     .then(result => {
-      console.log("ALL THEM DOCS in yo location", result);
+      console.log("ALL DOCS", result);
       return res.json(result);
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => res.status(400).json({ message: err.message }));
 });
 
-router.route("/:id").get((req, res) => {
-  const id = req.params.id;
-  console.log("get doc details", id);
+// gets details of specific doc //
+router.get("/:id", (req, res) => {
+  const provider_id = req.params.id;
+  console.log("get doc details", provider_id);
   return Care_Provider.where({ provider_id })
     .fetch()
     .then(result => {
       console.log("THIS doc", result);
       return res.json(result);
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => res.status(400).json({ message: err.message }));
 });
 
 module.exports = router;

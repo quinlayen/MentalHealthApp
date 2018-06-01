@@ -18,7 +18,11 @@ passport.deserializeUser((user, done) => {
   Client.where({ email: user.email })
     .fetch()
     .then(user => {
-      user = user.toJSON();
+      try {
+        user = user.toJSON();
+      } catch (e) {
+        console.log("caugh this error while calling toJSON", e);
+      }
       done(null, user);
     })
     .catch(err => {
@@ -30,7 +34,7 @@ passport.use(
   new localStrat(
     { usernameField: "email", passwordField: "password" },
     (email, password, done) => {
-      console.log("local is being called");
+      console.log("local is being called, with email", email);
       Client.where({ email })
         .fetch()
         .then(user => {
@@ -51,6 +55,7 @@ passport.use(
   )
 );
 
+// registers a new user //
 router.post("/register", (req, res) => {
   const { first_name, last_name, phone, email, password } = req.body;
   bcrypt
@@ -77,6 +82,7 @@ router.post("/register", (req, res) => {
     .catch(err => res.status(400).json({ message: err.message }));
 });
 
+// log in users //
 router.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/auth/login" }),
@@ -86,6 +92,7 @@ router.post(
   }
 );
 
+// logs out users //
 router.post("/logout", (req, res) => {
   console.log("logggged out!!!");
   req.logout();
