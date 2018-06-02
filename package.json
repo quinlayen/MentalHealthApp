@@ -29,7 +29,13 @@
     "twilio": "^3.17.1",
     "twilio-chat": "^2.2.0",
     "twilio-common": "^0.1.7",
-    "twilio-sync": "^0.8.2"
+    "twilio-sync": "^0.8.2",
+    "cheerio": "^1.0.0-rc.2",
+    "connect-redis": "^3.3.3",
+    "express-session": "^1.15.6",
+    "knex": "^0.14.6",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

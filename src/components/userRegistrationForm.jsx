@@ -17,12 +17,15 @@ import Input from '@material-ui/core/Input';
 const styles = theme => ({
   container: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    margin: 'normal'
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200
+    width: 1000,
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit
   },
   menu: {
     width: 200
@@ -54,7 +57,6 @@ class UserRegistrationForm extends Component {
   state = {
     fullName: '',
     preferredContact: '',
-    city: '',
     password: '',
     showPassword: false
   };
@@ -78,7 +80,10 @@ class UserRegistrationForm extends Component {
       <div className={classes.root}>
         <form id="userRegForm" onSubmit={this.LinkToSubmit}>
           <TextField
+<<<<<<< HEAD
             label="Name"
+=======
+>>>>>>> development
             id="Name"
             className={classNames(classes.margin, classes.textField)}
             InputProps={{
@@ -93,6 +98,7 @@ class UserRegistrationForm extends Component {
             className={classNames(classes.margin, classes.textField)}
             value={this.state.contactOptions}
             onChange={this.handleChange('contactOptions')}
+<<<<<<< HEAD
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -100,6 +106,14 @@ class UserRegistrationForm extends Component {
                 </InputAdornment>
               )
             }}
+=======
+            input={
+              <Input
+                preferredContact="preferredContact"
+                id="preferred-contact"
+              />
+            }
+>>>>>>> development
           >
             {contactOptions.map(option => (
               <MenuItem key={option.value} value={option.value}>
