@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {drawerToggleAction} from '../actions/index';
+import {toggleAction} from '../actions/index';
 import compose from 'recompose/compose';
 
 
@@ -33,11 +33,12 @@ class NavBar extends Component {
   }
   render(){
     const { classes } = this.props;
+    //console.log('props in bar',this.props)
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton onClick={(param) => this.props.drawerToggleAction(true)} className={classes.menuButton} color="inherit" aria-label="Menu">
+          <IconButton onClick={(param) => this.props.toggleAction(true)} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
@@ -55,8 +56,9 @@ class NavBar extends Component {
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({drawerToggleAction}, dispatch)
+  return bindActionCreators({toggleAction}, dispatch)
 }
 
 function mapStateToProps({drawer}){

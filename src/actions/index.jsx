@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const DRAWER_TOGGLE_ACTION = 'DRAWER_TOGGLE_ACTION ';
+export const TOGGLE_ACTION = 'TOGGLE_ACTION ';
 
-export function drawerToggleAction(isOpen){
-    console.log('toggle button pressed')
+export function toggleAction(open) {
+  console.log('open in toggleAction creator', open  );
 
-    return {
-        type: DRAWER_TOGGLE_ACTION ,
-        payload: isOpen
-    }
+  return {
+    type: TOGGLE_ACTION,
+    payload: open
+  };
 }
