@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core';
 import {SwipeableDrawer, Button} from '@material-ui/core'
@@ -7,7 +7,8 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {toggleDrawer} from '../actions/index';
+import {drawerToggleAction} from '../actions/index';
+import compose from 'recompose/compose';
 
 const styles = {
     list: {
@@ -18,7 +19,7 @@ const styles = {
     },
   };
   
-  class NavDrawer extends React.Component {
+  class NavDrawer extends Component {
       constructor(props){
           super(props);
       }
@@ -26,12 +27,25 @@ const styles = {
       left: false,
      
     };
+
+    static getDerivedStateFromProps(props,state){
+      console.log('props in drawer', props)
+      console.log('state in drawer', state)
+
+      return {left:props.drawer.drawer};
+    }
+    
+    toggleDrawer = (isOpen) => () => {
+      this.setState({
+        left : isOpen,
+      });
+    };
   
 
   
     render() {
       const { classes } = this.props;
-  
+      console.log('in render', this.props)
       const sideList = (
         <div className={classes.list}>
           <List>Hello 1</List>
@@ -50,18 +64,18 @@ const styles = {
   
       return (
         <div>
-          <Button onClick={this.props.toggleDrawer('left', true)}>Open Left</Button>
+          {/* <Button onClick={this.props.toggleDrawer('left', true)}>Open Left</Button> */}
          
           <SwipeableDrawer
             open={this.state.left}
-            onClose={this.props.toggleDrawer('left', false)}
-            onOpen={this.props.toggleDrawer('left', true)}
+            onClose={(param) =>this.props.toggleDrawer( false)}
+            onOpen={(param) =>this.props.toggleDrawer( true)}
           >
             <div
               tabIndex={0}
               role="button"
-              onClick={this.props.toggleDrawer('left', false)}
-              onKeyDown={this.props.toggleDrawer('left', false)}
+              onClick={(param) =>this.props.toggleDrawer( false)}
+              onKeyDown={(param) =>this.props.toggleDrawer( false)}
             >
               {sideList}
             </div>
@@ -76,12 +90,10 @@ const styles = {
     classes: PropTypes.object.isRequired,
   };
   
-  function mapDispatchToProps(dispatch){
-    return bindActionCreators({toggleDrawer}, dispatch)
-  }
+ 
 
   function mapStateToProps({drawer}){
     return {drawer};
   }
 
-  export default withStyles(styles, mapDispatchToProps, mapStateToProps)(NavDrawer);
+  export default compose(withStyles(styles), connect(mapStateToProps))(NavDrawer);

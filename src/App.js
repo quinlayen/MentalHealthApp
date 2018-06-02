@@ -5,16 +5,14 @@ import NavBar from './containers/navBar';
 import NavDrawer from './containers/navDrawer'
 
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
+ 
 
 
   
   render() {
     return (
       <div>
-        <NavBar getToggleButton={this.getToggleButton}/>,
+        <NavBar />,
         <NavDrawer />,
         <UserRegistrationForm />
       </div>

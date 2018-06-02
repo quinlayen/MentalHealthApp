@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import NavControlsReducer from '.reducer_navControls';
+import NavControlsReducer from './reducer_navControls';
 
 const rootReducer = combineReducers({
     drawer: NavControlsReducer

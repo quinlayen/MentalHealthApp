@@ -1,9 +1,14 @@
-import {TOGGLE_DRAWER} from '../actions/index';
+import { DRAWER_TOGGLE_ACTION } from '../actions/index';
 
-export default function (state= null, action){
+export default function (state = {}, action){
+    //console.log('action in reducer', action)
     switch (action.type){
-        case TOGGLE_DRAWER:
-            return [action.payload.data, ...state];
+        case DRAWER_TOGGLE_ACTION :
+        //console.log('state', state)
+        //console.log('action.payload', action.payload)
+        const newState = {drawer: action.payload, ...state}
+        //console.log('newState', newState)
+            return newState;
     }
     return state;
 }
