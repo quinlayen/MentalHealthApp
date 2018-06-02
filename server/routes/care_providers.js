@@ -15,11 +15,10 @@ router.get("/", (req, res) => {
 // gets details of specific doc //
 router.get("/:id", (req, res) => {
   const provider_id = req.params.id;
-  console.log("get doc details", provider_id);
+  console.log("get this doc's details", provider_id);
   return Care_Provider.where({ provider_id })
     .fetch()
     .then(result => {
-      console.log("THIS doc", result);
       return res.json(result);
     })
     .catch(err => res.status(400).json({ message: err.message }));
