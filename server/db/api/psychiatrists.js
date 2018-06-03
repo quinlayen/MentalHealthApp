@@ -15,7 +15,42 @@ module.exports = [
       {
         first_name: "Riggs",
         last_name: "Roberts",
-        phone: "8082429233"
+        phone: "8082429233",
+        location: "",
+        type: "",
+        specialties: "",
+        insurance: "",
+        bio: ""
+      },
+      {
+        first_name: "Riggs",
+        last_name: "Roberts",
+        phone: "8082429233",
+        location: "",
+        type: "",
+        specialties: "",
+        insurance: "",
+        bio: ""
+      },
+      {
+        first_name: "Riggs",
+        last_name: "Roberts",
+        phone: "8082429233",
+        location: "",
+        type: "",
+        specialties: "",
+        insurance: "",
+        bio: ""
+      },
+      {
+        first_name: "Riggs",
+        last_name: "Roberts",
+        phone: "8082429233",
+        location: "",
+        type: "",
+        specialties: "",
+        insurance: "",
+        bio: ""
       }
     ],
 
