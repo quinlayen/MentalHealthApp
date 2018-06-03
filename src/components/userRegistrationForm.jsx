@@ -80,10 +80,6 @@ class UserRegistrationForm extends Component {
       <div className={classes.root}>
         <form id="userRegForm" onSubmit={this.LinkToSubmit}>
           <TextField
-<<<<<<< HEAD
-            label="Name"
-=======
->>>>>>> development
             id="Name"
             className={classNames(classes.margin, classes.textField)}
             InputProps={{
@@ -98,22 +94,12 @@ class UserRegistrationForm extends Component {
             className={classNames(classes.margin, classes.textField)}
             value={this.state.contactOptions}
             onChange={this.handleChange('contactOptions')}
-<<<<<<< HEAD
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  How Can We Reach You?
-                </InputAdornment>
-              )
-            }}
-=======
             input={
               <Input
                 preferredContact="preferredContact"
                 id="preferred-contact"
               />
             }
->>>>>>> development
           >
             {contactOptions.map(option => (
               <MenuItem key={option.value} value={option.value}>
