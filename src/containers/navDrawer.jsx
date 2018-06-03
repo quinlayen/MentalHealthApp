@@ -29,19 +29,18 @@ class NavDrawer extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    console.log('props.drawer', props.drawer);
-
+    //console.log('props.drawer', props.drawer);
     return props.drawer;
   }
 
-  // toggleDrawer = (open) => () => {
-  //   console.log('open', open)
-  //   this.setState({
-  //     left : open,
-  //   }, ()=>{
-  //     console.log('state after toggle', this.state.left)
-  //   })
-  // };
+  toggleDrawer = (open) => () => {
+    console.log('open', open)
+    this.setState({
+      left : open,
+    }, ()=>{
+      console.log('state after toggle', this.state.left)
+    })
+  };
 
   render() {
     //console.log('props in drawer', this.props)
@@ -68,11 +67,11 @@ class NavDrawer extends Component {
         <SwipeableDrawer
           open={this.state.left}
           onClose={param => {
-            console.log('onCloseSwipeableDrawer clicked');
+            //console.log('onCloseSwipeableDrawer clicked');
             this.props.toggleAction(false);
           }}
           onOpen={param => {
-            console.log('onOpenSwipableDrawer');
+           // console.log('onOpenSwipableDrawer');
             this.props.toggleAction(true);
           }}
         >
@@ -80,11 +79,11 @@ class NavDrawer extends Component {
             tabIndex={0}
             role="button"
             onClick={param => {
-              console.log('onClickDiv');
+              //console.log('onClickDiv');
               this.props.toggleAction(false);
             }}
             onKeyDown={param => {
-              console.log('onKeyDownDiv');
+              //console.log('onKeyDownDiv');
               this.props.toggleAction(false);
             }}
           >
