@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import classNames from 'classnames';
-import Input from '@material-ui/core/Input';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchDoctors } from '../actions/index';
 import compose from 'recompose/compose';
+import { TextField, SelectField } from 'redux-form-material-ui';
+import { reduxForm, Field } from 'redux-form';
 
 const styles = theme => ({
   root: {
@@ -38,11 +37,11 @@ const styles = theme => ({
   //   }
 });
 
-const searchOptions = [
-  { value: 'All', label: 'All' },
-  { value: 'Therapists', label: 'Therapists' },
-  { value: 'Psychiatrist', label: 'Psychiatrist' }
-];
+// const searchOptions = [
+//   { value: 'All', label: 'All' },
+//   { value: 'Therapists', label: 'Therapists' },
+//   { value: 'Psychiatrist', label: 'Psychiatrist' }
+// ];
 
 class SearchBar extends Component {
   state = {
@@ -69,35 +68,18 @@ class SearchBar extends Component {
     const { classes } = this.props;
     const actions = [<Button type="search" label="search" primary={true} />];
     return (
-      <form
-        className={classes.root}
-        autoComplete="off"
-        onSubmit={this.onFormSubmit}
-      >
-        <FormControl className={classNames(classes.margin, classes.textField)}>
-          <TextField
-            select
-            value={this.state.prop}
-            label="Select Care Provider"
-            className={classNames(classes.margin, classes.textField)}
-            value={this.state.searchOptions}
-            onChange={this.handleChange('searchOptions')}
-            input={<Input searchOptions="searchOptions" id="search-options" />}
-          >
-            {searchOptions.map(option => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-          <TextField
-            label="Search By Location"
-            id="locationSearch"
-            className={classNames(classes.margin, classes.textField)}
-          />
-
-          <Button>Search</Button>
-        </FormControl>
+      <form>
+        <Field
+          name="type"
+          component={SelectField}
+          hintText="Select Care Provider"
+        >
+          <MenuItem value="all" primaryText="All" />
+          <MenuItem value="therapists" primaryText="Therapists" />
+          <MenuItem value="psychiatrists" primaryText="Psychiatrists" />
+        </Field>
+        <Field name="location" component={TextField} hintText="City" />
+        <Button>Search</Button>
       </form>
     );
   }
@@ -109,6 +91,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchDoctors }, dispatch);
 }
 
-export default compose(withStyles(styles), connect(null, mapDispatchToProps))(
-  SearchBar
-);
+export default reduxForm({
+  form: 'SearchForm',
+  fields: ['type', 'location']
+})(SearchBar);
