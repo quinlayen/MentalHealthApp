@@ -3,6 +3,7 @@ import './App.css';
 import UserRegistrationForm from './components/userRegistrationForm';
 import NavBar from './components/navBar';
 import SearchBar from './components/searchBar';
+import SendSms from './components/sms';
 
 class App extends Component {
   constructor(props){
@@ -17,6 +18,7 @@ class App extends Component {
         <NavBar />
         <SearchBar />
         <UserRegistrationForm />
+        <SendSms />
       </div>
     );
   }
