@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,9 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-// import InputAdornment from '@material-ui/core/InputAdornment';
-// import InputLabel from '@material-ui/core/InputLabel';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {toggleAction} from '../actions/index';
+import compose from 'recompose/compose';
 
 
     const styles = {
@@ -26,32 +27,45 @@ import MenuIcon from '@material-ui/icons/Menu';
       };
 
 
-
-function NavBar(props) {
-  const { classes } = props;
+class NavBar extends Component {
+  constructor(props){
+    super(props);
+  }
+  render(){
+    const { classes } = this.props;
+    //console.log('props in bar',this.props)
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+          <IconButton onClick={(param) => this.props.toggleAction(true)} className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="title" color="inherit" className={classes.flex}>
-            Title
+            MentalHealthApp
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+  }
 
+}
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(NavBar);
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({toggleAction}, dispatch)
+}
+
+function mapStateToProps({drawer}){
+  return {drawer};
+}
+
+export default compose(withStyles(styles), connect( mapStateToProps, mapDispatchToProps))(NavBar);
 
 
 
