@@ -29,18 +29,11 @@ class NavDrawer extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    //console.log('props.drawer', props.drawer);
+    
     return props.drawer;
   }
 
-  toggleDrawer = (open) => () => {
-    console.log('open', open)
-    this.setState({
-      left : open,
-    }, ()=>{
-      console.log('state after toggle', this.state.left)
-    })
-  };
+
 
   render() {
     //console.log('props in drawer', this.props)
