@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import UserRegistrationForm from './components/userRegistrationForm';
 import NavBar from './components/navBar';
-import NavDrawer from './components/navDrawer'
+import SearchBar from './components/searchBar';
 
 class App extends Component {
   constructor(props){
@@ -14,8 +14,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar getToggleButton={this.getToggleButton}/>,
-        <NavDrawer />,
+        <NavBar />
+        <SearchBar />
         <UserRegistrationForm />
       </div>
     );
