@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
-import UserRegistrationForm from './components/userRegistrationForm';
-import NavBar from './components/navBar';
-import SearchBar from './components/searchBar';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import "./App.css";
+import UserRegistrationForm from "./components/userRegistrationForm";
+import NavBar from "./components/navBar";
+import SearchBar from "./components/searchBar";
 
 class App extends Component {
   render() {
@@ -10,7 +11,7 @@ class App extends Component {
       <div>
         <NavBar />
         <SearchBar />
-        <UserRegistrationForm />
+        <Route exact path="/register" component={UserRegistrationForm} />
       </div>
     );
   }
