@@ -8,6 +8,10 @@ import TextField from '@material-ui/core/TextField';
 import classNames from 'classnames';
 import Input from '@material-ui/core/Input';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchDoctors } from '../actions/index';
+import compose from 'recompose/compose';
 
 const styles = theme => ({
   root: {
@@ -43,28 +47,37 @@ const searchOptions = [
 class SearchBar extends Component {
   state = {
     locationSearch: '',
-    searchOpts: ''
+    searchOptions: ''
   };
 
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
   };
 
-  handleKeyPress(e) {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-    }
+  // handleKeyPress(e) {
+  //   if (e.keyCode === 13) {
+  //     e.preventDefault();
+  //   }
+  // }
+
+  onFormSubmit(e) {
+    e.preventDefault();
+    this.props.fetchDoctors();
   }
 
   render() {
     const { classes } = this.props;
     const actions = [<Button type="search" label="search" primary={true} />];
     return (
-      <form className={classes.root} autoComplete="off">
+      <form
+        className={classes.root}
+        autoComplete="off"
+        onSubmit={this.onFormSubmit}
+      >
         <FormControl className={classNames(classes.margin, classes.textField)}>
           <TextField
             select
-            value=""
+            value={this.state.prop}
             label="Select Care Provider"
             className={classNames(classes.margin, classes.textField)}
             value={this.state.searchOptions}
@@ -92,5 +105,10 @@ class SearchBar extends Component {
 SearchBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchDoctors }, dispatch);
+}
 
-export default withStyles(styles)(SearchBar);
+export default compose(withStyles(styles), connect(null, mapDispatchToProps))(
+  SearchBar
+);

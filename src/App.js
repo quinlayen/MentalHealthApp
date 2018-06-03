@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import UserRegistrationForm from './components/userRegistrationForm';
-import SearchBar from './components/searchBar';
+import SearchBar from './containers/searchBar';
 import SendSms from './components/sms';
 import NavBar from './containers/navBar';
-import NavDrawer from './containers/navDrawer'
+import NavDrawer from './containers/navDrawer';
 
 class App extends Component {
- 
-
-
-  
   render() {
     return (
       <div>
