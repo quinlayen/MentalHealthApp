@@ -29,13 +29,6 @@ const styles = theme => ({
   menu: {
     width: 200
   }
-  //   formControl: {
-  //     margin: theme.spacing.unit,
-  //     minWidth: 100
-  //   },
-  //   selectEmpty: {
-  //     marginTop: theme.spacing.unit * 2
-  //   }
 });
 
 const searchOptions = [
@@ -45,44 +38,46 @@ const searchOptions = [
 ];
 
 class SearchBar extends Component {
-  state = {
-    locationSearch: '',
-    searchOptions: ''
-  };
+  constructor(props) {
+    super(props);
 
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
+    this.state = {
+      type: '',
+      location: ''
+    };
 
-  // handleKeyPress(e) {
-  //   if (e.keyCode === 13) {
-  //     e.preventDefault();
-  //   }
-  // }
+    this.handleChange = this.handleChange.bind(this)
+    this.onFormSubmit = this.onFormSubmit.bind(this)
+  }
+
+
+  handleChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({ [name]: value });
+  }
 
   onFormSubmit(e) {
     e.preventDefault();
-    this.props.fetchDoctors();
+    this.props.fetchDoctors(this.state);
   }
 
   render() {
+    //console.log('state', this.state);
     const { classes } = this.props;
     const actions = [<Button type="search" label="search" primary={true} />];
     return (
-      <form
-        className={classes.root}
-        autoComplete="off"
-        onSubmit={this.onFormSubmit}
-      >
+      <form className={classes.root} autoComplete="off" onSubmit={this.onFormSubmit}>
         <FormControl className={classNames(classes.margin, classes.textField)}>
           <TextField
             select
-            value={this.state.prop}
+            name="type"
+            value={this.state.type}
             label="Select Care Provider"
             className={classNames(classes.margin, classes.textField)}
-            value={this.state.searchOptions}
-            onChange={this.handleChange('searchOptions')}
-            input={<Input searchOptions="searchOptions" id="search-options" />}
+            onChange={this.handleChange}
+            //input={<Input searchOptions="searchOptions" id="search-options" />}
           >
             {searchOptions.map(option => (
               <MenuItem key={option.value} value={option.value}>
@@ -91,12 +86,15 @@ class SearchBar extends Component {
             ))}
           </TextField>
           <TextField
+            name="location"
             label="Search By Location"
             id="locationSearch"
+            value={this.state.location}
             className={classNames(classes.margin, classes.textField)}
+            onChange={this.handleChange}
           />
 
-          <Button>Search</Button>
+          <Button type="submit">Search</Button>
         </FormControl>
       </form>
     );
@@ -109,6 +107,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchDoctors }, dispatch);
 }
 
-export default compose(withStyles(styles), connect(null, mapDispatchToProps))(
-  SearchBar
-);
+export default compose(withStyles(styles), connect(null, mapDispatchToProps))(SearchBar);

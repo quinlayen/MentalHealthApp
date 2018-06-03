@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const Bundler = require('parcel-bundler');
+//const Bundler = require('parcel-bundler');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 const passport = require('passport');
@@ -11,10 +11,15 @@ const PORT = process.env.PORT || 8080;
 const providersRoute = require('./routes/care_providers.js');
 const authRoute = require('./routes/auth.js');
 
-let bundler = new Bundler('public/index.html');
+//let bundler = new Bundler('public/index.html');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(
   session({
@@ -31,6 +36,7 @@ app.use('/auth', authRoute);
 app.use('/doctors', providersRoute);
 
 app.get('/', (req, res) => {
+  console.log(req.body)
   console.log('sanity check');
   return res.json('hewwwwwwo');
 });
@@ -68,7 +74,7 @@ app.post('/api/send', (req, res) => {
   }
 });
 
-app.use(bundler.middleware());
+//app.use(bundler.middleware());
 
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);
