@@ -1,17 +1,17 @@
-require('dotenv').config();
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
-const Bundler = require('parcel-bundler');
-const session = require('express-session');
-const RedisStore = require('connect-redis')(session);
-const passport = require('passport');
+const bodyParser = require("body-parser");
+// const Bundler = require("parcel-bundler");
+const session = require("express-session");
+const RedisStore = require("connect-redis")(session);
+const passport = require("passport");
 
 const PORT = process.env.PORT || 8080;
-const providersRoute = require('./routes/care_providers.js');
-const authRoute = require('./routes/auth.js');
+const providersRoute = require("./routes/care_providers.js");
+const authRoute = require("./routes/auth.js");
 
-let bundler = new Bundler('public/index.html');
+// let bundler = new Bundler("/public/index.html");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     store: new RedisStore(),
-    secret: 'mentalhealthapphelps',
+    secret: "mentalhealthapphelps",
     resave: false,
     saveUninitialized: false
   })
@@ -27,30 +27,30 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/auth', authRoute);
-app.use('/doctors', providersRoute);
+app.use("/auth", authRoute);
+app.use("/doctors", providersRoute);
 
-app.get('/', (req, res) => {
-  console.log('sanity check');
-  return res.json('hewwwwwwo');
+app.get("/", (req, res) => {
+  console.log("sanity check");
+  return res.json("hewwwwwwo");
 });
 
-app.post('/api/send', (req, res) => {
+app.post("/api/send", (req, res) => {
   let SID = process.env.TWILIO_ACCOUNT_SID;
   let TOKEN = process.env.TWILIO_AUTH_TOKEN;
   let SENDER = process.env.TWILIO_SMS_NUMBER;
   console.log(SID, TOKEN, SENDER);
   if (!SID || !TOKEN) {
-    return res.json({ message: 'need TWilio SID and Twilio Token' });
+    return res.json({ message: "need TWilio SID and Twilio Token" });
 
-    let client = require('twilio')(SID, TOKEN);
+    let client = require("twilio")(SID, TOKEN);
 
     client.messages
       .create(
         {
           to: req.body.recipient,
           from: SENDER,
-          body: 'TESTING'
+          body: "TESTING"
         },
         (err, data) => {
           if (!err) {
@@ -68,7 +68,7 @@ app.post('/api/send', (req, res) => {
   }
 });
 
-app.use(bundler.middleware());
+// app.use(bundler.middleware());
 
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);
