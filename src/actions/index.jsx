@@ -1,11 +1,10 @@
 import axios from 'axios';
-import { mapPropsStreamWithConfig } from 'recompose';
 
 export const TOGGLE_ACTION = 'TOGGLE_ACTION ';
 export const FETCH_DOCTORS = 'FETCH_DOCTORS';
 
 export function toggleAction(open) {
-  console.log('open in toggleAction creator', open);
+  //console.log('open in toggleAction creator', open);
 
   return {
     type: TOGGLE_ACTION,
@@ -13,11 +12,11 @@ export function toggleAction(open) {
   };
 }
 
-export function fetchDoctors(props) {
-  const req = axios.get('http://localhost:8080', props);
-  //console.log('in action creator', props)
+export function fetchDoctors(info) {
+  const response = axios.get('http://localhost:8080', info);
+  console.log('in action creator', response)
   return {
     type: FETCH_DOCTORS,
-    payload: req
+    payload: response
   };
 }
