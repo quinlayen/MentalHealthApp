@@ -13,13 +13,15 @@ router.get("/", (req, res) => {
 });
 
 //get docs by type & location//
-router.get("/result", (req, res) => {
-  // const type = req.params.type;
-  // const location = req.params.location;
+router.post("/result", (req, res) => {
+  //const type = req.params.type;
+  //const location = req.params.location;
+  console.log(req.body)
+  //console.log(req.params.location)
   return (
     Care_Provider.where({
-      type: req.params.type,
-      location: req.params.location
+      type: req.body.type,
+      location: req.body.location
     })
       // .where({ location })
       .fetchAll()
