@@ -1,9 +1,11 @@
 import { FETCH_DOCTORS } from '../actions/index';
 
-export default function(state = {}, action) {
+export default function(state = [], action) {
   switch (action.type){
     case FETCH_DOCTORS:
-      console.log('action in the reducer', action);
+      console.log('action in the reducer', action.payload.data);
+      return [ action.payload.data , ...state];
+     
 }
 return state
 }
