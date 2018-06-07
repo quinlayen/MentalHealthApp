@@ -77,8 +77,9 @@ class SendSms extends Component {
     medium: 'sms'};
 
     // axios.post('/api/send', {recipient}).then(response => 
-    this.props.tellTwilio(this.state);
+
     this.setState({confirmationSnackbarMessage: "Message Sent!", confirmationSnackbarOpen: true, processed: true})
+        .then(this.props.tellTwilio(this.state))
     .catch(err => {
       console.log(err)
       console.log(recipient)
