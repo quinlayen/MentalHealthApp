@@ -19,20 +19,19 @@ class ProviderList extends Component{
     //     console.log(props)
     //     return props.doctors;
     //   }
-    renderDoctors(doctorData){
+    renderDoctors(doctorData, ){
         console.log('doctorData',doctorData)
         return (
-            <li key ={doctorData.first_name}>{doctorData.first_name}</li>
+            <li key ={doctorData.provider_id}>{doctorData.first_name}</li>
         )
     }
 
       render(){
-          //console.log(this.props.doctors)
+          console.log('doctors',this.props.doctors)
           return(
               
               <div>
                   <ul>
-                    
                       {this.props.doctors.map(this.renderDoctors)}
                   </ul>
               </div>
