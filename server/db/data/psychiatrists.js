@@ -69,14 +69,14 @@ module.exports = [
           "cigna-cignappo",
           "hmsa-hmsapreferredprovidercompmed"
         ],
-          city: "Kamuela",
-          zip: "96743",
-            number: "8088857444",
-      first_name: "Peter",
-      last_name: "In",
-      
-      bio:
-        "Dr. Peter In, MD practices medicine at Kamuela, Hawaii and specializes in addiction psychiatry, child & adolescent psychiatry, clinical neurophysiology, psychiatry, psychiatry & neurology behavioral neurology & neuropsychiatry, psychiatry & neurology diagnostic neuroimaging, psychiatry & neurology forensic psychiatry, psychiatry & neurology hospice and palliative medicine, psychiatry & neurology psychosomatic medicine, and psychiatry & neurology pain medicine. Dr. In is licensed to treat patients in Hawaii. In addition to having active medical licenses, Dr. In has passed an automated background check which looked at elements including medical license status and malpractice screening (no history found)."
+        first_name: "Peter",
+        last_name: "In",
+        phone: "8088857444",
+        location: ["Kamuela", "96743"],
+        type: "Psychiatrist",
+        specialties: [""],
+        insurance: ["Aetna", "Blue Cross Blue Shield", "Cigna", "HMSA"],
+        bio: "Dr. Peter In, MD practices medicine at Kamuela, Hawaii and specializes in addiction psychiatry, child & adolescent psychiatry, clinical neurophysiology, psychiatry, psychiatry & neurology behavioral neurology & neuropsychiatry, psychiatry & neurology diagnostic neuroimaging, psychiatry & neurology forensic psychiatry, psychiatry & neurology hospice and palliative medicine, psychiatry & neurology psychosomatic medicine, and psychiatry & neurology pain medicine. Dr. In is licensed to treat patients in Hawaii. In addition to having active medical licenses, Dr. In has passed an automated background check which looked at elements including medical license status and malpractice screening (no history found)."
   },
  {
         insurance_uids: [],
