@@ -15,7 +15,7 @@ export function toggleAction(open) {
 }
 
 export function fetchDoctors(info) {
-  const response = axios.get(`${HOST}/doctors/result`, info);
+  const response = axios.get(`${HOST}/doctors`, info);
   console.log("in action creator", response);
   return {
     type: FETCH_DOCTORS,

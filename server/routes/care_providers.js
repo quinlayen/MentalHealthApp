@@ -12,17 +12,23 @@ router.get("/", (req, res) => {
     .catch(err => res.status(400).json({ message: err.message }));
 });
 
+//get docs by type & location//
 router.get("/result", (req, res) => {
-  const type = req.params.type;
-  const location = req.params.location;
-  return Care_Provider.where({ type })
-      .where({ location })
+  // const type = req.params.type;
+  // const location = req.params.location;
+  return (
+    Care_Provider.where({
+      type: req.params.type,
+      location: req.params.location
+    })
+      // .where({ location })
       .fetchAll()
       .then(result => {
         console.log("ALL DOCS by type & location", result);
         return res.json(result);
       })
       .catch(err => res.status(400).json({ message: err.message }))
+  );
 });
 
 // gets details of specific doc //
