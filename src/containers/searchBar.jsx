@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import classNames from 'classnames';
-import Input from '@material-ui/core/Input';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchDoctors } from '../actions/index';
-import compose from 'recompose/compose';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import classNames from "classnames";
+import Input from "@material-ui/core/Input";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchDoctors } from "../actions/index";
+import compose from "recompose/compose";
 
 const styles = theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    margin: 'normal'
+    display: "flex",
+    flexWrap: "wrap",
+    margin: "normal"
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit,
-    width: 'auto'
+    width: "auto"
   },
   menu: {
     width: 200
@@ -32,9 +32,9 @@ const styles = theme => ({
 });
 
 const searchOptions = [
-  { value: 'All', label: 'All' },
-  { value: 'Therapists', label: 'Therapists' },
-  { value: 'Psychiatrist', label: 'Psychiatrist' }
+  { value: "All", label: "All" },
+  { value: "Therapist", label: "Therapist" },
+  { value: "Psychiatrist", label: "Psychiatrist" }
 ];
 
 class SearchBar extends Component {
@@ -42,14 +42,13 @@ class SearchBar extends Component {
     super(props);
 
     this.state = {
-      type: '',
-      location: ''
+      type: "",
+      location: ""
     };
 
-    this.handleChange = this.handleChange.bind(this)
-    this.onFormSubmit = this.onFormSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
   }
-
 
   handleChange(event) {
     const target = event.target;
@@ -68,7 +67,11 @@ class SearchBar extends Component {
     const { classes } = this.props;
     const actions = [<Button type="search" label="search" primary={true} />];
     return (
-      <form className={classes.root} autoComplete="off" onSubmit={this.onFormSubmit}>
+      <form
+        className={classes.root}
+        autoComplete="off"
+        onSubmit={this.onFormSubmit}
+      >
         <FormControl className={classNames(classes.margin, classes.textField)}>
           <TextField
             select
@@ -107,4 +110,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchDoctors }, dispatch);
 }
 
-export default compose(withStyles(styles), connect(null, mapDispatchToProps))(SearchBar);
+export default compose(withStyles(styles), connect(null, mapDispatchToProps))(
+  SearchBar
+);

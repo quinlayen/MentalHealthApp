@@ -38,11 +38,11 @@ app.use(passport.session());
 app.use("/auth", authRoute);
 app.use("/doctors", providersRoute);
 
-app.get("/", (req, res) => {
-  console.log(req.body);
-  console.log("sanity check");
-  return res.json("hewwwwwwo");
-});
+// app.get("/", (req, res) => {
+//   console.log(req.body);
+//   console.log("sanity check");
+//   return res.json("hewwwwwwo");
+// });
 
 app.post("/api/send", (req, res) => {
   let SID = process.env.TWILIO_ACCOUNT_SID;

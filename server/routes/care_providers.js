@@ -12,6 +12,19 @@ router.get("/", (req, res) => {
     .catch(err => res.status(400).json({ message: err.message }));
 });
 
+router.get("/result", (req, res) => {
+  const type = req.params.type;
+  const location = req.params.location;
+  return Care_Provider.where({ type })
+      .where({ location })
+      .fetchAll()
+      .then(result => {
+        console.log("ALL DOCS by type & location", result);
+        return res.json(result);
+      })
+      .catch(err => res.status(400).json({ message: err.message }))
+});
+
 // gets details of specific doc //
 router.get("/:id", (req, res) => {
   const provider_id = req.params.id;

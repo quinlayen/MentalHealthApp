@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from 'react-redux';
-import { createStore, appMiddleware, applyMiddleware } from 'redux';
-import ReduxPromise from 'redux-promise';
-import reducers from './reducers';
+import { Provider } from "react-redux";
+import { createStore, appMiddleware, applyMiddleware } from "redux";
+import ReduxPromise from "redux-promise";
+import reducers from "./reducers";
 import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
@@ -17,10 +17,11 @@ require("dotenv").config();
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
-<Provider store={createStoreWithMiddleware(reducers)}>
-  <Router>
-<App />
-</Router>
-</Provider>
-, document.getElementById("root"));
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById("root")
+);
 registerServiceWorker();
