@@ -1360,69 +1360,14 @@ module.exports = [
           "category": "medical",
           "actor": "Psychiatrist",
           "actors": "Psychiatrists"
-        }
-      ],
-      "licenses": [
-        {
-          "state": "HI"
-        },
-        {
-          "number": "17212",
-          "state": "HI"
-        },
-        {
-          "number": "ME118743",
-          "state": "FL"
-        }
-      ],
-      "uid": "636c6a5d0ae1cb6ac4449d79bc763f4c",
-      "npi": "1205070679"
-    },
-    {
-      "practices": [
-        {
-          "location_slug": "hi-pearl-city",
-          "distance": 21846.034472215862,
-          "lat": 21.393,
-          "lon": -157.96944,
-          "uid": "62a1f1d8310b0a51bbc0e056380150e4",
-          "name": "Shalini Mishra, MD",
-          "accepts_new_patients": true,
-          "insurance_uids": [],
-          "visit_address": {
-            "city": "Pearl City",
-            "lat": 21.393,
-            "lon": -157.96944,
-            "state": "HI",
-            "state_long": "Hawaii",
-            "street": "860 Fourth St",
-            "zip": "96782"
-          },
-          "office_hours": [],
-          "phones": [
-            {
-              "number": "8084535953",
-              "type": "landline"
-            },
-            {
-              "number": "8084535966",
-              "type": "fax"
-            }
-          ],
-          "languages": [
-            {
-              "name": "English",
-              "code": "en"
-            }
-          ]
-        },
+   
         {
         first_name: "Shalini",
         last_name: "Mishra",
         location: ["Pearl City", "96782"],
+        type: "Psychiatrist",
         phone: "8084535950",
-        specialties: ["General Psychiatry", "Geriatric Psychiatry",         
-        "Psychopharmacology", "Forensic Psychiatry"],
+        specialties: ["PTSD", "Geriatric Psychiatry", "Forensic Psychiatry"],
         insurance: "Blue Cross Blue Shield",
         bio: "Dr. Shalini Mishra is a psychiatrist in Pearl City, Hawaii and is affiliated with multiple hospitals in the area, including Pali Momi Medical Center and Queen's Medical Center. She received her medical degree from Medical College and Hospital Kolkata and has been in practice for more than 20 years."    
         },
