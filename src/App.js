@@ -6,6 +6,7 @@ import SearchBar from './containers/searchBar';
 import SendSms from './components/sms';
 import NavBar from './containers/navBar';
 import NavDrawer from './containers/navDrawer';
+import ProviderList from './containers/providerList';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <SearchBar />
         <Route exact path="/register" component={UserRegistrationForm} />
         <NavDrawer />
+        <ProviderList />
         <SendSms />
       </div>
     );

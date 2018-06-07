@@ -1417,91 +1417,16 @@ module.exports = [
           ]
         },
         {
-          "location_slug": "hi-pearl-city",
-          "distance": 21846.034472215862,
-          "lat": 21.393,
-          "lon": -157.96944,
-          "uid": "4a115aeb57840c322fbbe31fb8689440",
-          "name": "Shalini Mishra, MD",
-          "accepts_new_patients": true,
-          "insurance_uids": [],
-          "visit_address": {
-            "city": "Pearl City",
-            "lat": 21.393,
-            "lon": -157.96944,
-            "state": "HI",
-            "state_long": "Hawaii",
-            "street": "860 Fourth St",
-            "zip": "96782"
-          },
-          "office_hours": [],
-          "phones": [
-            {
-              "number": "8084535950",
-              "type": "landline"
-            },
-            {
-              "number": "8084535966",
-              "type": "fax"
-            }
-          ],
-          "languages": [
-            {
-              "name": "English",
-              "code": "en"
-            }
-          ]
-        }
-      ],
-      "educations": [],
-      "profile": {
-        "first_name": "Shalini",
-        "last_name": "Mishra",
-        "slug": "shalini-mishra",
-        "title": "MD",
-        "image_url": "https://asset2.betterdoctor.com/assets/general_doctor_female.png",
-        "gender": "female",
-        "languages": [
-          {
-            "name": "English",
-            "code": "en"
-          }
-        ],
-        "bio": "Dr. Shalini Mishra, MD, specialist in psychiatry, currently treats patients in Honolulu, Hawaii and Pearl city, Hawaii.\n\nDr. Mishra is licensed to treat patients in Hawaii.\n\nDr. Mishra has been found to hold one or more active medical licenses, and successfully passed a malpractice history screening."
-      },
-      "ratings": [],
-      "insurances": [],
-      "specialties": [
-        {
-          "uid": "psychiatrist",
-          "name": "Psychiatry",
-          "description": "Specializes in the diagnosis and treatment of mental disorders.",
-          "category": "medical",
-          "actor": "Psychiatrist",
-          "actors": "Psychiatrists"
-        }
-      ],
-      "claims": [
-        {
-          "hcpcs": "90807",
-          "hcpcs_description": "Psychotherapy, office, 45-50 min with evaluation and management",
-          "service_cnt": 56,
-          "bene_uniq_cnt": 19,
-          "avg_allowed_amt": 87.604285714,
-          "avg_charge_amt": 133.4,
-          "avg_payment_amt": 44.801071429
-        }
-      ],
-      "licenses": [
-        {
-          "number": "MD-13770",
-          "state": "HI"
-        }
-      ],
-      "uid": "f64513cadabafdce5d2e81366631c16c",
-      "npi": "1275655268"
-    },
-    {   
+        first_name: "Shalini",
+        last_name: "Mishra",
+        location: ["Pearl City", "96782"],
+        phone: "8084535950",
+        specialties: ["General Psychiatry", "Geriatric Psychiatry",         
+        "Psychopharmacology", "Forensic Psychiatry"],
+        insurance: "Blue Cross Blue Shield",
+        bio: "Dr. Shalini Mishra is a psychiatrist in Pearl City, Hawaii and is affiliated with multiple hospitals in the area, including Pali Momi Medical Center and Queen's Medical Center. She received her medical degree from Medical College and Hospital Kolkata and has been in practice for more than 20 years."    
+        },
+        {   
         first_name: "David",
         last_name: "Friar",
         phone: "8083942800",

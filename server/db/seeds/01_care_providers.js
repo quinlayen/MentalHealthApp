@@ -31,9 +31,20 @@ exports.seed = function(knex, Promise) {
           phone: "808-222-0000",
           email: "hams@yahoo.com",
           location: "Honolulu",
-          type: "Psychiatrist",
+          type: "Therapist",
           specialties: "PTSD, ADHD",
           insurance: "HMSA"
+        },
+        {
+          first_name: "Kathryn",
+          last_name: "Egan",
+          phone: "8087832288",
+          location: "Honolulu",
+          type: "Therapist",
+          specialties: "Child & Adolescent Psychiatry",
+          insurance: ["Aetna", "Cigna", "Healthnet", "Medicare", "Medicaid"],
+          bio:
+            "Dr. Kathryn Egan, MD--specialist in psychiatry--currently treats patients in Honolulu, Hawaii. Dr. Egan is licensed to practice medicine at Hawaii. In addition to having active medical licenses, Dr. Egan has been found during an automated background check to be clear of any malpractice history and holds one or more active medical licenses."
         }
       ]);
     });
