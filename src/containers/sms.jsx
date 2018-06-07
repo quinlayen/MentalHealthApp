@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-// import 'whatwg-fetch';
-import async from 'async';
-import axios from 'axios';
-
+// import axios from 'axios';
+import classNames from "classnames";
 import PropTypes from 'prop-types';
+import FormControl from "@material-ui/core/FormControl";
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import SnackBar from '@material-ui/core/Snackbar';
+import { bindActionCreators } from "redux";
+import compose from "recompose/compose";
+import { connect } from "react-redux";
+import {tellTwilio} from '../actions/index';
 
-
-const HOST = process.env.HOST || "http://localhost:8080/";
 
 const styles = theme => ({
   container: {
@@ -34,12 +34,14 @@ class SendSms extends Component {
     super(props);
     this.state = {
       recipient: '',
+      message: '',
+      medium: 'sms',
       confirmationSnackbarOpen:false,
       snackbarDisabled: false,
       snackbarMessage: 'Loading...',
     };
     
-    // this.changeInput = this.changeInput.bind(this);
+    this.changeInput = this.changeInput.bind(this);
      this.sendSms = this.sendSms.bind(this);
   }
 
@@ -58,20 +60,31 @@ class SendSms extends Component {
 
 
 
-  changeInput = prop => e => {
-    // console.log(e.target.value)
-    this.setState({ [prop]: e.target.value });
-  };
+  changeInput (e) {
+    // const recipient = e.target;
+    // const message = e.value;
+    // const name = target.name;
+    // this.setState({[name] : value});
+    console.log(e.target.value)
+    this.setState( {[e.target.name]: e.target.value})
+  }
 
-  sendSms() {
+  sendSms(e) {
+    e.preventDefault();
+    //recipient contains the recipient, message, and medium to send
     const recipient= {recipient: this.state.recipient,
-    message: this.state.message}
+    message: this.state.message,
+    medium: 'sms'};
 
-    axios.post('/api/send', {recipient}).then(response => this.setState({confirmationSnackbarMessage: "Message Sent!", confirmationSnackbarOpen: true, processed: true})).catch(err => {
+    // axios.post('/api/send', {recipient}).then(response => 
+    this.props.tellTwilio(this.state);
+    this.setState({confirmationSnackbarMessage: "Message Sent!", confirmationSnackbarOpen: true, processed: true})
+    .catch(err => {
       console.log(err)
       console.log(recipient)
       return this.setState({confirmationSnackbarMessage:"Did not send message", confirmationSnackbarOpen:true})
     })
+
   }
 
   // sendSms = () => {
@@ -96,19 +109,31 @@ class SendSms extends Component {
   render() {
     const { classes } = this.props;
 const {loading, confirmationSnackbarOpen, ...data} = this.state
+   
     return (
       <div>
-      <form className={classes.container} noValidate autoComplete="off">
+      <form className={classes.root} noValidate autoComplete="off">
+       <FormControl className={classNames(classes.margin, classes.textField)}>
         <TextField
           id="recipient"
           label="Recipient"
+          name='recipient'
           className={classes.textField}
           value={this.state.recipient}
-          onChange={this.changeInput('recipient')}
+          onChange={this.changeInput}
           margin="normal"
         />
+        <TextField
+        name='message'
+        label='Enter a Message'
+        id='message'
+        value={this.state.message}
+        onChange={this.changeInput}
+        />
         <Button onClick={this.sendSms}>Send Message</Button>
+      </FormControl>
       </form>
+
      
       
       <SnackBar 
@@ -126,4 +151,8 @@ const {loading, confirmationSnackbarOpen, ...data} = this.state
 TextField.propTypes = {
   classes: PropTypes.object.isRequired
 };
-export default withStyles(styles)(SendSms);
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({tellTwilio}, dispatch);
+}
+export default compose(withStyles(styles), connect(null, mapDispatchToProps))(SendSms);

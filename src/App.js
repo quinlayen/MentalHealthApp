@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import './App.css';
 import UserRegistrationForm from './components/userRegistrationForm';
 import SearchBar from './containers/searchBar';
-import SendSms from './components/sms';
+import SendSms from './containers/sms';
 import NavBar from './containers/navBar';
 import NavDrawer from './containers/navDrawer';
 

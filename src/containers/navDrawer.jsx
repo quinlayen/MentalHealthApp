@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
-import { SwipeableDrawer, Button } from '@material-ui/core';
+import { SwipeableDrawer} from '@material-ui/core';
 import {} from '@material-ui/icons';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';

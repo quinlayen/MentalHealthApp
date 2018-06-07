@@ -65,6 +65,7 @@ app.get("/api/send", (req, res) => {
         },
         (err, data) => {
           if (!err) {
+            console.log(data)
             res.json({
               From: data.from,
               Body: res.body
