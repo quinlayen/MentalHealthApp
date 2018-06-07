@@ -59,11 +59,13 @@ class SendSms extends Component {
 
 
   changeInput = prop => e => {
+    // console.log(e.target.value)
     this.setState({ [prop]: e.target.value });
   };
 
   sendSms() {
-    const recipient= {recipient: this.state.recipient}
+    const recipient= {recipient: this.state.recipient,
+    message: this.state.message}
 
     axios.post('/api/send', {recipient}).then(response => this.setState({confirmationSnackbarMessage: "Message Sent!", confirmationSnackbarOpen: true, processed: true})).catch(err => {
       console.log(err)
