@@ -6,7 +6,9 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const RedisStore = require("connect-redis")(session);
 const passport = require("passport");
-
+const http = require('http')
+const twilio = require('twilio')
+const axios = require('axios')
 const PORT = process.env.PORT || 8080;
 const providersRoute = require("./routes/care_providers.js");
 const authRoute = require("./routes/auth.js");
@@ -44,7 +46,7 @@ app.use("/doctors", providersRoute);
 //   return res.json("hewwwwwwo");
 // });
 
-app.post("/api/send", (req, res) => {
+app.get("/api/send", (req, res) => {
   let SID = process.env.TWILIO_ACCOUNT_SID;
   let TOKEN = process.env.TWILIO_AUTH_TOKEN;
   let SENDER = process.env.TWILIO_SMS_NUMBER;
@@ -57,7 +59,7 @@ app.post("/api/send", (req, res) => {
     client.messages
       .create(
         {
-          to: req.body.recipient,
+          to: '+1' + req.body.recipient.replace(/\D/g,''),
           from: SENDER,
           body: "TESTING"
         },
