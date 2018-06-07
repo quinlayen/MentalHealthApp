@@ -29,21 +29,17 @@ class NavDrawer extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    
     return props.drawer;
   }
 
-
-
   render() {
-    //console.log('props in drawer', this.props)
     const { classes } = this.props;
-    //console.log('in render', this.props)
     const sideList = (
       <div className={classes.list}>
-        <List>Hello 1</List>
+        <List>Options</List>
         <Divider />
-        <List>Hello 2</List>
+        <List>Account</List>
+        <List>Detailed Search</List>
       </div>
     );
 
@@ -54,17 +50,14 @@ class NavDrawer extends Component {
         <List>Hello 3</List>
       </div>
     );
-    //console.log(this.state.left)
     return (
       <div>
         <SwipeableDrawer
           open={this.state.left}
           onClose={param => {
-            //console.log('onCloseSwipeableDrawer clicked');
             this.props.toggleAction(false);
           }}
           onOpen={param => {
-           // console.log('onOpenSwipableDrawer');
             this.props.toggleAction(true);
           }}
         >
@@ -72,11 +65,9 @@ class NavDrawer extends Component {
             tabIndex={0}
             role="button"
             onClick={param => {
-              //console.log('onClickDiv');
               this.props.toggleAction(false);
             }}
             onKeyDown={param => {
-              //console.log('onKeyDownDiv');
               this.props.toggleAction(false);
             }}
           >
