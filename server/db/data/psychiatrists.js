@@ -60,15 +60,7 @@ module.exports = [
         insurance: ["Cigna", "Aetna", "HMSA", "Blue Cross Blue Shield"],
         bio: "Dr. Thuy Huynh, MD--specialist in psychiatry--currently treats patients in Honolulu, Hawaii. Dr. Huynh graduated from Tulane University and is licensed to practice medicine at Hawaii. In addition to having active medical licenses, Dr. Huynh has been found to hold one or more active medical licenses, and successfully passed a malpractice history screening."
       },
-    {
-        insurance_uids: [
-          "aetna-aetnachoiceposii",
-          "bcbsbluecard-bcbsbluecardppo",
-          "cigna-cignaopenaccessplus",
-          "aetna-aetnasignatureadministratorsppo",
-          "cigna-cignappo",
-          "hmsa-hmsapreferredprovidercompmed"
-        ],
+      {
         first_name: "Peter",
         last_name: "In",
         phone: "8088857444",
@@ -77,8 +69,8 @@ module.exports = [
         specialties: [""],
         insurance: ["Aetna", "Blue Cross Blue Shield", "Cigna", "HMSA"],
         bio: "Dr. Peter In, MD practices medicine at Kamuela, Hawaii and specializes in addiction psychiatry, child & adolescent psychiatry, clinical neurophysiology, psychiatry, psychiatry & neurology behavioral neurology & neuropsychiatry, psychiatry & neurology diagnostic neuroimaging, psychiatry & neurology forensic psychiatry, psychiatry & neurology hospice and palliative medicine, psychiatry & neurology psychosomatic medicine, and psychiatry & neurology pain medicine. Dr. In is licensed to treat patients in Hawaii. In addition to having active medical licenses, Dr. In has passed an automated background check which looked at elements including medical license status and malpractice screening (no history found)."
-  },
- {
+      },
+      {
         insurance_uids: [],
           city: "Honolulu",
           zip: "96813"
@@ -1509,348 +1501,24 @@ module.exports = [
       "uid": "f64513cadabafdce5d2e81366631c16c",
       "npi": "1275655268"
     },
-    {
-      "practices": [
-        {
-          "location_slug": "hi-honolulu",
-          "distance": 21828.399337417417,
-          "lat": 21.2832,
-          "lon": -157.7145,
-          "uid": "accb1abb4d661a2d235dbbc61d72b342",
-          "name": "David Friar, MD",
-          "accepts_new_patients": true,
-          "insurance_uids": [
-            "aetna-aetnasignatureadministratorsppo",
-            "aetna-aetnachoiceposii"
-          ],
-          "visit_address": {
-            "city": "Honolulu",
-            "lat": 21.2832,
-            "lon": -157.7145,
-            "state": "HI",
-            "state_long": "Hawaii",
-            "street": "6600 Kalanianaole Hwy",
-            "street2": "Ste 225",
-            "zip": "96825"
-          },
-          "office_hours": [],
-          "phones": [
-            {
-              "number": "8083942800",
-              "type": "landline"
-            },
-            {
-              "number": "8083942826",
-              "type": "fax"
-            }
-          ],
-          "languages": [
-            {
-              "name": "English",
-              "code": "en"
-            }
-          ]
-        }
-      ],
-      "educations": [],
-      "profile": {
-        "first_name": "David",
-        "middle_name": "H",
-        "last_name": "Friar",
-        "slug": "david-friar-md",
-        "title": "MD",
-        "image_url": "https://asset3.betterdoctor.com/assets/general_doctor_male.png",
-        "gender": "male",
-        "languages": [
-          {
-            "name": "English",
-            "code": "en"
-          }
-        ],
+    {   
+        first_name: "David",
+        last_name: "Friar",
+        phone: "8083942800",
+        location: ["Honolulu","96825"],
+        type: "Psychiatrist",
+        specialities: ["Addiction", "Depression", "Anxiety"],
+        insurance: ["Aetna", "Blue Cross Blue Shield", "Cigna", "HMSA"],
         "bio": "Dr. David Friar, MD treats patients in Honolulu, Hawaii, specializing in addiction psychiatry and psychiatry.\n\nDr. Friar is licensed to see patients in Hawaii.\n\nIn addition to having active medical licenses, Dr. Friar has successfully passed a background check including a medical license verification (active) and screening for malpractice history (none found)."
-      },
-      "ratings": [],
-      "insurances": [
-        {
-          "insurance_plan": {
-            "uid": "aetna-aetnasignatureadministratorsppo",
-            "name": "Aetna Signature Administrators PPO",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "aetna",
-            "name": "Aetna"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "aetna-aetnachoiceposii",
-            "name": "Aetna Choice POS II",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "aetna",
-            "name": "Aetna"
-          }
-        }
-      ],
-      "specialties": [
-        {
-          "uid": "psychiatrist",
-          "name": "Psychiatry",
-          "description": "Specializes in the diagnosis and treatment of mental disorders.",
-          "category": "medical",
-          "actor": "Psychiatrist",
-          "actors": "Psychiatrists"
-        },
-        {
-          "uid": "addiction-psychiatrist",
-          "name": "Addiction Psychiatry",
-          "description": "Specializes in alcohol, drug and substance problems.",
-          "category": "medical",
-          "actor": "Addiction Psychiatrist",
-          "actors": "Addiction Psychiatrists"
-        }
-      ],
-      "licenses": [
-        {
-          "number": "8494",
-          "state": "HI"
-        }
-      ],
-      "uid": "e51dfbaecc9a7b3eb07e4642aba0262b",
-      "npi": "1235265828"
+      
     },
-    {
-      "practices": [
-        {
-          "location_slug": "hi-honolulu",
-          "distance": 21837.60245632121,
-          "lat": 21.29499,
-          "lon": -157.84755,
-          "uid": "0f65bc0b10698595ef2a83335acf6f37",
-          "name": "Michael Chang, MD",
-          "accepts_new_patients": true,
-          "insurance_uids": [
-            "aetna-aetnasignatureadministratorsppo",
-            "cigna-cignappo",
-            "hmsa-hmsapreferredprovidercompmed",
-            "aetna-aetnachoiceposii",
-            "cigna-cignaopenaccessplus",
-            "bcbsbluecard-bcbsbluecardppo",
-            "unitedhealthcare-uhcchoicepluspos",
-            "unitedhealthcare-uhcnavigatepos",
-            "unitedhealthcare-uhcoptionsppo"
-          ],
-          "visit_address": {
-            "city": "Honolulu",
-            "lat": 21.29499,
-            "lon": -157.84755,
-            "state": "HI",
-            "state_long": "Hawaii",
-            "street": "1221 Kapiolani Blvd",
-            "street2": "Ste 830",
-            "zip": "96814"
-          },
-          "office_hours": [],
-          "phones": [
-            {
-              "number": "8085939222",
-              "type": "landline"
-            }
-          ],
-          "languages": [
-            {
-              "name": "English",
-              "code": "en"
-            }
-          ]
-        }
-      ],
-      "educations": [
-        {
-          "school": "Yale University School of Medicine",
-          "graduation_year": "1979",
-          "degree": "MD"
-        },
-        {
-          "school": "VA Greater Los Angeles Healthcare System Internal Medicine",
-          "graduation_year": "1980",
-          "degree": "Residency"
-        },
-        {
-          "school": "UCLA Neuropsychology Hospital Psychiatry",
-          "graduation_year": "1983",
-          "degree": "Residency"
-        },
-        {
-          "school": "VA Medical Center Sepulveda CA Internal Medicine",
-          "graduation_year": "1984",
-          "degree": "Residency"
-        }
-      ],
-      "profile": {
-        "first_name": "Michael",
-        "last_name": "Chang",
-        "slug": "michael-chang-9",
-        "title": "MD",
-        "image_url": "https://asset3.betterdoctor.com/assets/general_doctor_male.png",
-        "gender": "male",
-        "languages": [
-          {
-            "name": "English",
-            "code": "en"
-          }
-        ],
-        "bio": ""
-      },
-      "ratings": [],
-      "insurances": [
-        {
-          "insurance_plan": {
-            "uid": "aetna-aetnasignatureadministratorsppo",
-            "name": "Aetna Signature Administrators PPO",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "aetna",
-            "name": "Aetna"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "cigna-cignappo",
-            "name": "CIGNA PPO",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "cigna",
-            "name": "Cigna"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "hmsa-hmsapreferredprovidercompmed",
-            "name": "HMSA Preferred ProviderComp Med",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "bcbs",
-            "name": "BCBS"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "aetna-aetnachoiceposii",
-            "name": "Aetna Choice POS II",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "aetna",
-            "name": "Aetna"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "cigna-cignaopenaccessplus",
-            "name": "CIGNA Open Access Plus",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "cigna",
-            "name": "Cigna"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "bcbsbluecard-bcbsbluecardppo",
-            "name": "BCBS Blue Card PPO",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "bcbs",
-            "name": "BCBS"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "unitedhealthcare-uhcchoicepluspos",
-            "name": "UHC Choice Plus POS",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "unitedhealthcare",
-            "name": "United Healthcare"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "unitedhealthcare-uhcnavigatepos",
-            "name": "UHC Navigate POS",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "unitedhealthcare",
-            "name": "United Healthcare"
-          }
-        },
-        {
-          "insurance_plan": {
-            "uid": "unitedhealthcare-uhcoptionsppo",
-            "name": "UHC Options PPO",
-            "category": [
-              "medical"
-            ]
-          },
-          "insurance_provider": {
-            "uid": "unitedhealthcare",
-            "name": "United Healthcare"
-          }
-        }
-      ],
-      "specialties": [
-        {
-          "uid": "psychiatrist",
-          "name": "Psychiatry",
-          "description": "Specializes in the diagnosis and treatment of mental disorders.",
-          "category": "medical",
-          "actor": "Psychiatrist",
-          "actors": "Psychiatrists"
-        }
-      ],
-      "licenses": [
-        {
-          "state": "HI",
-          "end_date": "2014-01-31"
-        },
-        {
-          "number": "MD10845",
-          "state": "HI"
-        }
-      ],
-      "uid": "4061fbcfb443ed70980078dbd12c5f8d",
-      "npi": "1275666257"
+    {   first_name: "Michael",
+        last_name: "Chang",
+        phone: "8085939222",
+        location: ["Honolulu", "96814"],
+        type: "Psychiatrist",
+        specialties: ["Anxiety", "ADHD", "PTSD"],
+        insurance: ["Aetna", "Cigna", "HMSA", "Blue Cross Blue Shield", "UnitedHealthCare"],
+        bio: "Dr. Michael Chang, MD, is a Psychiatry specialist in Honolulu, Hawaii. He attended and graduated from medical school in 1997, having over 21 years of diverse experience, especially in Psychiatry. He is affiliated with many hospitals including Castle Medical Center."
     }
-  ]
-}
-];
+]
