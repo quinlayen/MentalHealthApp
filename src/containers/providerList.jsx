@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core";
 import List from "@material-ui/core/List";
@@ -28,14 +29,16 @@ class ProviderList extends Component {
   renderDoctors(doctorData) {
     return (
       <Fragment>
-        <ListItem key={doctorData.provider_id} button>
-          {doctorData.type}: {doctorData.first_name} {doctorData.last_name}
-          {/* <ListItemText primary= /> */}
-        </ListItem>
-        <ListItem button>Specialties: {doctorData.specialties}</ListItem>
+        <Link to={`/${doctorData.provider_id}`} id="link">
+          <ListItem key={doctorData.provider_id} button>
+            {doctorData.type}: {doctorData.first_name} {doctorData.last_name}
+            {/* <ListItemText primary= /> */}
+          </ListItem>
+        </Link>
         <ListItem button>Email: {doctorData.email}</ListItem>
         <ListItem button>Phone: {doctorData.phone}</ListItem>
-        <ListItem button>Insurance: {doctorData.insurance}</ListItem>
+        <ListItem>Specialties: {doctorData.specialties}</ListItem>
+        <ListItem>Insurance: {doctorData.insurance}</ListItem>
         <ListItem>
           <img src={doctorData.image} />
         </ListItem>
