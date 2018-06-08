@@ -50,7 +50,7 @@ export function tellTwilio(medium) {
      message: medium.message }
     });
     console.log(medium.recipient,medium.message ,'in action')
-    console.log (request.data, 'is req')
+    // console.log (request.data, 'is req')
       // const toSend = axios.post(`${HOST}/api/send`, {recipient, message});
   request.then(res => {
     dispatch(twilioSuccess(true));
