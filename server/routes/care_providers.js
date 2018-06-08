@@ -20,6 +20,7 @@ router.post("/result", (req, res) => {
       type: req.body.type,
       location: req.body.location
     })
+      .orderBy("last_name", "asc")
       // .where({ location })
       .fetchAll()
       .then(result => {

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import './App.css';
-import UserRegistrationForm from './components/userRegistrationForm';
-import SearchBar from './containers/searchBar';
-import SendSms from './components/sms';
-import NavBar from './containers/navBar';
-import NavDrawer from './containers/navDrawer';
-import ProviderList from './containers/providerList';
+import "./App.css";
+import UserRegistrationForm from "./components/userRegistrationForm";
+import SearchBar from "./containers/searchBar";
+import SendSms from "./components/sms";
+import NavBar from "./containers/navBar";
+import NavDrawer from "./containers/navDrawer";
+import ProviderList from "./containers/providerList";
 
 class App extends Component {
   render() {
