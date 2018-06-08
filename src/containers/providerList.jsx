@@ -29,17 +29,13 @@ class ProviderList extends Component {
     return (
       <Fragment>
         <ListItem key={doctorData.provider_id} button>
-          <ListItemText primary={doctorData.first_name} />
-          <ListItemText primary={doctorData.last_name} />
+          {doctorData.type}: {doctorData.first_name} {doctorData.last_name}
+          {/* <ListItemText primary= /> */}
         </ListItem>
-        <ListItem button>
-          <ListItemText primary={doctorData.specialties} />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary={doctorData.email} />
-          <ListItemText primary={doctorData.phone} />
-          <ListItemText primary={doctorData.insurance} />
-        </ListItem>
+        <ListItem button>Specialties: {doctorData.specialties}</ListItem>
+        <ListItem button>Email: {doctorData.email}</ListItem>
+        <ListItem button>Phone: {doctorData.phone}</ListItem>
+        <ListItem button>Insurance: {doctorData.insurance}</ListItem>
         <ListItem>
           <img src={doctorData.image} />
         </ListItem>
