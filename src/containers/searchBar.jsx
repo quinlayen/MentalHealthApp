@@ -63,7 +63,6 @@ class SearchBar extends Component {
   }
 
   render() {
-    //console.log('state', this.state);
     const { classes } = this.props;
   
     return (
@@ -80,7 +79,6 @@ class SearchBar extends Component {
             label="Select Care Provider"
             className={classNames(classes.margin, classes.textField)}
             onChange={this.handleChange}
-            //input={<Input searchOptions="searchOptions" id="search-options" />}
           >
             {searchOptions.map(option => (
               <MenuItem key={option.value} value={option.value}>
@@ -110,6 +108,10 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchDoctors }, dispatch);
 }
 
-export default compose(withStyles(styles), connect(null, mapDispatchToProps))(
-  SearchBar
-);
+export default compose(
+  withStyles(styles),
+  connect(
+    null,
+    mapDispatchToProps
+  )
+)(SearchBar);

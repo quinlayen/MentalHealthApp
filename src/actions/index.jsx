@@ -7,8 +7,6 @@ export const TELL_TWILIO = 'TELL_TWILIO'
 const HOST = "http://localhost:8080";
 
 export function toggleAction(open) {
-  //console.log('open in toggleAction creator', open);
-
   return {
     type: TOGGLE_ACTION,
     payload: open
@@ -16,8 +14,9 @@ export function toggleAction(open) {
 }
 
 export function fetchDoctors(info) {
-  const response = axios.get(`${HOST}/doctors`, info);
-  console.log("in action creator", response);
+  console.log(info);
+  const response = axios.post(`${HOST}/doctors/result`, info);
+  //console.log("in action creator", response);
   return {
     type: FETCH_DOCTORS,
     payload: response

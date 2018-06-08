@@ -9,9 +9,10 @@ exports.up = function(knex, Promise) {
     table.string("type").notNullable();
     table.text("specialties").notNullable();
     table.text("insurance").notNullable();
-    table.text("bio");
-    table.timestamp("created_at").defaultTo(knex.fn.now());
-    table.timestamp("updated_at").defaultTo(knex.fn.now());
+    table.text("bio").notNullable();
+    table.string("image").notNullable();
+    // table.timestamp("created_at").defaultTo(knex.fn.now());
+    // table.timestamp("updated_at").defaultTo(knex.fn.now());
   });
 };
 
