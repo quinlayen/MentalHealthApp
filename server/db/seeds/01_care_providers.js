@@ -20,7 +20,7 @@ exports.seed = function(knex, Promise) {
           last_name: "Duncan",
           phone: "808-333-3333",
           email: "jdd@yahoo.com",
-          location: "Kailua",
+          location: "Honolulu",
           type: "Psychiatrist",
           specialties: "anxiety, depression",
           insurance: "Aetna"

@@ -24,6 +24,15 @@ class ProviderList extends Component {
   }
 
   render() {
+    console.log("doctors", this.props.doctors);
+    return (
+      <div>
+        <ul>{this.props.doctors.map(this.renderDoctors)}</ul>
+      </div>
+    );
+  }
+
+  render() {
     //console.log(this.props.doctors)
     return (
       <div>
