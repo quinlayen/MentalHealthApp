@@ -24,22 +24,44 @@ export function fetchDoctors(info) {
   };
 }
 
+export function itemsIsLoading(bool){
+  return{
+    type: 'ITEMS_LOADING',
+    isLoading: bool
+  }
+}
+export function twilioSuccess(bool) {
+  return {
+    type: 'TWILIO_SUCCESS',
+    isSuccess: bool
+  }
+}
+
 export function tellTwilio(medium) {
-  
-  switch (medium.value) {
+  return (dispatch) => {
+  switch (medium.medium) {
+    
     case "sms":
+  
     let request = axios({
       method:"POST",
     url: `${HOST}/api/send`,
-    headers:[]
+    data: { recipient: medium.recipient,
+     message: medium.message }
     });
+    console.log(medium.recipient,medium.message ,'in action')
+    console.log (request.data, 'is req')
       // const toSend = axios.post(`${HOST}/api/send`, {recipient, message});
   request.then(res => {
-      console.log(res, "twilio ping");
+    dispatch(twilioSuccess(true));
+      console.log(res, "is going to twilio");
       return {
         type: TELL_TWILIO,
         payload: res
       }
+  }).catch(err => {
+    dispatch(twilioSuccess(false));
+    console.log(err)
   })
   
       break;
@@ -55,6 +77,7 @@ export function tellTwilio(medium) {
   
     default:
       break;
+  }
 }
 }
   

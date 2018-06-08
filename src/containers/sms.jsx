@@ -72,19 +72,19 @@ class SendSms extends Component {
   sendSms(e) {
     e.preventDefault();
     //recipient contains the recipient, message, and medium to send
-    const recipient= {recipient: this.state.recipient,
-    message: this.state.message,
-    medium: 'sms'};
+    // const recipient= {recipient: this.state.recipient,
+    // message: this.state.message,
+    // medium: 'sms'};
 
     // axios.post('/api/send', {recipient}).then(response => 
 
     this.setState({confirmationSnackbarMessage: "Message Sent!", confirmationSnackbarOpen: true, processed: true})
-        .then(this.props.tellTwilio(this.state))
-    .catch(err => {
-      console.log(err)
-      console.log(recipient)
-      return this.setState({confirmationSnackbarMessage:"Did not send message", confirmationSnackbarOpen:true})
-    })
+     this.props.tellTwilio(this.state)
+    //.catch(err => {
+    //   console.log(err)
+    //   console.log(recipient)
+    //   return this.setState({confirmationSnackbarMessage:"Did not send message", confirmationSnackbarOpen:true})
+    // })
 
   }
 
@@ -152,6 +152,8 @@ const {loading, confirmationSnackbarOpen, ...data} = this.state
 TextField.propTypes = {
   classes: PropTypes.object.isRequired
 };
+
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({tellTwilio}, dispatch);

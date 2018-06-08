@@ -1,4 +1,6 @@
-require("dotenv").config();
+
+
+require("dotenv").config({path: __dirname + '.env'});
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -12,6 +14,12 @@ const axios = require('axios')
 const PORT = process.env.PORT || 8080;
 const providersRoute = require("./routes/care_providers.js");
 const authRoute = require("./routes/auth.js");
+
+
+
+if (process.env.NODE_ENV !== 'production') {
+  require("dotenv").load();
+}
 
 //let bundler = new Bundler('public/index.html');
 
@@ -46,38 +54,40 @@ app.use("/doctors", providersRoute);
 //   return res.json("hewwwwwwo");
 // });
 
-app.get("/api/send", (req, res) => {
-  let SID = process.env.TWILIO_ACCOUNT_SID;
+app.post("/api/send", (req, res) => {
+  let SID = process.env.TWILIO_API_KEY;
   let TOKEN = process.env.TWILIO_AUTH_TOKEN;
   let SENDER = process.env.TWILIO_SMS_NUMBER;
-  console.log(SID, TOKEN, SENDER);
+  console.log('in server', SID, TOKEN)
+  // console.log(req, 'is req')
   if (!SID || !TOKEN) {
     return res.json({ message: "need TWilio SID and Twilio Token" });
-
+  }
     let client = require("twilio")(SID, TOKEN);
 
     client.messages
       .create(
         {
-          to: '+1' + req.body.recipient.replace(/\D/g,''),
+          to: '+1' + req.body.recipient,
           from: SENDER,
-          body: "TESTING"
-        },
-        (err, data) => {
-          if (!err) {
-            console.log(data)
-            res.json({
-              From: data.from,
-              Body: res.body
-            });
-          } else {
-            console.log(err);
-          }
-        }
-      )
-      .then(message => console.log(message.sid))
+          body: req.body.message
+        })
+      //   ,
+      //   (err, data) => {
+      //     if (!err) {
+      //       console.log(data, 'this is message')
+      //       res.json({
+      //         From: data.from,
+      //         Body: res.body
+      //       });
+      //     } else {
+      //       console.log(err);
+      //     }
+      //   }
+      // )
+      .then(message => console.log(message.sid, 'message sid'))
       .done();
-  }
+  
 });
 
 //app.use(bundler.middleware());
