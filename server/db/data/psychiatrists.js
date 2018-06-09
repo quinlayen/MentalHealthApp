@@ -35,7 +35,8 @@ module.exports = [
     insurance: "Aetna, Cigna",
     bio:
       "Specializing in psychiatry, Dr. Barry Carlton, MD is one of the country's top ranked doctors. He currently practices medicine at Honolulu, Hawaii, Kailua, Hawaii, and Ewa beach, Hawaii. Based on his network, experience and credentials, Dr. Carlton is rated in the top 20% of all doctors in the United States. In addition, Dr. Carlton has been found to hold one or more active medical licenses, and successfully passed a malpractice history screening.",
-    image: ""
+    image:
+      "https://cdn4.sussexdirectories.com/rms/rms_photos/sized/65/91/309165-757126-2_320x400.jpg?pu=1476742126"
   },
   {
     first_name: "Anthony",
@@ -48,7 +49,8 @@ module.exports = [
     insurance: "Cigna, Aetna, HMSA, Blue Cross Blue Shield",
     bio:
       "Dr. Anthony Guerrero, MD is one of the country's most highly rated doctors. His specialties include pediatrics and psychiatry and he currently practices medicine at Honolulu, Hawaii and Ewa beach, Hawaii. Dr. Guerrero is licensed to treat patients in Hawaii. Based on an in-depth analysis of Dr. Guerrero's experience, credentials and network, he has been found to be among the 20% of doctors nationwide. Dr. Guerrero has passed an automated background check which looked at elements including medical license status and malpractice screening (no history found).",
-    image: ""
+    image:
+      "https://cdn0.sussexdirectories.com/rms/rms_photos/sized/70/43/234370-388813-3_320x400.jpg?pu=1431337597"
   },
   {
     first_name: "Julienne",
@@ -60,7 +62,8 @@ module.exports = [
     insurance: "Cigna, Aetna, Healthnet, Medicare",
     bio:
       "Dr. Julienne Aulwes, MD sees patients in Waipahu, Hawaii and Honolulu, Hawaii and specializes in cognitive & behavioral psychology, general dentistry, psychiatry & neurology behavioral neurology & neuropsychiatry, and podiatrist general practice. In addition to having active medical licenses, Dr. Aulwes has been found to hold one or more active medical licenses, and successfully passed a malpractice history screening.",
-    image: ""
+    image:
+      "https://cdn4.sussexdirectories.com/rms/rms_photos/sized/34/49/384934-1193935-3_320x400.jpg?pu=1522352171"
   },
   {
     first_name: "Thuy",
