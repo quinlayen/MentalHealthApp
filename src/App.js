@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import UserRegistrationForm from "./components/userRegistrationForm";
 import SearchBar from "./containers/searchBar";
@@ -11,14 +11,16 @@ import ProviderList from "./containers/providerList";
 class App extends Component {
   render() {
     return (
-      <div>
-        <NavBar />
-        <SearchBar />
-        <Route exact path="/register" component={UserRegistrationForm} />
-        <NavDrawer />
-        <ProviderList />
-        <SendSms />
-      </div>
+      <Router>
+        <div>
+          <NavBar />
+          <Route path="/doctors/result" component={ProviderList} />
+          <Route exact path="/" component={SearchBar} />
+          <Route path="/register" component={UserRegistrationForm} />
+          <NavDrawer />
+          <SendSms />
+        </div>
+      </Router>
     );
   }
 }
