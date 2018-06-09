@@ -19,6 +19,7 @@ router.post("/result", (req, res) => {
     type: req.body.type,
     location: req.body.location
   })
+    .orderBy("last_name", "asc")
     .fetchAll()
     .then(result => {
       console.log("ALL DOCS by type & location", result);
