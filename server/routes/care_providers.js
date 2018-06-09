@@ -15,20 +15,16 @@ router.get("/", (req, res) => {
 //get docs by type & location//
 router.post("/result", (req, res) => {
   console.log(req.body);
-  return (
-    Care_Provider.where({
-      type: ILIKE(req.body.type),
-      location: ILIKE(req.body.location)
+  return Care_Provider.where({
+    type: req.body.type,
+    location: req.body.location
+  })
+    .fetchAll()
+    .then(result => {
+      console.log("ALL DOCS by type & location", result);
+      return res.json(result);
     })
-      .orderBy("last_name", "asc")
-      // .where({ location })
-      .fetchAll()
-      .then(result => {
-        console.log("ALL DOCS by type & location", result);
-        return res.json(result);
-      })
-      .catch(err => res.status(400).json({ message: err.message }))
-  );
+    .catch(err => res.status(400).json({ message: err.message }));
 });
 
 // gets details of specific doc //
