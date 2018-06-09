@@ -162,58 +162,77 @@ module.exports = [
     phone: "(808)518-4052",
     location: "Kailua",
     type: "Therapist",
-    specialties: "",
-    insurance: "",
-    bio: ""
+    specialties: "Anxiety, Obsessive-Compulsive (OCD), Trauma and PTSD",
+    insurance: "Blue Cross Blue Shield, HMSA, TriCare",
+    bio:
+      "Dr. Jessica Harper has much experience working with anxiety, panic, trauma, obsessive compulsive disorder, phobias, and depression. She uses therapy that is designed to work quickly and effectively, and is trained in Eye Movement Desensitization and Reprocessing (EMDR), Prolonged Exposure, and Cognitive Behavioral Therapy.",
+    image:
+      "https://cdn4.sussexdirectories.com/rms/rms_photos/sized/95/95/109595-532746-2_320x400.jpg?pu=1452812000"
   },
   {
-    first_name: "",
-    last_name: "",
-    phone: "",
-    location: "",
-    type: "",
-    specialties: "",
-    insurance: "",
-    bio: ""
+    first_name: "Sheri",
+    last_name: "Yasuna",
+    phone: "(808)518-3748",
+    location: "Kapolei",
+    type: "Therapist",
+    specialties:
+      "Mood Disorders, Trauma and PTSD, Pregnancy, Prenatal, Postpartum",
+    insurance: "Aetna, Cigna, HMSA, Medicaid, Medicare, TriCare",
+    bio:
+      "Dr. Sheri Yasuna is a licensed clinical psychologist with experience in treating a variety of clinical issues, including severe and persistent mental illness, anxiety, depression, and trauma related disorders. She works primarily with adolescents and adults, providing individual therapy in a comfortable outpatient setting.",
+    image:
+      "https://cdn2.sussexdirectories.com/rms/rms_photos/sized/25/35/233525-370726-2_320x400.jpg?pu=1426458474"
   },
   {
-    first_name: "",
-    last_name: "",
-    phone: "",
-    location: "",
-    type: "",
-    specialties: "",
-    insurance: "",
-    bio: ""
+    first_name: "Mary",
+    last_name: "Church",
+    phone: "(808)518-6294",
+    location: "Honolulu",
+    type: "Therapist",
+    specialties: "Child or Adolescent, Anxiety, Mood Disorders",
+    insurance: "HMSA, UHA",
+    bio:
+      "Dr. Mary Church's therapeutic approach is evidence-based and often employs cognitive-behavioral techniques to combine the art and science of psychology. She has a perspective on treatment that is humanistic, highly collaborative, and supportive to help adults and families progress towards a preferred future.",
+    image:
+      "https://cdn2.sussexdirectories.com/rms/rms_photos/sized/77/72/107277-807942-2_320x400.jpg?pu=1482375565"
   },
   {
-    first_name: "",
-    last_name: "",
-    phone: "",
-    location: "",
-    type: "",
-    specialties: "",
-    insurance: "",
-    bio: ""
+    first_name: "John",
+    last_name: "Ward",
+    phone: "(808)518-2854",
+    location: "Honolulu",
+    type: "Therapist",
+    specialties: "Mood Disorders, Behavioral Issues, Trauma and PTSD",
+    insurance: "Aloha Care, HMSA, UHA, UnitedHealthcare",
+    bio:
+      "John Ward works with his clients from a place of faith in your wholeness and ability to heal yourselves and or your relationships. His practice is informed by both the best in Western therapies as well as clinically proven mindfulness and spiritually attuned interventions.",
+    image:
+      "https://cdn2.sussexdirectories.com/rms/rms_photos/sized/97/93/199397-299232-2_320x400.jpg?pu=1405580746"
   },
   {
-    first_name: "",
-    last_name: "",
-    phone: "",
-    location: "",
-    type: "",
-    specialties: "",
-    insurance: "",
-    bio: ""
+    first_name: "Angela",
+    last_name: "Song",
+    phone: "(808)201-2706",
+    location: "Honolulu",
+    type: "Therapist",
+    specialties: "Anxiety, Relationship Issues, Life Transitions",
+    insurance: "HMAA, HMSA",
+    bio:
+      "Dr. Angela Song works with individuals and families to address topics including, but not limited to, anxiety, depression, relationship issues, cultural issues, transitional issues, and chronic pain. She has been trained in a variety of modalities, but she assesses the client to see what would be the best fit.",
+    image:
+      "https://cdn4.sussexdirectories.com/rms/rms_photos/sized/97/62/356297-1061262-2_320x400.jpg?pu=1505353176"
   },
   {
-    first_name: "",
-    last_name: "",
-    phone: "",
-    location: "",
-    type: "",
-    specialties: "",
-    insurance: "",
-    bio: ""
+    first_name: "Steven Phillip",
+    last_name: "Katz",
+    phone: "(808)419-3755",
+    location: "Kailua",
+    type: "Therapist",
+    specialties: "Relationship Issues, Anxiety, Addiction",
+    insurance: "Blue Cross Blue Shield, HMSA, TriCare",
+    bio:
+      "Steven Katz specializes in helping to improve your relationships with other people. He is licensed in Hawaii and holds a Masters with a specialty in Marriage and Family Therapy.",
+    image:
+      "https://cdn2.sussexdirectories.com/rms/rms_photos/sized/13/49/94913_2_120x150.jpg?pu=0"
   }
 ];

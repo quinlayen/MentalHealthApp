@@ -17,8 +17,8 @@ router.post("/result", (req, res) => {
   console.log(req.body);
   return (
     Care_Provider.where({
-      type: req.body.type,
-      location: req.body.location
+      type: ILIKE(req.body.type),
+      location: ILIKE(req.body.location)
     })
       .orderBy("last_name", "asc")
       // .where({ location })
