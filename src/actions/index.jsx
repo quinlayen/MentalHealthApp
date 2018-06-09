@@ -13,7 +13,6 @@ export function toggleAction(open) {
 }
 
 export function fetchDoctors(info) {
-
   const response = axios.post(`${HOST}/doctors/result`, info);
 
   return {

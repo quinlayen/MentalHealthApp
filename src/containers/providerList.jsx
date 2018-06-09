@@ -9,6 +9,7 @@ import { fetchDoctors } from '../actions/index';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -26,16 +27,18 @@ class ProviderList extends Component {
   renderDoctors(doctorData) {
     return (
       <Fragment>
-        <ListItem key={doctorData.provider_id} button>
-          <ListItemText primary={doctorData.first_name} />
-          <ListItemText primary={doctorData.last_name} />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary={doctorData.specialties} />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary={doctorData.email} />
-          <ListItemText primary={doctorData.phone} />
+        <Link to={`/${doctorData.provider_id}`} id="link">
+          <ListItem key={doctorData.provider_id} button>
+            {doctorData.type}: {doctorData.first_name} {doctorData.last_name}
+            {/* <ListItemText primary= /> */}
+          </ListItem>
+        </Link>
+        <ListItem button>Email: {doctorData.email}</ListItem>
+        <ListItem button>Phone: {doctorData.phone}</ListItem>
+        <ListItem>Specialties: {doctorData.specialties}</ListItem>
+        <ListItem>Insurance: {doctorData.insurance}</ListItem>
+        <ListItem>
+          <img src={doctorData.image} />
         </ListItem>
         <Divider />
       </Fragment>

@@ -110,6 +110,10 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchDoctors }, dispatch);
 }
 
-export default compose(withStyles(styles), connect(null, mapDispatchToProps))(
-  SearchBar
-);
+export default compose(
+  withStyles(styles),
+  connect(
+    null,
+    mapDispatchToProps
+  )
+)(SearchBar);
