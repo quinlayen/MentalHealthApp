@@ -10,7 +10,7 @@ import classNames from 'classnames';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 
@@ -75,7 +75,7 @@ class UserRegistrationForm extends Component {
   render() {
     const { classes } = this.props;
 
-    const actions = [<Button type="submit" label="submit" primary={true} />];
+   
     return (
       <div className={classes.root}>
         <form id="userRegForm" onSubmit={this.LinkToSubmit}>

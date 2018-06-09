@@ -6,8 +6,8 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import classNames from "classnames";
-import Input from "@material-ui/core/Input";
-import { Link } from "react-router-dom";
+// import Input from "@material-ui/core/Input";
+// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchDoctors } from "../actions/index";
@@ -66,7 +66,7 @@ class SearchBar extends Component {
 
   render() {
     const { classes } = this.props;
-    const actions = [<Button type="search" label="search" primary={true} />];
+  
     return (
       <form
         className={classes.root}

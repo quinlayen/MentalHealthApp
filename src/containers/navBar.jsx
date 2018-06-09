@@ -12,6 +12,7 @@ import { bindActionCreators } from "redux";
 import { toggleAction } from "../actions/index";
 import compose from "recompose/compose";
 import { Link } from "react-router-dom";
+import ButtonBase from '@material-ui/core/ButtonBase'
 
 const styles = {
   root: {
@@ -30,6 +31,9 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
   }
+
+
+  
   render() {
     const { classes } = this.props;
     return (
@@ -52,6 +56,7 @@ class NavBar extends Component {
               className={classes.flex}>
               MentalHealthApp
             </Typography>
+            
             <Button color="inherit">Login</Button>
           </Toolbar>
         </AppBar>
