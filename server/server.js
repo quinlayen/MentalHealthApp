@@ -58,7 +58,7 @@ app.post("/api/send", (req, res) => {
   let SID = process.env.TWILIO_API_KEY;
   let TOKEN = process.env.TWILIO_AUTH_TOKEN;
   let SENDER = process.env.TWILIO_SMS_NUMBER;
-  console.log('in server', SID, TOKEN)
+ 
   // console.log(req, 'is req')
   if (!SID || !TOKEN) {
     return res.json({ message: "need TWilio SID and Twilio Token" });
@@ -70,7 +70,8 @@ app.post("/api/send", (req, res) => {
         {
           to: '+1' + req.body.recipient,
           from: SENDER,
-          body: req.body.message
+          body: req.body.message,
+          statusCallback: `http://${PORT}/client/home`
         })
       //   ,
       //   (err, data) => {

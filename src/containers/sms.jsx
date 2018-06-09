@@ -45,21 +45,6 @@ class SendSms extends Component {
      this.sendSms = this.sendSms.bind(this);
   }
 
-//  componentWillMount() {
-//     async.series({
-//         configs(callback) {
-//           axios.get(HOST + 'api/config').then(res =>
-//             callback(null, res.data.data)
-//           )
-//         },
-//       }, (err,response) => {
-//         err ? this.handleFetchError(err) : this.handleFetch(response)
-//     })
- 
-//     }
-
-
-
   changeInput (e) {
     // const recipient = e.target;
     // const message = e.value;
@@ -78,16 +63,13 @@ class SendSms extends Component {
 
     // axios.post('/api/send', {recipient}).then(response => 
 
+    this.props.tellTwilio(this.state)
     this.setState({confirmationSnackbarMessage: "Message Sent!", confirmationSnackbarOpen: true, processed: true})
-     this.props.tellTwilio(this.state)
-    //.catch(err => {
-    //   console.log(err)
-    //   console.log(recipient)
-    //   return this.setState({confirmationSnackbarMessage:"Did not send message", confirmationSnackbarOpen:true})
-    // })
-
+   if (this.props(!this.state.recipient)) {
+    return this.setState({confirmationSnackbarMessage:"Did not send message", confirmationSnackbarOpen:true})
+   }
+  
   }
-
   // sendSms = () => {
   //   fetch('/api/send', {
   //     method: 'POST',

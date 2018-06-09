@@ -45,6 +45,9 @@ export function tellTwilio(medium) {
     let request = axios({
       method:"POST",
     url: `${HOST}/api/send`,
+    headers: {
+      'Content-Type' : 'application/x-www-form-urlencoded'
+    },
     data: { recipient: medium.recipient,
      message: medium.message }
     });
@@ -55,6 +58,7 @@ export function tellTwilio(medium) {
     dispatch(twilioSuccess(true));
       console.log(res, "is going to twilio");
       return {
+     
         type: TELL_TWILIO,
         payload: res
       }
