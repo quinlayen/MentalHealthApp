@@ -4,6 +4,7 @@ const Care_Provider = require("../db/models/Care_Provider.js");
 
 // gets all the docs from the database //
 router.get("/", (req, res) => {
+  console.log('/doctors route hit')
   return Care_Provider.fetchAll()
     .then(result => {
       console.log("ALL DOCS", result);
