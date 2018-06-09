@@ -9,6 +9,8 @@ import "./index.css";
 import App from "./App";
 import ReduxThunk from 'redux-thunk';
 import registerServiceWorker from "./registerServiceWorker";
+import createLogger from 'redux-logger';
+
 require("dotenv").config();
 
 
@@ -16,7 +18,9 @@ require("dotenv").config();
 // console.log(process.env.REACT_APP_ACCOUNTSID);
 // console.log(process.env.REACT_APP_AUTHTOKEN);
 
-const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
+
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk, ReduxPromise, createLogger)(createStore);
+
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

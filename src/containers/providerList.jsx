@@ -1,20 +1,20 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core';
+import List from '@material-ui/core/List';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import compose from 'recompose/compose';
+import { fetchDoctors } from '../actions/index';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core";
-import List from "@material-ui/core/List";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import compose from "recompose/compose";
-import { fetchDoctors } from "../actions/index";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
 
 const styles = theme => ({
   root: {
-    width: "100%",
-    maxWidth: "360px",
+    width: '100%',
+    maxWidth: '360px',
     backgroundColor: theme.palette.background.paper
   }
 });
@@ -22,8 +22,6 @@ const styles = theme => ({
 class ProviderList extends Component {
   constructor(props) {
     super(props);
-
-    //this.state = {term:''}
   }
 
   renderDoctors(doctorData) {
@@ -51,18 +49,7 @@ class ProviderList extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <List component="nav">
-          {this.props.doctors.map(this.renderDoctors)}
-        </List>
-      </div>
-    );
-  }
-
-  render() {
-    //console.log(this.props.doctors)
-    return (
-      <div>
-        <ul>{this.props.doctors.map(this.renderDoctors)}</ul>
+        <List component="nav">{this.props.doctors.map(this.renderDoctors)}</List>
       </div>
     );
   }
