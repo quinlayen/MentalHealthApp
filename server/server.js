@@ -64,14 +64,14 @@ app.post("/api/send", (req, res) => {
     return res.json({ message: "need TWilio SID and Twilio Token" });
   }
     let client = require("twilio")(SID, TOKEN);
-
+console.log(req.body, "this is in server")
     client.messages
       .create(
         {
           to: '+1' + req.body.recipient,
           from: SENDER,
           body: req.body.message,
-          statusCallback: `http://${PORT}/client/home`
+          // statusCallback: `http://${PORT}/client/home`
         })
       //   ,
       //   (err, data) => {

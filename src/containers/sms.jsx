@@ -66,7 +66,9 @@ class SendSms extends Component {
     this.props.tellTwilio(this.state)
     this.setState({confirmationSnackbarMessage: "Message Sent!", confirmationSnackbarOpen: true, processed: true})
  
-    // return this.setState({confirmationSnackbarMessage:"Did not send message", confirmationSnackbarOpen:true})
+//        if (this.props(!this.state.recipient)) {
+// +    return this.setState({confirmationSnackbarMessage:"Did not send message", confirmationSnackbarOpen:true})
+// +   }
    
   
   }

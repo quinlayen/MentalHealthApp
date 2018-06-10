@@ -40,19 +40,25 @@ export function tellTwilio(medium) {
   switch (medium.medium) {
     
     case "sms":
-  
-    let request = axios({
-      method:"POST",
-    url: `${HOST}/api/send`,
-    headers: {
-      'Content-Type' : 'application/x-www-form-urlencoded'
-    },
-    data: { recipient: medium.recipient,
-     message: medium.message }
-    });
+   let param = {
+      recipient: medium.recipient,
+     message:medium.message 
+     };
+console.log(param)
+  //   let request = axios({
+  //     method:"POST",
+  //   url: `${HOST}/api/send`,
+  //   headers: {
+  //     'Content-Type' : 'application/x-www-form-urlencoded'
+  //   },
+  //  data: param 
+  //   });
+
+  let request = axios.post(`${HOST}/api/send`, {     recipient: medium.recipient,
+     message:medium.message })
     console.log(medium.recipient,medium.message ,'in action')
     // console.log (request.data, 'is req')
-      // const toSend = axios.post(`${HOST}/api/send`, {recipient, message});
+ 
   request.then(res => {
     dispatch(twilioSuccess(true));
       console.log(res, "is going to twilio");
