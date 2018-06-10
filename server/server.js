@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  )
   next();
 });
 
@@ -61,8 +61,9 @@ app.use("/doctors", providersRoute);
 
 //processing sms
 app.post("/api/sms", (req, res) => {
-
+console.log("Main req")
  const smsCount = req.session.counter || 0;
+  console.log(req.session.counter, 'dis is req session count')
   // console.log(req, 'is req')
   if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
@@ -88,8 +89,8 @@ console.log(req.body, "this is in server")
         //tracking currently sent message + old messages 
           twiml.message(msg);
 
-          res.writeHead(200, {'Content-Type': 'text/xml'});
-          res.write(twiml.toString())
+          // res.writeHead(200, {'Content-Type': 'text/xml'});
+          // res.write(twiml.toString())
           console.log(req.session.counter);
           return req.session.counter
         })
@@ -101,7 +102,7 @@ console.log(req.body, "this is in server")
 });
 
 //app.use(bundler.middleware());
-
+//processing call
 app.post("/api/call", (req,res) => {
     if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
