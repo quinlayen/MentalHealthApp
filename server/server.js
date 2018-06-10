@@ -15,6 +15,8 @@ const PORT = process.env.PORT || 8080;
 const providersRoute = require("./routes/care_providers.js");
 const authRoute = require("./routes/auth.js");
 
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -53,18 +55,22 @@ app.use("/doctors", providersRoute);
 //   console.log("sanity check");
 //   return res.json("hewwwwwwo");
 // });
-
-app.post("/api/send", (req, res) => {
   let SID = process.env.TWILIO_API_KEY;
   let TOKEN = process.env.TWILIO_AUTH_TOKEN;
   let SENDER = process.env.TWILIO_SMS_NUMBER;
- 
+
+//processing sms
+app.post("/api/sms", (req, res) => {
+
+ const smsCount = req.session.counter || 0;
   // console.log(req, 'is req')
   if (!SID || !TOKEN) {
-    return res.json({ message: "need TWilio SID and Twilio Token" });
+    return res.json({ message: "need Twilio SID and Twilio Token" });
   }
     let client = require("twilio")(SID, TOKEN);
+
 console.log(req.body, "this is in server")
+//creating new message to send to client
     client.messages
       .create(
         {
@@ -72,26 +78,42 @@ console.log(req.body, "this is in server")
           from: SENDER,
           body: req.body.message,
           // statusCallback: `http://${PORT}/client/home`
+        }).then(message => {
+          if (smsCount > 0) {
+            msg = message + (smsCount + 1)
+          }
+          const twiml = new MessagingResponse();
+          console.log(req.session.counter)
+          req.session.counter = smsCount + 1;
+        //tracking currently sent message + old messages 
+          twiml.message(msg);
+
+          res.writeHead(200, {'Content-Type': 'text/xml'});
+          res.write(twiml.toString())
+          console.log(req.session.counter);
+          return req.session.counter
         })
-      //   ,
-      //   (err, data) => {
-      //     if (!err) {
-      //       console.log(data, 'this is message')
-      //       res.json({
-      //         From: data.from,
-      //         Body: res.body
-      //       });
-      //     } else {
-      //       console.log(err);
-      //     }
-      //   }
-      // )
-      .then(message => console.log(message.sid, 'message sid'))
-      .done();
+      // .then(message => console.log(message, 'message sid'))
+      // .done();
+
+  
   
 });
 
 //app.use(bundler.middleware());
+
+app.post("/api/call", (req,res) => {
+    if (!SID || !TOKEN) {
+    return res.json({ message: "need Twilio SID and Twilio Token" });
+  }
+  let client = require("twilio")(SID, TOKEN);
+
+  client.calls.create({
+    url:'http://demo.twilio.com/docs/voice.xml',
+    to:'+1' + req.body.recipient,
+    from: SENDER
+  }).then(call => console.log(call.sid)).done()
+})
 
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);

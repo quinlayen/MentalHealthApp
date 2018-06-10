@@ -56,13 +56,6 @@ class SendSms extends Component {
 
   sendSms(e) {
     e.preventDefault();
-    //recipient contains the recipient, message, and medium to send
-    // const recipient= {recipient: this.state.recipient,
-    // message: this.state.message,
-    // medium: 'sms'};
-
-    // axios.post('/api/send', {recipient}).then(response => 
-
     this.props.tellTwilio(this.state)
     this.setState({confirmationSnackbarMessage: "Message Sent!", confirmationSnackbarOpen: true, processed: true})
  
@@ -72,25 +65,7 @@ class SendSms extends Component {
    
   
   }
-  // sendSms = () => {
-  //   fetch('/api/send', {
-  //     method: 'POST',
-  //     headers: {
-  //       Accept: 'application/JSON',
-  //       'Content-Type': 'application/JSON'
-  //     },
-  //     body: JSON.stringify({ recipient: this.state.recipient })
-  //   })
-  //     .then(response => {
-  //       console.log(response);
-  //       response.json(response);
-  //     })
-  //     .then(response => {
-  //       response.json();
-  //       console.log(response);
-  //     });
-  // };
-
+  
   render() {
     const { classes } = this.props;
 const {loading, confirmationSnackbarOpen, ...data} = this.state
@@ -99,6 +74,7 @@ const {loading, confirmationSnackbarOpen, ...data} = this.state
       <div>
       <form className={classes.root} noValidate autoComplete="off">
        <FormControl className={classNames(classes.margin, classes.textField)}>
+       <h3>Send an SMS </h3>
         <TextField
           id="recipient"
           label="Recipient"
