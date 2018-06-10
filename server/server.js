@@ -63,6 +63,7 @@ app.use("/doctors", providersRoute);
 //processing sms
 app.post("/api/sms", (req, res) => {
 console.log("Main req")
+
  const smsCount = req.session.counter || 0;
   console.log(req.session.counter, 'dis is req session count')
   // console.log(req, 'is req')
@@ -83,6 +84,7 @@ console.log(req.body, "this is in server")
         }).then(message => {
           if (smsCount > 0) {
             msg = message + (smsCount + 1)
+           
           }
           const twiml = new MessagingResponse();
           console.log(req.session.counter)
@@ -93,30 +95,34 @@ console.log(req.body, "this is in server")
           // res.writeHead(200, {'Content-Type': 'text/xml'});
           // res.write(twiml.toString())
           console.log(req.session.counter);
-          return req.session.counter
+         return req.session.counter
         })
+         // .then(message => console.log(message, 'message sid'))
+       // .done();
+
+
 //storing recipient's numbers
-let identity = 0000001
-        client.notify.services(SERVICE).bindings.create({
-          identity: '0000001',
-          bindingType: 'sms',
-          address: '+1' + req.body.recipient,
-        }).then(binding => {
+// let identity = 0000001
+//         client.notify.services(SERVICE).bindings.create({
+//           identity: '0000001',
+//           bindingType: 'sms',
+//           address: '+1' + req.body.recipient,
+//         }).then(binding => {
         
-          console.log(binding.sid, 'binding sid')
-          console.log("new identity", identity)
+//           console.log(binding.sid, 'binding sid')
+//           console.log("new identity", identity)
       
-          }).done()
+//           }).done()
 
 //adding push notifications
-client.notify.services(SERVICE).notifications.create({
-  body: "New SMS" + req.body.message,
-  toBinding: {
-    binding_type: 'sms',
-    address: '+1' + req.body.recipient,
-  },
-  identity: ['identity']
-}).then(notification => console.log(notification))
+// client.notify.services(SERVICE).notifications.create({
+//   body: "New SMS" + req.body.message,
+//   toBinding: {
+//     binding_type: 'sms',
+//     address: '+1' + req.body.recipient,
+//   },
+//   identity: ['identity']
+// }).then(notification => console.log(notification, 'is notification')).done();
 
 
       // .then(message => console.log(message, 'message sid'))
