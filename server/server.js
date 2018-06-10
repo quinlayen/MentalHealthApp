@@ -58,6 +58,7 @@ app.use("/doctors", providersRoute);
   let SID = process.env.TWILIO_API_KEY;
   let TOKEN = process.env.TWILIO_AUTH_TOKEN;
   let SENDER = process.env.TWILIO_SMS_NUMBER;
+  let SERVICE = process.env.TWILIO_SERVICE_SID;
 
 //processing sms
 app.post("/api/sms", (req, res) => {
@@ -94,6 +95,30 @@ console.log(req.body, "this is in server")
           console.log(req.session.counter);
           return req.session.counter
         })
+//storing recipient's numbers
+let identity = 0000001
+        client.notify.services(SERVICE).bindings.create({
+          identity: '0000001',
+          bindingType: 'sms',
+          address: '+1' + req.body.recipient,
+        }).then(binding => {
+        
+          console.log(binding.sid, 'binding sid')
+          console.log("new identity", identity)
+      
+          }).done()
+
+//adding push notifications
+client.notify.services(SERVICE).notifications.create({
+  body: "New SMS" + req.body.message,
+  toBinding: {
+    binding_type: 'sms',
+    address: '+1' + req.body.recipient,
+  },
+  identity: ['identity']
+}).then(notification => console.log(notification))
+
+
       // .then(message => console.log(message, 'message sid'))
       // .done();
 
@@ -102,6 +127,7 @@ console.log(req.body, "this is in server")
 });
 
 //app.use(bundler.middleware());
+
 //processing call
 app.post("/api/call", (req,res) => {
     if (!SID || !TOKEN) {
