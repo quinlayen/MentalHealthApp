@@ -40,20 +40,13 @@ export function tellTwilio(medium) {
   switch (medium.medium) {
     
     case "sms":
-  
-    let request = axios({
-      method:"POST",
-    url: `${HOST}/api/send`,
-    headers: {
-      'Content-Type' : 'application/x-www-form-urlencoded'
-    },
-    data: { recipient: medium.recipient,
-     message: medium.message }
-    });
+
+  let smsRequest = axios.post(`${HOST}/api/sms`, {     recipient: medium.recipient,
+     message:medium.message })
     console.log(medium.recipient,medium.message ,'in action')
     // console.log (request.data, 'is req')
-      // const toSend = axios.post(`${HOST}/api/send`, {recipient, message});
-  request.then(res => {
+ 
+  smsRequest.then(res => {
     dispatch(twilioSuccess(true));
       console.log(res, "is going to twilio");
       return {
@@ -74,8 +67,21 @@ export function tellTwilio(medium) {
       // case email:
       // break;
 
-      // case call:
-      // break;
+       case "call":
+       let callRequest = axios.post(`${HOST}/api/call`, {recipient: medium.recipient})
+     console.log(medium.recipient)
+     callRequest.then(res => {
+       dispatch(twilioSuccess(true));
+       console.log(res, 'is going to twilio')
+       return {
+         type: TELL_TWILIO,
+         payload: res
+       }
+     }).catch(err => {
+       dispatch(twilioSuccess(false));
+       console.log(err)
+     })
+      break;
   
     default:
       break;

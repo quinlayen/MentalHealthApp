@@ -10,6 +10,7 @@ import NavDrawer from './containers/navDrawer';
 import ProviderList from './containers/providerList';
 import {createStore} from 'redux';
 import reducer from './reducers/index';
+import SendCall from './containers/dialer';
 
 
 
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path="/register" component={UserRegistrationForm} />
           <NavDrawer />
           <SendSms />
+          <SendCall />
         </div>
       </Router>
     );
