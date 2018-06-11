@@ -16,7 +16,7 @@ exports.seed = function(knex, Promise) {
           insurance: "HMSA",
           bio: "things things things things",
           image:
-            "https://stockphoto.com/samples/NjA0NjU5MDUxMDAxMWY1YmNmYjBlZA==/MjIxMWY1YmNmYjBlZA==/businesswoman-with-female-colleague-at-office.jpg&size=1024"
+            "https://randomuser.me/api/portraits/lego/8.jpg"
         },
         {
           first_name: "James",
@@ -29,7 +29,7 @@ exports.seed = function(knex, Promise) {
           insurance: "Aetna",
           bio: "joaijdoiwjdlldq",
           image:
-            "https://stockphoto.com/samples/OTkzOTY5MzYwMDAxMWY1YmNmYjBlZA==/MjIxMWY1YmNmYjBlZA==/smiling-business-people.jpg&size=1024"
+            "https://randomuser.me/api/portraits/lego/4.jpg"
         },
         {
           first_name: "Hamilton",
@@ -42,7 +42,7 @@ exports.seed = function(knex, Promise) {
           insurance: "HMSA",
           bio: "aasdhgjlakgoindlMDOEIMGOogmlsmv",
           image:
-            "https://stockphoto.com/samples/OTY2MTU5MjcwMDAxMWY1YmNmYjBlZA==/MjIxMWY1YmNmYjBlZA==/face-of-beautiful-woman-on-the-background-of-business-people.jpg&size=1024"
+            "https://randomuser.me/api/portraits/lego/6.jpg"
         },
         {
           first_name: "Kathryn",
@@ -56,7 +56,7 @@ exports.seed = function(knex, Promise) {
           bio:
             "Dr. Kathryn Egan, MD--specialist in psychiatry--currently treats patients in Honolulu, Hawaii. Dr. Egan is licensed to practice medicine at Hawaii. In addition to having active medical licenses, Dr. Egan has been found during an automated background check to be clear of any malpractice history and holds one or more active medical licenses.",
           image:
-            "https://stockphoto.com/samples/MDk5MTMwODkxMDAxMWY1YmNmYjBlZA==/Mzk4NTFmNWJjZmIwZWQ=/handsome-young-businessman-in-eyeglasses-using-laptop-outside-modern-building-.jpg&size=1024"
+            "https://randomuser.me/api/portraits/lego/1.jpg"
         }
       ]);
     });
