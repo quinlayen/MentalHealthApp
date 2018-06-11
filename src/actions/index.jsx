@@ -15,7 +15,7 @@ export function toggleAction(open) {
 
 export function fetchDoctors(info) {
   const response = axios.post(`${HOST}/doctors/result`, info);
-
+  //console.log('response in the action index', response)
   return {
     type: FETCH_DOCTORS,
     payload: response

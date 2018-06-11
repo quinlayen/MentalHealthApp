@@ -9,6 +9,7 @@
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
     "bookshelf": "^0.13.3",
+    "bootstrap-select": "^1.13.1",
     "cheerio": "^1.0.0-rc.2",
     "connect-redis": "^3.3.3",
     "dotenv": "^5.0.1",

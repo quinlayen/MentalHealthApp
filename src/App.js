@@ -30,12 +30,14 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <Route path="/doctors/result" component={ProviderList} />
+          
           <Route exact path="/" component={SearchBar} />
+          <Route path="/doctors/result" component={ProviderList} />
           <Route path="/register" component={UserRegistrationForm} />
           <NavDrawer />
           <SendSms />
           <SendCall />
+          
         </div>
       </Router>
     );

@@ -135,7 +135,7 @@ import compose from 'recompose/compose';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-
+    this.selectButtonName = React.createRef();
     this.state = {
       type: '',
       location: ''
@@ -156,20 +156,23 @@ class SearchBar extends Component {
 
   onFormSubmit(e) {
     this.props.history.push('/doctors/result');
-    console.log('form submitted');
     e.preventDefault();
     this.props.fetchDoctors(this.state);
+    console.log('state', this.state)
   }
   onSelect(event) {
-    console.log(event.currentTarget.textContent)
+    //console.log(event.target.textContent)
     this.setState({ type: event.currentTarget.textContent });
   }
-
-
 
   render() {
     return (
       <div className="container">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
         <div className="row justify-content-md-center">
           <div className="col-8">
             <div className="jumbotron">
@@ -179,22 +182,32 @@ class SearchBar extends Component {
                 <div className="form-group">
                   <div className="input-group">
                     <div className="input-group-prepend">
-                      <button
+                      {/* <button
                         className="btn btn-outline-secondary dropdown-toggle"
+                        id="select-button"
                         type="button"
                         data-toggle="dropdown"
                         arai-haspopup="true"
                         aria-expanded="false"
-                        name="type"
-                      >
-                        Find Doctor
-                      </button>
-                      <div className="dropdown-menu">
-                        <a className="dropdown-item" onClick={this.onSelect} name="type" value="Therapist">Therapist</a>
-                        <a className="dropdown-item" onClick={this.onSelect} name="type" value="Psychiatrist">Psychiatrist</a>
+                        placeholder="Therapist"
+                        name="type">
+                        {this.state.type}
+                      </button> */}
+                      <select onChange={this.handleChange} value={this.state.selectedValue} name="type" className="custom-select">
+                        <option name="type" value="Therapist" selected>Therapist</option>
+                        <option name="type" value="Psychiatrist">Psychiatrist</option>
+                        <option name="type" value="All">All</option>
+                      </select>
+                      {/* <div className="dropdown-menu">
+                        <a className="dropdown-item" onClick={this.onSelect} name="type" value="Therapist">
+                          Therapist
+                        </a>
+                        <a className="dropdown-item" onClick={this.onSelect} name="type" value="Psychiatrist">
+                          Psychiatrist
+                        </a>
                         <div role="separator" className="dropdown-divider" />
                         <a className="dropdown-item">All</a>
-                      </div>
+                      </div> */}
                     </div>
                     <input
                       type="text"
