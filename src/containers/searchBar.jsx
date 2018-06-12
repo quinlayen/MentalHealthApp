@@ -42,7 +42,7 @@ class SearchBar extends Component {
         <br />
         <br />
         <br />
-        <div className="row justify-content-md-center">
+        <div className="row justify-content-center">
           <div className="jumbotron">
             <h2 className="display-4">We Are Here For You</h2>
             <p className="lead">Find Help</p>

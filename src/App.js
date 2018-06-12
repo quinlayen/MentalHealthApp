@@ -17,9 +17,6 @@ import SendCall from './containers/dialer';
 
 
 
-
-
-
 const store = createStore(reducer)
 console.log(store.getState())
 
@@ -35,7 +32,7 @@ class App extends Component {
           <Route path="/doctors/result" component={ProviderList} />
           <Route path="/register" component={UserRegistrationForm} />
           <NavDrawer />
-          <SendSms />
+          <Route path="doctors/" component={SendSms} />
           <SendCall />
           
         </div>

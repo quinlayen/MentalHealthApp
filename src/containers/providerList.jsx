@@ -43,7 +43,7 @@ class ProviderList extends Component {
             <p className="card-text">{doctorData.insurance}</p>
             <div className="card-text-right">Phone: {doctorData.phone}</div>
             <div className="card-text-right">Email: {doctorData.email}</div>
-            <a href="#" class="btn btn-primary">
+            <a href="" class="btn btn-primary">
               Send a Message
             </a>
           </div>
@@ -56,7 +56,7 @@ class ProviderList extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col=10">
+          <div className="col=8">
             <ul className="list-group list-group-flush">{this.props.doctors.map(this.renderDoctors)}</ul>
           </div>
         </div>

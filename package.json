@@ -15,6 +15,7 @@
     "event-emitter-es6": "^1.1.5",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "img-loader": "^3.0.0",
     "knex": "^0.14.6",
     "mdbreact": "^4.4.0",
     "nodemon": "^1.17.5",
