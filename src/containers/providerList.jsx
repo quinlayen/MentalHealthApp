@@ -27,10 +27,9 @@ class ProviderList extends Component {
   renderDoctors(doctorData) {
     return (
       <Fragment>
-        <Link to={`/${doctorData.provider_id}`} id="link">
+        <Link to={`/doctors/${doctorData.provider_id}`}>
           <ListItem key={doctorData.provider_id} button>
             {doctorData.type}: {doctorData.first_name} {doctorData.last_name}
-            {/* <ListItemText primary= /> */}
           </ListItem>
         </Link>
         {/* <ListItem button>Email: {doctorData.email}</ListItem> */}

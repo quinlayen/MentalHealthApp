@@ -13,7 +13,6 @@ import { bindActionCreators } from "redux";
 import { fetchDoctors } from "../actions/index";
 import compose from "recompose/compose";
 
-
 const styles = theme => ({
   root: {
     display: "flex",
@@ -59,14 +58,14 @@ class SearchBar extends Component {
   }
 
   onFormSubmit(e) {
-    this.props.history.push('/doctors/result')
+    this.props.history.push("/doctors");
     e.preventDefault();
     this.props.fetchDoctors(this.state);
   }
 
   render() {
     const { classes } = this.props;
-  
+
     return (
       <form
         className={classes.root}
@@ -97,7 +96,7 @@ class SearchBar extends Component {
             onChange={this.handleChange}
           />
 
-          <Button type="submit" >Search</Button>
+          <Button type="submit">Search</Button>
         </FormControl>
       </form>
     );
