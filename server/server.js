@@ -1,5 +1,3 @@
-
-
 require("dotenv").config({path: __dirname + '.env'});
 const express = require("express");
 const app = express();
@@ -57,6 +55,7 @@ app.use("/doctors", providersRoute);
 //   console.log("sanity check");
 //   return res.json("hewwwwwwo");
 // });
+
   let SID = process.env.TWILIO_API_KEY;
   let TOKEN = process.env.TWILIO_AUTH_TOKEN;
   let SENDER = process.env.TWILIO_SMS_NUMBER;

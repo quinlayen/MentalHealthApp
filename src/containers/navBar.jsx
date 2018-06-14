@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { toggleAction } from "../actions/index";
 import compose from "recompose/compose";
+import { Link } from "react-router-dom";
 import ButtonBase from '@material-ui/core/ButtonBase'
 
 const styles = {
@@ -47,13 +48,12 @@ class NavBar extends Component {
             >
               <MenuIcon />
             </IconButton>
-           
-          
-            <Typography
+            <Typography 
+              component={Link}
+              to='/'
               variant="title"
               color="inherit"
-              className={classes.flex}
-            >
+              className={classes.flex}>
               MentalHealthApp
             </Typography>
             

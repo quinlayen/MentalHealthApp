@@ -4,7 +4,7 @@ const Care_Provider = require("../db/models/Care_Provider.js");
 
 // gets all the docs from the database //
 router.get("/", (req, res) => {
-  console.log('/doctors route hit')
+  console.log("/doctors route hit");
   return Care_Provider.fetchAll()
     .then(result => {
       console.log("ALL DOCS", result);
@@ -14,12 +14,13 @@ router.get("/", (req, res) => {
 });
 
 //get docs by type & location//
-router.post("/result", (req, res) => {
-  console.log(req.body);
+router.post("/", (req, res) => {
+  console.log('doc post made',req.body);
   return Care_Provider.where({
     type: req.body.type,
     location: req.body.location
   })
+    .orderBy("last_name", "asc")
     .fetchAll()
     .then(result => {
       console.log("ALL DOCS by type & location", result);
