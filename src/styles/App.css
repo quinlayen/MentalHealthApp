@@ -30,3 +30,9 @@
     transform: rotate(360deg);
   }
 }
+
+.background {
+  background: url('/Users/audreybrown/devleague/MentalHealthApp/src/styles/static/800x600.jpg');
+  float: center;
+  background-size: 100%;
+}

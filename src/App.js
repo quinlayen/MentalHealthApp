@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import "./App.css";
+import "./styles/App.css";
 import UserRegistrationForm from "./components/userRegistrationForm";
 import SearchBar from "./containers/searchBar";
 import SendSms from "./containers/sms";
@@ -21,7 +21,7 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-
+<div className = "background">
           <Route exact path="/" component={SearchBar} />
           <Route exact path="/doctors" component={ProviderList} />
           <Route exact path="/doctors/:id" component={ProviderDetail} />
@@ -29,6 +29,7 @@ class App extends Component {
           <NavDrawer />
           <Route path="doctors/" component={SendSms} />
           <SendCall />
+          </div>
         </div>
       </Router>
     );

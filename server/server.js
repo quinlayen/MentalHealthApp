@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
   require("dotenv").load();
 }
 
-//let bundler = new Bundler('public/index.html');
+app.use(express.static(__dirname + '/static'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
