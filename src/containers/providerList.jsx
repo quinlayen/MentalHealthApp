@@ -1,23 +1,23 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
-import List from '@material-ui/core/List';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import compose from 'recompose/compose';
-import { fetchDoctors } from '../actions/index';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core";
+import List from "@material-ui/core/List";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import compose from "recompose/compose";
+import { fetchDoctors } from "../actions/index";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
 import { Link } from "react-router-dom";
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-    maxWidth: '360px',
-    backgroundColor: theme.palette.background.paper
-  }
-});
+// const styles = theme => ({
+//   root: {
+//     width: '100%',
+//     maxWidth: '360px',
+//     backgroundColor: theme.palette.background.paper
+//   }
+// });
 
 class ProviderList extends Component {
   constructor(props) {
@@ -26,43 +26,51 @@ class ProviderList extends Component {
 
   renderDoctors(doctorData) {
     return (
-      <Fragment>
-        <Link to={`/${doctorData.provider_id}`} id="link">
-          <ListItem key={doctorData.provider_id} button>
-            {doctorData.type}: {doctorData.first_name} {doctorData.last_name}
-            {/* <ListItemText primary= /> */}
-          </ListItem>
-        </Link>
-        <ListItem button>Email: {doctorData.email}</ListItem>
-        <ListItem button>Phone: {doctorData.phone}</ListItem>
-        <ListItem>Specialties: {doctorData.specialties}</ListItem>
-        <ListItem>Insurance: {doctorData.insurance}</ListItem>
-        <ListItem>
-          <img src={doctorData.image} />
-        </ListItem>
-        <Divider />
-      </Fragment>
+      <li className="list-group-item" key={doctorData.provider_id}>
+        <div className="card">
+          <div className="card-header">
+            <Link to={"doctors/" + doctorData.provider_id}>
+              <h2>
+                {doctorData.first_name} {doctorData.last_name}
+              </h2>
+            </Link>
+          </div>
+          <img
+            className="card-img-top img-thumbnail"
+            src={doctorData.image}
+            alt="Card image cap"
+          />
+          <div className="card-body">
+            <h5 className="card-text">{doctorData.specialties}</h5>
+            <p className="card-text">{doctorData.insurance}</p>
+            <div className="card-text-right">Phone: {doctorData.phone}</div>
+            <div className="card-text-right">Email: {doctorData.email}</div>
+            <a href="" class="btn btn-primary">
+              Send a Message
+            </a>
+          </div>
+        </div>
+      </li>
     );
   }
 
   render() {
-    const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <List component="nav">{this.props.doctors.map(this.renderDoctors)}</List>
+      <div className="container">
+        <div className="row">
+          <div className="col=8">
+            <ul className="list-group list-group-flush">
+              {this.props.doctors.map(this.renderDoctors)}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
 }
-ProviderList.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 function mapStateToProps({ doctors }) {
   return { doctors };
 }
 
-export default compose(
-  withStyles(styles),
-  connect(mapStateToProps)
-)(ProviderList);
+export default connect(mapStateToProps)(ProviderList);
