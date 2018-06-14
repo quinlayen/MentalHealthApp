@@ -50,6 +50,8 @@ app.use(passport.session());
 app.use("/auth", authRoute);
 app.use("/doctors", providersRoute);
 
+// app.use(twilioNotifications.notifyOnError)
+
 // app.get("/", (req, res) => {
 //   console.log(req.body);
 //   console.log("sanity check");
@@ -125,8 +127,7 @@ console.log(req.body, "this is in server")
 // }).then(notification => console.log(notification, 'is notification')).done();
 
 
-      // .then(message => console.log(message, 'message sid'))
-      // .done();
+  
 
   
   
