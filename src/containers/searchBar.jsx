@@ -10,7 +10,7 @@ class SearchBar extends Component {
     super(props);
 
     this.state = {
-      type: "",
+      type: "Therapist",
       location: ""
     };
 
