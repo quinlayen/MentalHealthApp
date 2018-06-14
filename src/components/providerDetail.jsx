@@ -1,19 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchDoctor } from "../actions/index";
+import { getDetails } from "../actions/index";
 import { bindActionCreators } from "redux";
+
 
 class ProviderDetail extends Component {
   constructor(props) {
     super(props);
+    this.state={ activeDoctor: null}
   }
 
   componentDidMount() {
-    // const { provider_id } = this.props.match.params;
-    this.props.fetchDoctor(this.props.provider_id);
+    
+    this.props.getDetails(this.props.match.params.id);
   }
 
+ 
+
   render() {
+    this.props.doctors.map(doctor=>{
+      if(doctor.provider_id==this.props.details){
+        console.log(doctor)
+    }
+  })
+    
+  
+   
     const { activeDoctor } = this.props;
     if (!activeDoctor) {
       return <div>Loading...</div>;
@@ -24,22 +36,26 @@ class ProviderDetail extends Component {
       </div>
     );
   }
-}
+};
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchDoctor }, dispatch);
-}
-
-function mapStateToProps({ details }, ownProps) {
-  return { details: details[ownProps.match.params.id] };
-}
-
-// function mapStateToProps({ details }) {
-//   return { details };
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ fetchDoctor }, dispatch);
 // }
 
+// function mapStateToProps({ details }, ownProps) {
+//   return { details: details[ownProps.match.params.id] };
+// }
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({getDetails}, dispatch)
+}
+
+function mapStateToProps({ doctors, details }) {
+  return { doctors, details }
+}
+
 export default connect(
-  mapStateToProps,
+ mapStateToProps,
   mapDispatchToProps
 )(ProviderDetail);
 

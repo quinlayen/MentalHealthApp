@@ -1,15 +1,11 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core";
-import List from "@material-ui/core/List";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import compose from "recompose/compose";
-import { fetchDoctors } from "../actions/index";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
 import { Link } from "react-router-dom";
+import { getDetails } from "../actions/index";
+
 
 // const styles = theme => ({
 //   root: {
@@ -73,4 +69,8 @@ function mapStateToProps({ doctors }) {
   return { doctors };
 }
 
-export default connect(mapStateToProps)(ProviderList);
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({getDetails}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProviderList);

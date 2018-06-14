@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const TOGGLE_ACTION = "TOGGLE_ACTION";
 export const FETCH_DOCTORS = "FETCH_DOCTORS";
-export const FETCH_DOCTOR = "FETCH_DOCTOR";
+export const GET_DETAILS = "GET_DETAILS";
 export const TELL_TWILIO = "TELL_TWILIO";
 
 const HOST = "http://localhost:8080";
@@ -23,13 +23,13 @@ export function fetchDoctors(info) {
   };
 }
 
-export function fetchDoctor(info) {
-  const response = axios.get(`${HOST}/doctors/:id`, info);
-  console.log(response);
+
+
+export function getDetails(providerID) {
 
   return {
-    type: FETCH_DOCTOR,
-    payload: response
+    type: GET_DETAILS,
+    payload: providerID
   };
 }
 
@@ -54,7 +54,7 @@ export function tellTwilio(medium) {
           recipient: medium.recipient,
           message: medium.message
         });
-        console.log(medium.recipient, medium.message, "in action");
+        //console.log(medium.recipient, medium.message, "in action");
         // console.log (request.data, 'is req')
 
         smsRequest

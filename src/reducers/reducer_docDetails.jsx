@@ -1,4 +1,4 @@
-import { FETCH_DOCTOR } from "../actions/index";
+import { GET_DETAILS} from "../actions/index";
 
 // const initialState = {
 //   activeDoctor: {}
@@ -6,16 +6,10 @@ import { FETCH_DOCTOR } from "../actions/index";
 
 export default function(state = {}, action) {
   switch (action.type) {
-    case FETCH_DOCTOR:
-      //   const doctor = action.payload.data;
-      //   const newState = [...state];
-      //   newState[doctor.id] = doctor;
-      //   return newState;
-      return {
-        ...state,
-        [action.payload.data.id]: action.payload.data
-      };
-    //       return { ...state, activeDoctor: { ...state.activeDoctor } };
+    case GET_DETAILS:
+   //console.log('in the reducer', action.payload)
+      return action.payload
+  
   }
   return state;
 }
