@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const TOGGLE_ACTION = "TOGGLE_ACTION";
 export const FETCH_DOCTORS = "FETCH_DOCTORS";
-export const FETCH_DOCTOR = "FETCH_DOCTOR";
+export const GET_DETAILS = "GET_DETAILS";
 export const TELL_TWILIO = "TELL_TWILIO";
 
 const HOST = "http://localhost:8080";
@@ -23,12 +23,12 @@ export function fetchDoctors(info) {
   };
 }
 
-export function fetchDoctor(info) {
+export function getDetails(info) {
   const response = axios.get(`${HOST}/doctors/:id`, info);
   console.log(response);
 
   return {
-    type: FETCH_DOCTOR,
+    type: GET_DETAILS,
     payload: response
   };
 }

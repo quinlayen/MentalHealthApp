@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 
 //get docs by type & location//
 router.post("/", (req, res) => {
-  console.log('doc post made',req.body);
+  console.log("doc post made", req.body);
   return Care_Provider.where({
     type: req.body.type,
     location: req.body.location

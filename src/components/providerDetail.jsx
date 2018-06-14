@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchDoctor } from "../actions/index";
+import { getDetails } from "../actions/index";
 import { bindActionCreators } from "redux";
 
 class ProviderDetail extends Component {
@@ -9,8 +9,8 @@ class ProviderDetail extends Component {
   }
 
   componentDidMount() {
-    // const { provider_id } = this.props.match.params;
-    this.props.fetchDoctor(this.props.provider_id);
+    const { provider_id } = this.props.match.params.id;
+    this.props.getDetails(provider_id);
   }
 
   render() {
@@ -27,20 +27,14 @@ class ProviderDetail extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchDoctor }, dispatch);
+  return bindActionCreators({ getDetails }, dispatch);
 }
 
-function mapStateToProps({ details }, ownProps) {
-  return { details: details[ownProps.match.params.id] };
+function mapStateToProps({ details }) {
+  return { details };
 }
-
-// function mapStateToProps({ details }) {
-//   return { details };
-// }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProviderDetail);
-
-// export default ProviderDetail;
