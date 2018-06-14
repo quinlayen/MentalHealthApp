@@ -12,7 +12,7 @@ export default function(state = [], action) {
     //   [action.payload.data.id]: action.payload.data
     // };
     case FETCH_DOCTORS:
-      //console.log('action in the reducer', action.payload.data);
+      console.log('action in the reducer', action.payload.data);
       return action.payload.data;
   }
   return state;

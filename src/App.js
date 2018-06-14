@@ -10,6 +10,7 @@ import ProviderList from "./containers/providerList";
 import ProviderDetail from "./components/providerDetail";
 import { createStore } from "redux";
 import reducer from "./reducers/index";
+import SendCall from "./containers/dialer";
 
 const store = createStore(reducer);
 console.log(store.getState());
@@ -20,12 +21,14 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
+
+          <Route exact path="/" component={SearchBar} />
           <Route exact path="/doctors" component={ProviderList} />
           <Route exact path="/doctors/:id" component={ProviderDetail} />
-          <Route exact path="/" component={SearchBar} />
-          <Route exact path="/register" component={UserRegistrationForm} />
+          <Route path="/register" component={UserRegistrationForm} />
           <NavDrawer />
-          <SendSms />
+          <Route path="doctors/" component={SendSms} />
+          <SendCall />
         </div>
       </Router>
     );

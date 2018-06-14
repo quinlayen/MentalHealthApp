@@ -1,21 +1,21 @@
 import { FETCH_DOCTOR } from "../actions/index";
 
-const initialState = {
-  activeDoctor: {}
-};
+// const initialState = {
+//   activeDoctor: {}
+// };
 
-export default function(state = initialState, action) {
+export default function(state = {}, action) {
   switch (action.type) {
     case FETCH_DOCTOR:
       //   const doctor = action.payload.data;
       //   const newState = [...state];
       //   newState[doctor.id] = doctor;
       //   return newState;
-      //   return {
-      //     ...state,
-      //     [action.payload.data.id]: action.payload.data
-      //   };
-      return { ...state, activeDoctor: { ...state.activeDoctor } };
+      return {
+        ...state,
+        [action.payload.data.id]: action.payload.data
+      };
+    //       return { ...state, activeDoctor: { ...state.activeDoctor } };
   }
   return state;
 }
