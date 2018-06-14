@@ -1,4 +1,5 @@
 require("dotenv").config({path: __dirname + '.env'});
+//nodemon server/server.js
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -96,7 +97,7 @@ console.log(req.body, "this is in server")
           // res.writeHead(200, {'Content-Type': 'text/xml'});
           // res.write(twiml.toString())
           console.log(req.session.counter);
-         return req.session.counter
+       
         })
          // .then(message => console.log(message, 'message sid'))
        // .done();
@@ -111,19 +112,19 @@ console.log(req.body, "this is in server")
 //         }).then(binding => {
         
 //           console.log(binding.sid, 'binding sid')
+
 //           console.log("new identity", identity)
       
 //           }).done()
-
-//adding push notifications
-// client.notify.services(SERVICE).notifications.create({
-//   body: "New SMS" + req.body.message,
-//   toBinding: {
-//     binding_type: 'sms',
-//     address: '+1' + req.body.recipient,
-//   },
-//   identity: ['identity']
-// }).then(notification => console.log(notification, 'is notification')).done();
+// adding push notifications
+client.notify.services(SERVICE).notifications.create({
+  body: "New SMS" + req.body.message,
+  toBinding: {
+    binding_type: 'sms',
+    address: '+1' + req.body.recipient,
+  },
+  identity: '00001' //['identity']
+}).then(notification => console.log(notification, 'is notification')).done();
 
 
   
@@ -136,16 +137,42 @@ console.log(req.body, "this is in server")
 
 //processing call
 app.post("/api/call", (req,res) => {
-    if (!SID || !TOKEN) {
+  console.log('1');
+  if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
   }
+  console.log('2');
   let client = require("twilio")(SID, TOKEN);
 
+  console.log('3');
   client.calls.create({
     url:'http://demo.twilio.com/docs/voice.xml',
     to:'+1' + req.body.recipient,
     from: SENDER
-  }).then(call => console.log(call.sid)).done()
+  })
+ 
+  console.log('4');
+
+client.notify.services(SERVICE)
+             .notifications
+             .create({body: 'Hello Bob', identity: '6083459798'})
+             .then(notification => console.log(notification.sid))
+             .done();
+
+
+  // client.notify.services(SERVICE).notifications.create({
+  //   body: "New SMS" + req.body.message,
+  //   toBinding: {
+  //     binding_type: 'sms',
+  //     address: '+1' + req.body.recipient,
+  //   },
+  //   identity: '000001'
+  // }).then(
+  //   notification => console.log(notification, 'is notification')
+  // ).done();
+
+  console.log('5');
+
 })
 
 app.listen(PORT, () => {
