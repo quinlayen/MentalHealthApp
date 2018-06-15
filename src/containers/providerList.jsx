@@ -8,13 +8,7 @@ import { getDetails } from "../actions/index";
 
 const HOST = "http://localhost:8080";
 
-// const styles = theme => ({
-//   root: {
-//     width: '100%',
-//     maxWidth: '360px',
-//     backgroundColor: theme.palette.background.paper
-//   }
-// });
+
 
 class ProviderList extends Component {
   constructor(props) {
