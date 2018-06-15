@@ -13,6 +13,7 @@ import { toggleAction } from "../actions/index";
 import compose from "recompose/compose";
 import { Link } from "react-router-dom";
 import ButtonBase from '@material-ui/core/ButtonBase'
+import "../styles/navBar.css";
 
 const styles = {
   root: {

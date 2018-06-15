@@ -22,7 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
   require("dotenv").load();
 }
 
-app.use(express.static(__dirname + '/static'))
+app.use(express.static(__dirname + '/styles/static'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

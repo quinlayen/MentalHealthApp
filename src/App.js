@@ -20,14 +20,18 @@ class App extends Component {
     return (
       <Router>
         <div>
+         <div className='background'>
           <NavBar />
-<div className = "background">
+
           <Route exact path="/" component={SearchBar} />
           <Route exact path="/doctors" component={ProviderList} />
           <Route exact path="/doctors/:id" component={ProviderDetail} />
           <Route path="/register" component={UserRegistrationForm} />
+        
           <NavDrawer />
+      
           <Route path="doctors/" component={SendSms} />
+       
           <SendCall />
           </div>
         </div>

@@ -32,7 +32,8 @@
 }
 
 .background {
-  background: url('/Users/audreybrown/devleague/MentalHealthApp/src/styles/static/800x600.jpg');
-  float: center;
+  background: url('./static/background.png');
+height: 100%;
+width: 100%;
   background-size: 100%;
 }
