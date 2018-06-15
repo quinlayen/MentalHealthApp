@@ -30,11 +30,11 @@ class SearchBar extends Component {
     this.props.history.push("/doctors");
     event.preventDefault();
     this.props.fetchDoctors(this.state);
-    console.log(this.state);
+    
   }
 
   render() {
-    console.log(this.state);
+   
     return (
       <div className="container">
         <br />

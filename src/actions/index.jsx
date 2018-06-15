@@ -23,13 +23,13 @@ export function fetchDoctors(info) {
   };
 }
 
-export function getDetails(info) {
-  const response = axios.get(`${HOST}/doctors/:id`, info);
-  console.log(response);
+
+
+export function getDetails(providerID) {
 
   return {
     type: GET_DETAILS,
-    payload: response
+    payload: providerID
   };
 }
 
@@ -54,7 +54,7 @@ export function tellTwilio(medium) {
           recipient: medium.recipient,
           message: medium.message
         });
-        console.log(medium.recipient, medium.message, "in action");
+        //console.log(medium.recipient, medium.message, "in action");
         // console.log (request.data, 'is req')
 
         smsRequest

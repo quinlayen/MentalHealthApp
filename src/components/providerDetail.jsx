@@ -6,32 +6,41 @@ import { bindActionCreators } from "redux";
 class ProviderDetail extends Component {
   constructor(props) {
     super(props);
+    this.state = { activeDoctor: null };
   }
 
   componentDidMount() {
-    const { provider_id } = this.props.match.params.id;
-    this.props.getDetails(provider_id);
+    this.props.getDetails(this.props.match.params.id);
   }
 
   render() {
-    const { activeDoctor } = this.props;
-    if (!activeDoctor) {
-      return <div>Loading...</div>;
-    }
+    const doctor = this.props.doctors.map(doctor => {
+      if (doctor.provider_id == this.props.details) {
+        console.log("CHOSEN DOCTOR", doctor);
+      }
+    });
     return (
       <div>
-        <h3>{activeDoctor.first_name}</h3>
+        <h3>{doctor.first_name}</h3>
       </div>
     );
   }
 }
 
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ fetchDoctor }, dispatch);
+// }
+
+// function mapStateToProps({ details }, ownProps) {
+//   return { details: details[ownProps.match.params.id] };
+// }
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getDetails }, dispatch);
 }
 
-function mapStateToProps({ details }) {
-  return { details };
+function mapStateToProps({ doctors, details }) {
+  return { doctors, details };
 }
 
 export default connect(
