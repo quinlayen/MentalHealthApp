@@ -14,14 +14,14 @@ class ProviderDetail extends Component {
   }
 
   render() {
-    const doctor = this.props.doctors.map(doctor => {
+    this.props.doctors.map(doctor => {
       if (doctor.provider_id == this.props.details) {
         console.log("CHOSEN DOCTOR", doctor);
       }
     });
     return (
       <div>
-        <h3>{doctor.first_name}</h3>
+        <h3>{this.props.first_name}</h3>
       </div>
     );
   }

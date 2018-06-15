@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import { getDetails } from "../actions/index";
 
+const HOST = "http://localhost:8080";
 
 // const styles = theme => ({
 //   root: {
@@ -41,9 +42,9 @@ class ProviderList extends Component {
             <p className="card-text">{doctorData.insurance}</p>
             <div className="card-text-right">Phone: {doctorData.phone}</div>
             <div className="card-text-right">Email: {doctorData.email}</div>
-            <a href="" class="btn btn-primary">
+            <Link to={"/auth/register"} className="btn btn-primary">
               Send a Message
-            </a>
+            </Link>
           </div>
         </div>
       </li>
@@ -69,8 +70,11 @@ function mapStateToProps({ doctors }) {
   return { doctors };
 }
 
-function mapDispatchToProps(dispatch){
-  return bindActionCreators({getDetails}, dispatch)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getDetails }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProviderList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProviderList);

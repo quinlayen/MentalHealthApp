@@ -4,10 +4,10 @@ import "./App.css";
 import UserRegistrationForm from "./components/userRegistrationForm";
 import SearchBar from "./containers/searchBar";
 import SendSms from "./containers/sms";
-import NavBar from "./containers/navBar";
-import NavDrawer from "./containers/navDrawer";
+import NavBar from "./components/navBar";
+import NavDrawer from "./components/navDrawer";
 import ProviderList from "./containers/providerList";
-import ProviderDetail from "./components/providerDetail";
+import ProviderDetail from "./containers/providerDetail";
 import { createStore } from "redux";
 import reducer from "./reducers/index";
 import SendCall from "./containers/dialer";
@@ -25,7 +25,7 @@ class App extends Component {
           <Route exact path="/" component={SearchBar} />
           <Route exact path="/doctors" component={ProviderList} />
           <Route exact path="/doctors/:id" component={ProviderDetail} />
-          <Route path="/register" component={UserRegistrationForm} />
+          <Route exact path="/auth/register" component={UserRegistrationForm} />
           <NavDrawer />
           <Route path="doctors/" component={SendSms} />
           <SendCall />
