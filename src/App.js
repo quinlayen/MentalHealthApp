@@ -7,7 +7,7 @@ import SendSms from "./containers/sms";
 import NavBar from "./containers/navBar";
 import NavDrawer from "./containers/navDrawer";
 import ProviderList from "./containers/providerList";
-import ProviderDetail from "./components/providerDetail";
+import ProviderDetail from "./containers/providerDetail";
 import { createStore } from "redux";
 import reducer from "./reducers/index";
 import SendCall from "./containers/dialer";

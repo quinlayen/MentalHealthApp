@@ -7,13 +7,7 @@ import { Link } from "react-router-dom";
 import { getDetails } from "../actions/index";
 
 
-// const styles = theme => ({
-//   root: {
-//     width: '100%',
-//     maxWidth: '360px',
-//     backgroundColor: theme.palette.background.paper
-//   }
-// });
+
 
 class ProviderList extends Component {
   constructor(props) {
