@@ -83,9 +83,10 @@ export function tellTwilio(medium) {
         let callRequest = axios.post(`${HOST}/api/call`, {
           recipient: medium.recipient
         });
-        console.log(medium.recipient);
+        console.log('here!!!', medium.recipient);
         callRequest
           .then(res => {
+            console.log('got back res', res);
             dispatch(twilioSuccess(true));
             console.log(res, "is going to twilio");
             return {
@@ -94,8 +95,8 @@ export function tellTwilio(medium) {
             };
           })
           .catch(err => {
+            console.log('the error: ', err);
             dispatch(twilioSuccess(false));
-            console.log(err);
           });
         break;
 
