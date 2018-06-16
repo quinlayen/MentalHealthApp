@@ -77,7 +77,7 @@ class SendCall extends Component {
               id="recipient"
               label="Recipient"
               name="recipient"
-              className={classes.textField}
+            
               value={this.state.recipient}
               onChange={this.changeInput}
               margin="normal"

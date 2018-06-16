@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchDoctors } from "../actions/index";
+import "../styles/searchBar.css";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -37,14 +36,10 @@ class SearchBar extends Component {
    
     return (
       <div className="container">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+ 
         <div className="row justify-content-center">
           <div className="jumbotron">
-            <h2 className="display-4">We Are Here For You</h2>
+            <h2 className="display-4 text-center">We Are Here For You</h2>
             <p className="lead">Find Help</p>
             <form onSubmit={this.onFormSubmit} action="/doctors/result">
               <div className="form-group">
@@ -73,7 +68,7 @@ class SearchBar extends Component {
                   />
                 </div>
               </div>
-              <button className="btn btn-primary btn-sm" type="submit">
+              <button type = 'button' className="btn btn-sm btn-outline-white rounded-0 btn-block" type="submit">
                 Search
               </button>
             </form>

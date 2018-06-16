@@ -1,0 +1,13 @@
+container {
+    font-family: 'Tajawal', sans-serif;
+
+}
+
+.jumbotron {
+    background-color: rgba(229, 228, 255, 0.2);
+}
+
+.display-4 {
+    background-color: #ff9375;
+    padding: 0
+}

@@ -37,7 +37,7 @@ class ProviderDetail extends Component {
                       About Me: {doctorData.bio}
                     </div>
 
-                    <Link to={"/auth/register"} className="btn btn-primary">
+                    <Link to={"/register"} className="btn btn-primary">
                       I'm Interested
                     </Link>
                   </div>

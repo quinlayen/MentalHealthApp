@@ -36,8 +36,8 @@ export function getDetails(providerID) {
 export const register = (
   first_name,
   last_name,
-  phone,
-  email,
+  contact,
+  username,
   password,
   newUser,
   redirectCallback
@@ -47,8 +47,8 @@ export const register = (
       .post(`${HOST}/auth/register`, {
         first_name,
         last_name,
-        phone,
-        email,
+        contact,
+        username,
         password
       })
       .then(newUser => {
@@ -68,7 +68,7 @@ export const login = (user, redirectCallback) => {
   return dispatch => {
     return axios
       .post(`${HOST}/auth/login`, {
-        email: user.email,
+        username: user.username,
         password: user.password
       })
       .then(loginInfo => {
@@ -153,9 +153,10 @@ export function tellTwilio(medium) {
         let callRequest = axios.post(`${HOST}/api/call`, {
           recipient: medium.recipient
         });
-        console.log(medium.recipient);
+        console.log("here!!!", medium.recipient);
         callRequest
           .then(res => {
+            console.log("got back res", res);
             dispatch(twilioSuccess(true));
             console.log(res, "is going to twilio");
             return {
@@ -164,8 +165,8 @@ export function tellTwilio(medium) {
             };
           })
           .catch(err => {
+            console.log("the error: ", err);
             dispatch(twilioSuccess(false));
-            console.log(err);
           });
         break;
 

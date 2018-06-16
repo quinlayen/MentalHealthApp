@@ -150,35 +150,16 @@ import { connect } from "react-redux";
 import { register } from "../actions/index";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
-// const contactOptions = [
-//   {
-//     value: "Call",
-//     label: "Call"
-//   },
-//   {
-//     value: "Email",
-//     label: "Email"
-//   },
-//   {
-//     value: "Text",
-//     label: "Text"
-//   },
-//   {
-//     value: "Web Chat",
-//     label: "Web Chat"
-//   }
-// ];
-
 class UserRegistrationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       first_name: "",
       last_name: "",
-      email: "",
+      contact: "",
+      username: "",
       password: "",
       phone: "",
-      // preferredContact: "",
       // showPassword: false,
       newUser: null
     };
@@ -200,9 +181,9 @@ class UserRegistrationForm extends Component {
 
   handleRegister(event) {
     event.preventDefault();
-    if (this.state.email !== "" && this.state.password !== "") {
+    if (this.state.username !== "" && this.state.password !== "") {
       this.props.register(this.state, () => {
-        this.props.history.push("/");
+        this.props.history.push("/register");
       });
     }
   }
@@ -228,21 +209,12 @@ class UserRegistrationForm extends Component {
             onChange={this.handleChange}
           />
         </FormGroup>
-        <FormGroup controlId="phone" bsSize="large">
-          <ControlLabel>Phone Number</ControlLabel>
+        <FormGroup controlId="username" bsSize="large">
+          <ControlLabel>Username (or Email)</ControlLabel>
           <FormControl
             autoFocus
-            name="phone"
-            value={this.state.phone}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-        <FormGroup controlId="email" bsSize="large">
-          <ControlLabel>Email</ControlLabel>
-          <FormControl
-            autoFocus
-            name="email"
-            value={this.state.email}
+            name="username"
+            value={this.state.username}
             onChange={this.handleChange}
           />
         </FormGroup>
@@ -255,6 +227,24 @@ class UserRegistrationForm extends Component {
             type="password"
           />
         </FormGroup>
+        <div className="form-group">
+          <ControlLabel>Preferred Contact</ControlLabel>
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <select
+                onChange={this.handleChange}
+                value={this.state.contact}
+                name="contact"
+                className="custom-select"
+              >
+                <option value="email">Email</option>
+                <option value="call">Call</option>
+                <option value="text">Text</option>
+                <option value="chat">Web-Chat</option>
+              </select>
+            </div>
+          </div>
+        </div>
         <button className="btn btn-primary btn-sm" type="submit">
           Submit
         </button>
@@ -280,8 +270,8 @@ const mapDispatchToProps = dispatch => {
     register: function(
       first_name,
       last_name,
-      phone,
-      email,
+      contact,
+      username,
       password,
       user,
       redirectCallback
@@ -290,8 +280,8 @@ const mapDispatchToProps = dispatch => {
         register(
           first_name,
           last_name,
-          phone,
-          email,
+          contact,
+          username,
           password,
           user,
           redirectCallback

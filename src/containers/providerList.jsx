@@ -1,17 +1,20 @@
+
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+
+// import { bindActionCreators } from "redux";
+// import { fetchDoctors } from "../actions/index";
+
 import { Link } from "react-router-dom";
 import { getDetails } from "../actions/index";
 
 const HOST = "http://localhost:8080";
 
 class ProviderList extends Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   renderDoctors(doctorData) {
     return (
