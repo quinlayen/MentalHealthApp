@@ -7,13 +7,15 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const RedisStore = require("connect-redis")(session);
 const passport = require("passport");
-const http = require('http')
-const twilio = require('twilio')
-const axios = require('axios')
+const http = require("http");
+const twilio = require("twilio");
+const axios = require("axios");
 const PORT = process.env.PORT || 8080;
+
 const providersRoute = require("./routes/care_providers.js");
 const authRoute = require("./routes/auth.js");
 const webpush = require('web-push');
+
 
 webpush.setGCMAPIKEY(process.env.GOOGLE_SERVER_KEY)
 webpush.setVapidDetails(
@@ -23,7 +25,7 @@ webpush.setVapidDetails(
 )
 
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
 }
 
@@ -36,7 +38,7 @@ app.use(function(req, res, next) {
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
-  )
+  );
   next();
 });
 
@@ -62,22 +64,23 @@ app.use("/push", require('./push');
 //   return res.json("hewwwwwwo");
 // });
 
-  let SID = process.env.TWILIO_API_KEY;
-  let TOKEN = process.env.TWILIO_AUTH_TOKEN;
-  let SENDER = process.env.TWILIO_SMS_NUMBER;
-  let SERVICE = process.env.TWILIO_SERVICE_SID;
+let SID = process.env.TWILIO_API_KEY;
+let TOKEN = process.env.TWILIO_AUTH_TOKEN;
+let SENDER = process.env.TWILIO_SMS_NUMBER;
+let SERVICE = process.env.TWILIO_SERVICE_SID;
 
 //processing sms
 app.post("/api/sms", (req, res) => {
-console.log("Main req")
+  console.log("Main req");
 
- const smsCount = req.session.counter || 0;
-  console.log(req.session.counter, 'dis is req session count')
+  const smsCount = req.session.counter || 0;
+  console.log(req.session.counter, "dis is req session count");
   // console.log(req, 'is req')
   if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
   }
-    let client = require("twilio")(SID, TOKEN);
+
+  let client = require("twilio")(SID, TOKEN);
 
 console.log(req.body, "this is in server")
 //creating new message to send to client
@@ -103,82 +106,28 @@ console.log(req.body, "this is in server")
           // res.write(twiml.toString())
           console.log(req.session.counter);
        
-        })
-         // .then(message => console.log(message, 'message sid'))
-       // .done();
-
-
-//storing recipient's numbers
-// let identity = 0000001
-//         client.notify.services(SERVICE).bindings.create({
-//           identity: '0000001',
-//           bindingType: 'sms',
-//           address: '+1' + req.body.recipient,
-//         }).then(binding => {
-        
-//           console.log(binding.sid, 'binding sid')
-
-//           console.log("new identity", identity)
-      
-//           }).done()
-// adding push notifications
-client.notify.services(SERVICE).notifications.create({
-  body: "New SMS" + req.body.message,
-  toBinding: {
-    binding_type: 'sms',
-    address: '+1' + req.body.recipient,
-  },
-  identity: '00001' //['identity']
-}).then(notification => console.log(notification, 'is notification')).done();
-
-
-  
-
-  
-  
+        }).then(message => console.log(message, 'message sid')).done(); 
 });
 
-//app.use(bundler.middleware());
 
 //processing call
 app.post("/api/call", (req,res) => {
-  console.log('1');
+ 
   if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
   }
-  console.log('2');
+ 
   let client = require("twilio")(SID, TOKEN);
 
-  console.log('3');
   client.calls.create({
     url:'http://demo.twilio.com/docs/voice.xml',
     to:'+1' + req.body.recipient,
     from: SENDER
   })
- 
-  console.log('4');
-
-client.notify.services(SERVICE)
-             .notifications
-             .create({body: 'Hello Bob', identity: '6083459798'})
-             .then(notification => console.log(notification.sid))
-             .done();
-
-
-  // client.notify.services(SERVICE).notifications.create({
-  //   body: "New SMS" + req.body.message,
-  //   toBinding: {
-  //     binding_type: 'sms',
-  //     address: '+1' + req.body.recipient,
-  //   },
-  //   identity: '000001'
-  // }).then(
-  //   notification => console.log(notification, 'is notification')
-  // ).done();
-
-  console.log('5');
 
 })
+
+//push notifs
 
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);
