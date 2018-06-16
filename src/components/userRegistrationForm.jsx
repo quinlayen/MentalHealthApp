@@ -269,58 +269,6 @@ class UserRegistrationForm extends Component {
   }
 }
 
-//   render() {
-//     return (
-//       <div className="register_Container">
-//         {/* <h1 className="register_title">Register</h1> */}
-//         <div className="form_Register">
-//           <Form onSubmit={this.handleRegister}>
-//             {/* <div className="input_register" /> */}
-//             <Input
-//               type="text"
-//               name="first_name"
-//               value={this.state.first_name}
-//               onChange={this.handleChange}
-//               placeholder="First Name"
-//             />
-//             <Input
-//               type="text"
-//               name="last_name"
-//               value={this.state.last_name}
-//               onChange={this.handleChange}
-//               placeholder="Last Name"
-//             />
-//             <Input
-//               type="text"
-//               name="phone"
-//               value={this.state.phone}
-//               onChange={this.handleChange}
-//               placeholder="Phone Number"
-//             />
-//             <Input
-//               type="text"
-//               name="email"
-//               value={this.state.email}
-//               onChange={this.handleChange}
-//               placeholder="Email"
-//             />
-//             <Input
-//               type="text"
-//               name="password"
-//               value={this.state.password}
-//               onChange={this.handleChange}
-//               placeholder="Password"
-//             />
-//             <div className="register_button">
-//               <button type="submit">Sign up</button>
-//             </div>
-//           </Form>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
 const mapStateToProps = state => {
   return {
     users: state.users.users
