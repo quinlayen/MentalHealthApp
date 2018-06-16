@@ -1,3 +1,21 @@
-.MuiPaper {
-    
+.MuiAppBar-colorPrimary-10 {
+    background: transparent !important;
+      display: flex;
+    vertical-align: middle;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav {
+  
+}
+.app-name {
+ justify-content: flex-start;
+}
+
+.spacer {
+     flex-grow: 2
+}
+.user-reg {
+justify-content: flex-end;
 }

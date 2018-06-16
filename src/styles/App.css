@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+ 
 }
 
 .App-logo {
@@ -36,4 +37,14 @@
 height: 100%;
 width: 100%;
   background-size: 100%;
+}
+
+.col-lg {
+ padding-top: 4em;
+ padding-bottom: -10em
+}
+
+.no-gutters {
+  padding-bottom: -10em;
+  padding-top: 0;
 }

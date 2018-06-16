@@ -1,14 +1,7 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core";
-import List from "@material-ui/core/List";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import compose from "recompose/compose";
-import { fetchDoctors } from "../actions/index";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
+// import { bindActionCreators } from "redux";
+// import { fetchDoctors } from "../actions/index";
 import { Link } from "react-router-dom";
 
 // const styles = theme => ({
@@ -20,9 +13,7 @@ import { Link } from "react-router-dom";
 // });
 
 class ProviderList extends Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   renderDoctors(doctorData) {
     return (
