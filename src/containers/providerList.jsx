@@ -35,9 +35,11 @@ class ProviderList extends Component {
             <p className="card-text">{doctorData.insurance}</p>
             <div className="card-text-right">Phone: {doctorData.phone}</div>
             <div className="card-text-right">Email: {doctorData.email}</div>
-            <a href="" class="btn btn-primary">
-              Send a Message
-            </a>
+            
+            <button type="button" class="btn btn-primary">
+              Let us contact you
+            </button>
+          
           </div>
         </div>
       </li>
