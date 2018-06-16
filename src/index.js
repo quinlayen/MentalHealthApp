@@ -5,11 +5,12 @@ import { Provider } from "react-redux";
 import { createStore, appMiddleware, applyMiddleware } from "redux";
 import ReduxPromise from "redux-promise";
 import reducers from "./reducers";
-import "./index.css";
+import "./styles/index.css";
 import App from "./App";
 import ReduxThunk from "redux-thunk";
 import registerServiceWorker from "./registerServiceWorker";
 import createLogger from "redux-logger";
+import {AppContainer} from 'react-hot-loader';
 
 require("dotenv").config();
 
@@ -24,11 +25,13 @@ const createStoreWithMiddleware = applyMiddleware(
 )(createStore);
 
 ReactDOM.render(
+  <AppContainer>
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router>
       <App />
     </Router>
-  </Provider>,
+  </Provider>
+  </AppContainer>,
   document.getElementById("root")
 );
 registerServiceWorker();
