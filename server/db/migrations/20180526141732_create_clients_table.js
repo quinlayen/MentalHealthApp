@@ -3,12 +3,13 @@ exports.up = function(knex, Promise) {
     table.increments("client_id").primary();
     table.string("first_name").notNullable();
     table.string("last_name").notNullable();
-    table.string("phone");
+    table.string("contact").notNullable();
     table
-      .string("email")
+      .string("username")
       .unique()
       .notNullable();
     table.string("password").notNullable();
+    table.specificType("favorites", "text[]");
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").defaultTo(knex.fn.now());
   });

@@ -5,8 +5,8 @@ module.exports = [
     phone: "(808)783-2288",
     location: "Honolulu",
     type: "Psychiatrist",
-    specialties: "Medication Management, Depression, Relationship Issues",
-    insurance: "Aetna, Cigna, Healthnet, Medicare, Medicaid",
+    specialties: ["Medication Management, Depression, Relationship Issues"],
+    insurance: ["Aetna, Cigna, Healthnet, Medicare, Medicaid"],
     bio:
       "Dr. Kathryn Egan, MD--specialist in psychiatry--currently treats patients in Honolulu, Hawaii. Dr. Egan is licensed to practice medicine at Hawaii. In addition to having active medical licenses, Dr. Egan has been found during an automated background check to be clear of any malpractice history and holds one or more active medical licenses.",
     image:
@@ -18,8 +18,8 @@ module.exports = [
     phone: "(808)242-9233",
     location: "Wailuku",
     type: "Psychiatrist",
-    specialties: "Depression, Anxiety, Substance Abuse",
-    insurance: "Blue Cross Blue Shield, HMSA",
+    specialties: ["Depression, Anxiety, Substance Abuse"],
+    insurance: ["Blue Cross Blue Shield, HMSA"],
     bio:
       "Dr. Riggs Roberts, MD sees patients in Kahului, Hawaii and Wailuku, Hawaii and specializes in psychiatry. Dr. Roberts is licensed to practice medicine at California and Hawaii. Dr. Roberts has been found to hold one or more active medical licenses, and successfully passed a malpractice history screening.",
     image:
@@ -31,7 +31,7 @@ module.exports = [
     phone: "(808)535-5975",
     location: "Honolulu",
     type: "Psychiatrist",
-    specialties: "Addiction, Depression, Anxiety",
+    specialties: ["Addiction, Depression, Anxiety"],
     insurance: "Aetna, Cigna",
     bio:
       "Specializing in psychiatry, Dr. Barry Carlton, MD is one of the country's top ranked doctors. He currently practices medicine at Honolulu, Hawaii, Kailua, Hawaii, and Ewa beach, Hawaii. Based on his network, experience and credentials, Dr. Carlton is rated in the top 20% of all doctors in the United States. In addition, Dr. Carlton has been found to hold one or more active medical licenses, and successfully passed a malpractice history screening.",

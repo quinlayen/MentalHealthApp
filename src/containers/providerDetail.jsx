@@ -2,38 +2,54 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getDetails } from "../actions/index";
 import { bindActionCreators } from "redux";
+import { Link } from "react-router-dom";
 
 class ProviderDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeDoctor: null };
-  }
-
-  componentDidMount() {
-    this.props.getDetails(this.props.match.params.id);
   }
 
   render() {
-    this.props.doctors.map(doctor => {
-      if (doctor.provider_id == this.props.details) {
-        console.log("CHOSEN DOCTOR", doctor);
+    return this.props.doctors.map(doctorData => {
+      if (doctorData.provider_id == this.props.match.params.id) {
+        return (
+          <div className="container">
+            <div className="row">
+              <div className="col-8">
+                <div className="card">
+                  <div className="card-header">
+                    <h2>
+                      {doctorData.first_name} {doctorData.last_name}
+                    </h2>
+                  </div>
+                  <img
+                    className="card-img-top img-thumbnail"
+                    src={doctorData.image}
+                    alt="Card image cap"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-text">{doctorData.specialties}</h5>
+                    <p className="card-text">{doctorData.insurance}</p>
+                    <div className="card-text-right">
+                      Phone: {doctorData.phone}
+                    </div>
+                    <div className="card-text-right">
+                      About Me: {doctorData.bio}
+                    </div>
+
+                    <Link to={"/auth/register"} className="btn btn-primary">
+                      I'm Interested
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
       }
     });
-    return (
-      <div>
-        <h3>{this.props.first_name}</h3>
-      </div>
-    );
   }
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ fetchDoctor }, dispatch);
-// }
-
-// function mapStateToProps({ details }, ownProps) {
-//   return { details: details[ownProps.match.params.id] };
-// }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ getDetails }, dispatch);

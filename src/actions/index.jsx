@@ -39,7 +39,7 @@ export const register = (
   phone,
   email,
   password,
-  user,
+  newUser,
   redirectCallback
 ) => {
   return dispatch => {
