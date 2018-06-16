@@ -4,6 +4,9 @@ export const TOGGLE_ACTION = "TOGGLE_ACTION";
 export const FETCH_DOCTORS = "FETCH_DOCTORS";
 export const GET_DETAILS = "GET_DETAILS";
 export const TELL_TWILIO = "TELL_TWILIO";
+export const REGISTER_USER = "REGISTER_USER";
+export const LOGIN_USER = "LOGIN_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 const HOST = "http://localhost:8080";
 
@@ -23,15 +26,81 @@ export function fetchDoctors(info) {
   };
 }
 
-
-
 export function getDetails(providerID) {
-
   return {
     type: GET_DETAILS,
     payload: providerID
   };
 }
+
+export const register = (
+  first_name,
+  last_name,
+  phone,
+  email,
+  password,
+  newUser,
+  redirectCallback
+) => {
+  return dispatch => {
+    return axios
+      .post(`${HOST}/auth/register`, {
+        first_name,
+        last_name,
+        phone,
+        email,
+        password
+      })
+      .then(newUser => {
+        dispatch({
+          type: REGISTER_USER,
+          users: newUser
+        });
+        redirectCallback();
+      })
+      .catch(err => {
+        console.log({ err: err.message });
+      });
+  };
+};
+
+export const login = (user, redirectCallback) => {
+  return dispatch => {
+    return axios
+      .post(`${HOST}/auth/login`, {
+        email: user.email,
+        password: user.password
+      })
+      .then(loginInfo => {
+        localStorage.setItem("id", loginInfo.data.client_id);
+        console.log("length", localStorage.length);
+        dispatch({
+          type: LOGIN_USER,
+          payload: loginInfo
+        });
+        redirectCallback();
+      })
+      .catch(err => {
+        console.log({ err: err.message });
+      });
+  };
+};
+
+export const logout = () => {
+  localStorage.clear();
+  return dispatch => {
+    return fetch(`${HOST}/auth/logout`)
+      .then(logout => {
+        dispatch({
+          type: LOGOUT_USER,
+          payload: logout
+        });
+      })
+      .catch(err => {
+        console.log({ err: err.message });
+      });
+  };
+};
 
 export function itemsIsLoading(bool) {
   return {
@@ -39,6 +108,7 @@ export function itemsIsLoading(bool) {
     isLoading: bool
   };
 }
+
 export function twilioSuccess(bool) {
   return {
     type: "TWILIO_SUCCESS",

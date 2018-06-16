@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import { getDetails } from "../actions/index";
 
-
-
+const HOST = "http://localhost:8080";
 
 class ProviderList extends Component {
   constructor(props) {
@@ -31,15 +28,12 @@ class ProviderList extends Component {
             alt="Card image cap"
           />
           <div className="card-body">
-            <h5 className="card-text">{doctorData.specialties}</h5>
-            <p className="card-text">{doctorData.insurance}</p>
-            <div className="card-text-right">Phone: {doctorData.phone}</div>
-            <div className="card-text-right">Email: {doctorData.email}</div>
-            
-            <button type="button" class="btn btn-primary">
-              Let us contact you
-            </button>
-          
+            <h5 className="card-text">{doctorData.location}</h5>
+            <h6 className="card-text">{doctorData.type}</h6>
+            {/* <div className="card-text-right">Phone: {doctorData.phone}</div> */}
+            {/* <Link to={"/auth/register"} className="btn btn-primary">
+              I'm Interested
+            </Link> */}
           </div>
         </div>
       </li>
@@ -65,8 +59,11 @@ function mapStateToProps({ doctors }) {
   return { doctors };
 }
 
-function mapDispatchToProps(dispatch){
-  return bindActionCreators({getDetails}, dispatch)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getDetails }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProviderList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProviderList);

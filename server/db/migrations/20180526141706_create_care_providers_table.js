@@ -6,8 +6,8 @@ exports.up = function(knex, Promise) {
     table.string("phone").notNullable();
     table.string("location").notNullable();
     table.string("type").notNullable();
-    table.text("specialties").notNullable();
-    table.text("insurance").notNullable();
+    table.specificType("specialties", "text[]").notNullable();
+    table.specificType("insurance", "text[]").notNullable();
     table.text("bio").notNullable();
     table.string("image").notNullable();
     // table.timestamp("created_at").defaultTo(knex.fn.now());

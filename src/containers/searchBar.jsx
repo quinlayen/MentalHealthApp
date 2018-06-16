@@ -58,7 +58,7 @@ class SearchBar extends Component {
                     >
                       <option value="Therapist">Therapist</option>
                       <option value="Psychiatrist">Psychiatrist</option>
-                      <option value="All">All</option>
+                      {/* <option value="All">All</option> */}
                     </select>
                   </div>
                   <input
