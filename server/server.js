@@ -13,9 +13,14 @@ const axios = require('axios')
 const PORT = process.env.PORT || 8080;
 const providersRoute = require("./routes/care_providers.js");
 const authRoute = require("./routes/auth.js");
+const webpush = require('web-push');
 
-const MessagingResponse = require('twilio').twiml.MessagingResponse;
-
+webpush.setGCMAPIKEY(process.env.GOOGLE_SERVER_KEY)
+webpush.setVapidDetails(
+  'mailto:etherealtoast@gmail.com',
+  process.env.PUBLIC_VAPID_KEY,
+  process.env.PRIVATE_VAPID_KEY
+)
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -48,7 +53,7 @@ app.use(passport.session());
 
 app.use("/auth", authRoute);
 app.use("/doctors", providersRoute);
-
+app.use("/push", require('./push');
 // app.use(twilioNotifications.notifyOnError)
 
 // app.get("/", (req, res) => {
