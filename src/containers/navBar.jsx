@@ -61,6 +61,9 @@ class NavBar extends Component {
             <div className='spacer'>
             </div>
             <div className='user-reg'>
+            <Button color="#FF9375">Sign Up</Button>
+            </div>
+            <div className='user-reg'>
             <Button color="#FF9375">Login</Button>
             </div>
             
