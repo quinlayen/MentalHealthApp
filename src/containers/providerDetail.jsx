@@ -30,9 +30,11 @@ class ProviderDetail extends Component {
                   <div className="card-body">
                     <h5 className="card-text">{doctorData.specialties}</h5>
                     <p className="card-text">{doctorData.insurance}</p>
-                    <div className="card-text-right">
+                    <br/>
+                    <h5 className="card-text-right">
                       Phone: {doctorData.phone}
-                    </div>
+                    </h5>
+                    <br/>
                     <div className="card-text-right">
                       About Me: {doctorData.bio}
                     </div>
