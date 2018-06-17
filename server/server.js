@@ -17,13 +17,6 @@ const authRoute = require("./routes/auth.js");
 const webpush = require('web-push');
 
 
-webpush.setGCMAPIKEY(process.env.GOOGLE_SERVER_KEY)
-webpush.setVapidDetails(
-  'mailto:etherealtoast@gmail.com',
-  process.env.PUBLIC_VAPID_KEY,
-  process.env.PRIVATE_VAPID_KEY
-)
-
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
@@ -55,8 +48,7 @@ app.use(passport.session());
 
 app.use("/auth", authRoute);
 app.use("/doctors", providersRoute);
-app.use("/push", require('./push');
-// app.use(twilioNotifications.notifyOnError)
+
 
 // app.get("/", (req, res) => {
 //   console.log(req.body);
@@ -68,6 +60,16 @@ let SID = process.env.TWILIO_API_KEY;
 let TOKEN = process.env.TWILIO_AUTH_TOKEN;
 let SENDER = process.env.TWILIO_SMS_NUMBER;
 let SERVICE = process.env.TWILIO_SERVICE_SID;
+
+let GOOGLE_KEY = process.env.GOOGLE_BROWSER_KEY;
+let VAPID_PUBLIC =  process.env.VAPID_PUBLIC_KEY;
+let VAPID_PRIVATE =  process.env.VAPID_PRIVATE_KEY;
+webpush.setGCMAPIKey(GOOGLE_KEY);
+webpush.setVapidDetails(
+  'mailto:etherealtoast@gmail.com',
+  VAPID_PUBLIC
+ , VAPID_PRIVATE
+);
 
 //processing sms
 app.post("/api/sms", (req, res) => {
@@ -124,10 +126,29 @@ app.post("/api/call", (req,res) => {
     to:'+1' + req.body.recipient,
     from: SENDER
   })
-
+ 
 })
 
 //push notifs
+
+let subscription;
+let pushIntervalID;
+const testData = {
+  body: "you're interested!",
+  icon: '../src/styles/static/ocs_cropped.jpg'
+}
+
+app.post('api/notifs', (req,res,next) => {
+  console.log('in notifs route')
+  subscription = req.body
+  console.log(subscription)
+  res.sendStatuc(201)
+  pushIntervalID = setInterval(() => {
+    webpush.sendNotification(subscription, JSON.stringify(testData)).catch(() => 
+      clearInterval(pushIntervalID))
+    }, 3000)
+  })
+
 
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);
