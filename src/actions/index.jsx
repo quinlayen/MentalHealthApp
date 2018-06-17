@@ -33,7 +33,7 @@ export function getDetails(providerID) {
   };
 }
 
-export const register = (
+export function register(
   first_name,
   last_name,
   contact,
@@ -41,7 +41,7 @@ export const register = (
   password,
   newUser,
   redirectCallback
-) => {
+) {
   return dispatch => {
     return axios
       .post(`${HOST}/auth/register`, {
@@ -62,9 +62,9 @@ export const register = (
         console.log({ err: err.message });
       });
   };
-};
+}
 
-export const login = (user, redirectCallback) => {
+export function login(user, redirectCallback) {
   return dispatch => {
     return axios
       .post(`${HOST}/auth/login`, {
@@ -84,9 +84,9 @@ export const login = (user, redirectCallback) => {
         console.log({ err: err.message });
       });
   };
-};
+}
 
-export const logout = () => {
+export function logout() {
   localStorage.clear();
   return dispatch => {
     return fetch(`${HOST}/auth/logout`)
@@ -100,7 +100,45 @@ export const logout = () => {
         console.log({ err: err.message });
       });
   };
-};
+}
+
+// export function login(username, password) {
+//   return dispatch => {
+//     dispatch(request({ username }));
+
+//     userService.login(username, password).then(
+//       user => {
+//         dispatch(success(user));
+//         history.push("/");
+//       },
+//       err => {
+//         console.log({ err: err.message });
+//       }
+//     );
+//   };
+// }
+
+// export function logout() {
+//   userService.logout();
+//   return { type: userConstants.LOGOUT };
+// }
+
+// export function register(user) {
+//   return dispatch => {
+//     dispatch(request(user));
+
+//     userService.register(user).then(
+//       user => {
+//         dispatch(success());
+//         history.push("/login");
+//         dispatch(alertActions.success("Registration successful"));
+//       },
+//       err => {
+//         console.log({ err: err.message });
+//       }
+//     );
+//   };
+// }
 
 export function itemsIsLoading(bool) {
   return {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./styles/App.css";
 import UserRegistrationForm from "./components/userRegistrationForm";
+import UserLoginForm from "./components/userLoginForm";
 import SearchBar from "./containers/searchBar";
 import SendSms from "./containers/sms";
 import NavBar from "./components/navBar";
@@ -39,11 +40,8 @@ class App extends Component {
             </div>
             <Route exact path="/doctors" component={ProviderList} />
             <Route exact path="/doctors/:id" component={ProviderDetail} />
-            <Route
-              exact
-              path="/register"
-              component={UserRegistrationForm}
-            />
+            <Route exact path="/register" component={UserRegistrationForm} />
+            <Route exact path="/login" component={UserLoginForm} />
             <NavDrawer />
             <img src={navigatorImg} alt="navigator" />
             <Route path="doctors/" component={SendSms} />

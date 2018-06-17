@@ -14,7 +14,6 @@ import compose from "recompose/compose";
 import { Link } from "react-router-dom";
 import "../styles/navBar.css";
 
-
 const styles = {
   root: {
     flexGrow: 1
@@ -29,41 +28,36 @@ const styles = {
 };
 
 class NavBar extends Component {
-
-
-  
   render() {
     const { classes } = this.props;
     return (
-    
-      <div className='MuiPaper'>
+      <div className="MuiPaper">
         <AppBar position="static">
           <Toolbar>
-          
             <IconButton
               onClick={param => this.props.toggleAction(true)}
               className={classes.menuButton}
-             
               aria-label="Menu"
             >
               <MenuIcon />
             </IconButton>
-            <div className= 'app-name'>
-            <Typography 
-              component={Link}
-              to='/'
-              variant="title"
-              color="#FF9375"
-              className={classes.flex}>
-              MentalHealthApp
-            </Typography>
+            <div className="app-name">
+              <Typography
+                component={Link}
+                to="/"
+                variant="title"
+                color="#FF9375"
+                className={classes.flex}
+              >
+                MentalHealthApp
+              </Typography>
             </div>
-            <div className='spacer'>
+            <div className="spacer" />
+            <div className="user-reg">
+              <Button component={Link} to="/login" color="#FF9375">
+                Login
+              </Button>
             </div>
-            <div className='user-reg'>
-            <Button color="#FF9375">Login</Button>
-            </div>
-            
           </Toolbar>
         </AppBar>
       </div>
