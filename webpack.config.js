@@ -12,7 +12,7 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
     devtool: 'inline-source-map',
     devServer: {
         host: 'localhost',
@@ -20,8 +20,12 @@ module.exports = {
         historyApiFallback: true,
         open: true,
         hot: true
-    }
+    },
     module: {
+        loaders:{
+            test: require.resolve('wow.js/dist/wow.js'), 
+            loader: 'exports?this.WOW'
+         },
         rules: [
             {test:/\.(js)$/,
             exclude: /node_modules/,
@@ -33,7 +37,7 @@ module.exports = {
                 {loader: 'style-loader'
                 },
                 {
-                    loader: 'css-loader'.
+                    loader: 'css-loader',
                     options: {
                         modules: true,
                         camcelCase: true,
@@ -43,12 +47,13 @@ module.exports = {
             ]
             }
         ]
-    }
+    },
       plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       favicon: 'public/favicon.ico'
     })
   ],
+  
   // Webpack configuration goes here
 };

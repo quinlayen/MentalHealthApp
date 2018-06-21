@@ -1,4 +1,4 @@
-require("dotenv").config({path: __dirname + '.env'});
+require("dotenv").config({ path: __dirname + ".env" });
 //nodemon server/server.js
 const express = require("express");
 const app = express();
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
 }
 
-app.use(express.static(__dirname + '/styles/static'))
+app.use(express.static(__dirname + "/styles/static"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -74,91 +74,85 @@ app.post("/api/sms", (req, res) => {
 
   let client = require("twilio")(SID, TOKEN);
 
-console.log(req.body, "this is in server")
-//creating new message to send to client
-    client.messages
-      .create(
-        {
-          to: '+1' + req.body.recipient,
-          from: SENDER,
-          body: req.body.message,
-          // statusCallback: `http://${PORT}/client/home`
-        }).then(message => {
-          if (smsCount > 0) {
-            msg = message + (smsCount + 1)
-           
-          }
-          const twiml = new MessagingResponse();
-          console.log(req.session.counter)
-          req.session.counter = smsCount + 1;
-        //tracking currently sent message + old messages 
-          twiml.message(msg);
+  console.log(req.body, "this is in server");
+  //creating new message to send to client
+  client.messages
+    .create({
+      to: "+1" + req.body.recipient,
+      from: SENDER,
+      body: req.body.message
+      // statusCallback: `http://${PORT}/client/home`
+    })
+    .then(message => {
+      if (smsCount > 0) {
+        msg = message + (smsCount + 1);
+      }
+      const twiml = new MessagingResponse();
+      console.log(req.session.counter);
+      req.session.counter = smsCount + 1;
+      //tracking currently sent message + old messages
+      twiml.message(msg);
 
-          // res.writeHead(200, {'Content-Type': 'text/xml'});
-          // res.write(twiml.toString())
-          console.log(req.session.counter);
-       
-        })
-         // .then(message => console.log(message, 'message sid'))
-       // .done();
+      // res.writeHead(200, {'Content-Type': 'text/xml'});
+      // res.write(twiml.toString())
+      console.log(req.session.counter);
+    });
+  // .then(message => console.log(message, 'message sid'))
+  // .done();
 
+  //storing recipient's numbers
+  // let identity = 0000001
+  //         client.notify.services(SERVICE).bindings.create({
+  //           identity: '0000001',
+  //           bindingType: 'sms',
+  //           address: '+1' + req.body.recipient,
+  //         }).then(binding => {
 
-//storing recipient's numbers
-// let identity = 0000001
-//         client.notify.services(SERVICE).bindings.create({
-//           identity: '0000001',
-//           bindingType: 'sms',
-//           address: '+1' + req.body.recipient,
-//         }).then(binding => {
-        
-//           console.log(binding.sid, 'binding sid')
+  //           console.log(binding.sid, 'binding sid')
 
-//           console.log("new identity", identity)
-      
-//           }).done()
-// adding push notifications
-client.notify.services(SERVICE).notifications.create({
-  body: "New SMS" + req.body.message,
-  toBinding: {
-    binding_type: 'sms',
-    address: '+1' + req.body.recipient,
-  },
-  identity: '00001' //['identity']
-}).then(notification => console.log(notification, 'is notification')).done();
+  //           console.log("new identity", identity)
 
-
-  
-
-  
-  
+  //           }).done()
+  // adding push notifications
+  client.notify
+    .services(SERVICE)
+    .notifications.create({
+      body: "New SMS" + req.body.message,
+      toBinding: {
+        binding_type: "sms",
+        address: "+1" + req.body.recipient
+      },
+      identity: "00001" //['identity']
+    })
+    .then(notification => console.log(notification, "is notification"))
+    .done();
 });
 
 //app.use(bundler.middleware());
 
 //processing call
-app.post("/api/call", (req,res) => {
-  console.log('1');
+app.post("/api/call", (req, res) => {
+  console.log("1");
   if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
   }
-  console.log('2');
+  console.log("2");
   let client = require("twilio")(SID, TOKEN);
 
-  console.log('3');
+  console.log("3");
   client.calls.create({
-    url:'http://demo.twilio.com/docs/voice.xml',
-    to:'+1' + req.body.recipient,
+    url: "http://demo.twilio.com/docs/voice.xml",
+    to: "+1" + req.body.recipient,
     from: SENDER
-  })
- 
-  console.log('4');
+  });
 
-client.notify.services(SERVICE)
-             .notifications
-             .create({body: 'Hello Bob', identity: '6083459798'})
-             .then(notification => console.log(notification.sid))
-             .done();
+  console.log("4");
 
+  client.notify
+    .services(SERVICE)
+    .notifications.create({ body: "Hello Bob", identity: "6083459798" })
+    .then(notification => console.log(notification.sid))
+    .done();
 
   // client.notify.services(SERVICE).notifications.create({
   //   body: "New SMS" + req.body.message,
@@ -171,9 +165,8 @@ client.notify.services(SERVICE)
   //   notification => console.log(notification, 'is notification')
   // ).done();
 
-  console.log('5');
-
-})
+  console.log("5");
+});
 
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);
