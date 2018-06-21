@@ -99,8 +99,15 @@ router.post("/logout", (req, res) => {
   return res.send("user is logged out!!");
 });
 
-router.get("/secret", isAuthenticated, (req, res) => {
-  return res.send("SECRETS");
+router.get("/profile/:id", isAuthenticated, (req, res) => {
+  const client_id = req.params.id;
+  console.log("get this client's details", client_id);
+  return Client.where({ client_id })
+    .fetch()
+    .then(result => {
+      return res.json(result);
+    })
+    .catch(err => res.status(400).json({ message: err.message }));
 });
 
 function isAuthenticated(req, res, done) {

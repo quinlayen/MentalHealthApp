@@ -54,9 +54,9 @@ class NavBar extends Component {
             </div>
             <div className="spacer" />
             <div className="user-reg">
-              <Button component={Link} to="/login" color="#FF9375">
+              <Link to="/login" color="#FF9375" className="btn btn-link">
                 Login
-              </Button>
+              </Link>
             </div>
           </Toolbar>
         </AppBar>

@@ -64,7 +64,7 @@ export function register(
   };
 }
 
-export function login(user, redirectCallback) {
+export function loginAction(user, redirectCallback) {
   return dispatch => {
     return axios
       .post(`${HOST}/auth/login`, {

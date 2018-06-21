@@ -38,10 +38,11 @@ class App extends Component {
                 </div>
               </div>
             </div>
+            <Route exact path="/login" component={UserLoginForm} />
+            <Route exact path="/register" component={UserRegistrationForm} />
             <Route exact path="/doctors" component={ProviderList} />
             <Route exact path="/doctors/:id" component={ProviderDetail} />
-            <Route exact path="/register" component={UserRegistrationForm} />
-            <Route exact path="/login" component={UserLoginForm} />
+
             <NavDrawer />
             <img src={navigatorImg} alt="navigator" />
             <Route path="doctors/" component={SendSms} />
