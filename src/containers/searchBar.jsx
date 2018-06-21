@@ -1,19 +1,17 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { fetchDoctors } from "../actions/index";
-import "../styles/searchBar.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchDoctors } from '../actions/index';
+import '../styles/searchBar.css';
 import WOW from 'wow.js/dist/wow.js';
-
-
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      type: "Therapist",
-      location: ""
+      type: 'Therapist',
+      location: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,7 +20,6 @@ class SearchBar extends Component {
   }
   componentDidMount() {
     new WOW().init();
-    
   }
 
   handleChange = e => {
@@ -33,77 +30,63 @@ class SearchBar extends Component {
   onSelect = event => this.setState({ type: event.target.value });
 
   onFormSubmit(event) {
-    this.props.history.push("/doctors");
+    this.props.history.push('/doctors');
     event.preventDefault();
     this.props.fetchDoctors(this.state);
-    
   }
 
   render() {
-   
     return (
-      
+      <div class="container flex-center">
+        <div class="row flex-center pt-5 mt-3">
+          <div class="col-md-6 text-center text-md-left margins">
+            <div class="white-text">
+              <h1 class="h1-responsive wow fadeInLeft" data-wow-delay="0.3s">
+                We Are Here For You{' '}
+              </h1>
+              <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s" />
+              <h6 class="wow fadeInLeft" data-wow-delay="0.3s">
+                Take the Next Step
+              </h6>
+              <br />
 
-<section class="view hm-gradient">
-                <div class="full-bg-imjg">
-                    <div class="container flex-center">
-                        <div class="row flex-center pt-5 mt-3">
-                            <div class="col-md-6 text-center text-md-left margins">
-                                <div class="white-text">
-                                    <h1 class="h1-responsive wow fadeInLeft" data-wow-delay="0.3s">We Are Here For You </h1>
-                                        <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s"/>
-                                        <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Take the Next Step</h6>
-                                        <br/>
-                
-                                        <form onSubmit={this.onFormSubmit} action="/doctors/result">
-                                              <div className="form-group">
-                                                <div className="input-group">
-                                                  <div className="input-group-prepend">
-                                                    <select
-                                                      onChange={this.onSelect}
-                                                      value={this.state.type}
-                                                      name="type"
-                                                      className="custom-select"
-                                                    >
-                                                      <option value="Therapist">Therapist</option>
-                                                      <option value="Psychiatrist">Psychiatrist</option>
-                                                      
-                                                    </select>
-                                                  </div>
-                                                  <input
-                                                    type="text"
-                                                    className="form-control"
-                                                    aria-label="Text input with dropdown button"
-                                                    placeholder="Search by City"
-                                                    name="location"
-                                                    id="locationSearch"
-                                                    value={this.state.location}
-                                                    onChange={this.handleChange}
-                                                  />
-                                                </div>
-                                              </div>
-                                              <button type = 'button' className="btn btn-sm btn-outline-white rounded-0 btn-block" type="submit">
-                                                Search
-                                              </button>
-                                        </form>
-                                            <i class="fa fa-android left right" aria-hidden="true"></i>
-                                            <i class="fa fa-apple left" aria-hidden="true"></i>
-                                            <i class="fa fa-windows" aria-hidden="true"></i>
-                                        
-                                </div>
-                            </div>
-
-                          
-                           
-                        </div>
+              <form onSubmit={this.onFormSubmit} action="/doctors/result">
+                <div className="form-group">
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <select onChange={this.onSelect} value={this.state.type} name="type" className="custom-select">
+                        <option value="Therapist">Therapist</option>
+                        <option value="Psychiatrist">Psychiatrist</option>
+                      </select>
                     </div>
+                    <div>
+                      <input
+                        type="text"
+                        className="form-control"
+                        aria-label="Text input with dropdown button"
+                        placeholder="Search by City"
+                        name="location"
+                        id="locationSearch"
+                        value={this.state.location}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  <button type="button" className="btn btn-sm btn-outline-white rounded-0 btn-block" type="submit">
+                    Search
+                  </button>
+                  </div>
                 </div>
-            </section>
-
-
+              </form>
+              <i class="fa fa-android left right" aria-hidden="true" />
+              <i class="fa fa-apple left" aria-hidden="true" />
+              <i class="fa fa-windows" aria-hidden="true" />
+            </div>
+          </div>
+        </div>
+      </div>
 
       // <div className="container">
- 
+
       //   <div className="row justify-content-center">
       //     <div className="jumbotron">
       //       <h2 className="display-4 text-center">We Are Here For You</h2>
@@ -120,7 +103,7 @@ class SearchBar extends Component {
       //               >
       //                 <option value="Therapist">Therapist</option>
       //                 <option value="Psychiatrist">Psychiatrist</option>
-                      
+
       //               </select>
       //             </div>
       //             <input
@@ -142,9 +125,8 @@ class SearchBar extends Component {
       //     </div>
       //   </div>
       // </div>
-    
-    )
-}
+    );
+  }
 }
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchDoctors }, dispatch);

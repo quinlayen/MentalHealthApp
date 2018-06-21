@@ -31,10 +31,10 @@ class App extends Component {
               <div className="col-lg">
                 <img src={streamsImg} alt="streams" />
               </div>
+                  <Route exact path="/" component={SearchBar} />
 
               <div className="row offset-md-1">
                 <div className="col-md justify-content-start no-gutters">
-                  <Route exact path="/" component={SearchBar} />
                 </div>
               </div>
             </div>
