@@ -33,22 +33,22 @@ export function getDetails(providerID) {
   };
 }
 
-export const register = (
+export function register(
   first_name,
   last_name,
-  phone,
-  email,
+  contact,
+  username,
   password,
   newUser,
   redirectCallback
-) => {
+) {
   return dispatch => {
     return axios
       .post(`${HOST}/auth/register`, {
         first_name,
         last_name,
-        phone,
-        email,
+        contact,
+        username,
         password
       })
       .then(newUser => {
@@ -62,13 +62,13 @@ export const register = (
         console.log({ err: err.message });
       });
   };
-};
+}
 
-export const login = (user, redirectCallback) => {
+export function loginAction(user, redirectCallback) {
   return dispatch => {
     return axios
       .post(`${HOST}/auth/login`, {
-        email: user.email,
+        username: user.username,
         password: user.password
       })
       .then(loginInfo => {
@@ -84,9 +84,9 @@ export const login = (user, redirectCallback) => {
         console.log({ err: err.message });
       });
   };
-};
+}
 
-export const logout = () => {
+export function logout() {
   localStorage.clear();
   return dispatch => {
     return fetch(`${HOST}/auth/logout`)
@@ -100,7 +100,45 @@ export const logout = () => {
         console.log({ err: err.message });
       });
   };
-};
+}
+
+// export function login(username, password) {
+//   return dispatch => {
+//     dispatch(request({ username }));
+
+//     userService.login(username, password).then(
+//       user => {
+//         dispatch(success(user));
+//         history.push("/");
+//       },
+//       err => {
+//         console.log({ err: err.message });
+//       }
+//     );
+//   };
+// }
+
+// export function logout() {
+//   userService.logout();
+//   return { type: userConstants.LOGOUT };
+// }
+
+// export function register(user) {
+//   return dispatch => {
+//     dispatch(request(user));
+
+//     userService.register(user).then(
+//       user => {
+//         dispatch(success());
+//         history.push("/login");
+//         dispatch(alertActions.success("Registration successful"));
+//       },
+//       err => {
+//         console.log({ err: err.message });
+//       }
+//     );
+//   };
+// }
 
 export function itemsIsLoading(bool) {
   return {
@@ -153,10 +191,10 @@ export function tellTwilio(medium) {
         let callRequest = axios.post(`${HOST}/api/call`, {
           recipient: medium.recipient
         });
-        console.log('here!!!', medium.recipient);
+        console.log("here!!!", medium.recipient);
         callRequest
           .then(res => {
-            console.log('got back res', res);
+            console.log("got back res", res);
             dispatch(twilioSuccess(true));
             console.log(res, "is going to twilio");
             return {
@@ -165,7 +203,7 @@ export function tellTwilio(medium) {
             };
           })
           .catch(err => {
-            console.log('the error: ', err);
+            console.log("the error: ", err);
             dispatch(twilioSuccess(false));
           });
         break;

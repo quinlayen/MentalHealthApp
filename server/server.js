@@ -71,7 +71,8 @@ app.post("/api/sms", (req, res) => {
   if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
   }
-    let client = require("twilio")(SID, TOKEN);
+
+  let client = require("twilio")(SID, TOKEN);
 
 console.log(req.body, "this is in server")
 //creating new message to send to client

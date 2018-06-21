@@ -9,13 +9,13 @@ const SALT_ROUND = 12;
 passport.serializeUser((user, done) => {
   console.log("serializeUser", user);
   done(null, {
-    email: user.email
+    username: user.username
   });
 });
 
 passport.deserializeUser((user, done) => {
   console.log("deserializingUser", user);
-  Client.where({ email: user.email })
+  Client.where({ username: user.username })
     .fetch()
     .then(user => {
       try {
@@ -32,10 +32,10 @@ passport.deserializeUser((user, done) => {
 
 passport.use(
   new localStrat(
-    { usernameField: "email", passwordField: "password" },
-    (email, password, done) => {
-      console.log("local is being called, with email", email);
-      Client.where({ email })
+    { usernameField: "username", passwordField: "password" },
+    (username, password, done) => {
+      console.log("local is being called, with username", username);
+      Client.where({ username })
         .fetch()
         .then(user => {
           console.log("user in local strategy", user);
@@ -57,7 +57,7 @@ passport.use(
 
 // registers a new user //
 router.post("/register", (req, res) => {
-  const { first_name, last_name, phone, email, password } = req.body;
+  const { first_name, last_name, contact, username, password } = req.body;
   bcrypt
     .genSalt(12)
     .then(salt => {
@@ -69,8 +69,8 @@ router.post("/register", (req, res) => {
       return Client.forge({
         first_name,
         last_name,
-        phone,
-        email,
+        contact,
+        username,
         password: hash
       }).save();
     })
@@ -99,8 +99,15 @@ router.post("/logout", (req, res) => {
   return res.send("user is logged out!!");
 });
 
-router.get("/secret", isAuthenticated, (req, res) => {
-  return res.send("SECRETS");
+router.get("/profile/:id", isAuthenticated, (req, res) => {
+  const client_id = req.params.id;
+  console.log("get this client's details", client_id);
+  return Client.where({ client_id })
+    .fetch()
+    .then(result => {
+      return res.json(result);
+    })
+    .catch(err => res.status(400).json({ message: err.message }));
 });
 
 function isAuthenticated(req, res, done) {

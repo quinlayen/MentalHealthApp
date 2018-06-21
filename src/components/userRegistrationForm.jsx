@@ -205,17 +205,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { register } from '../actions/index';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 class UserRegistrationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-      phone: '',
-      // preferredContact: "",
+      first_name: "",
+      last_name: "",
+      contact: "email",
+      username: "",
+      password: "",
+      phone: "",
       // showPassword: false,
       newUser: null
     };
@@ -232,52 +233,83 @@ class UserRegistrationForm extends Component {
   // };
 
   handleChange(event) {
+    console.log(this.state);
     this.setState({ [event.target.name]: event.target.value });
   }
 
   handleRegister(event) {
     event.preventDefault();
-    if (this.state.email !== '' && this.state.password !== '') {
+    if (this.state.username !== "" && this.state.password !== "") {
       this.props.register(this.state, () => {
-        this.props.history.push('/');
+        this.props.history.push("/register");
       });
     }
   }
 
   renderForm() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-2-md" />
-          <div className="col-8-md">
-            <form onSubmit={this.handleRegister}>
-              <FormGroup controlId="first_name" bsSize="large">
-                <ControlLabel>First Name</ControlLabel>
-                <FormControl autoFocus name="first_name" value={this.state.first_name} onChange={this.handleChange} />
-              </FormGroup>
-              <FormGroup controlId="last_name" bsSize="large">
-                <ControlLabel>Last Name</ControlLabel>
-                <FormControl autoFocus name="last_name" value={this.state.last_name} onChange={this.handleChange} />
-              </FormGroup>
-              <FormGroup controlId="phone" bsSize="large">
-                <ControlLabel>Phone Number</ControlLabel>
-                <FormControl autoFocus name="phone" value={this.state.phone} onChange={this.handleChange} />
-              </FormGroup>
-              <FormGroup controlId="email" bsSize="large">
-                <ControlLabel>Email</ControlLabel>
-                <FormControl autoFocus name="email" value={this.state.email} onChange={this.handleChange} />
-              </FormGroup>
-              <FormGroup controlId="password" bsSize="large">
-                <ControlLabel>Password</ControlLabel>
-                <FormControl name="password" value={this.state.password} onChange={this.handleChange} type="password" />
-              </FormGroup>
-              <button className="btn btn-primary btn-sm" type="submit">
-                Submit
-              </button>
-            </form>
+      <form onSubmit={this.handleRegister}>
+        <FormGroup controlId="first_name" bsSize="large">
+          <ControlLabel>First Name</ControlLabel>
+          <FormControl
+            autoFocus
+            name="first_name"
+            value={this.state.first_name}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup controlId="last_name" bsSize="large">
+          <ControlLabel>Last Name</ControlLabel>
+          <FormControl
+            autoFocus
+            name="last_name"
+            value={this.state.last_name}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup controlId="username" bsSize="large">
+          <ControlLabel>Username (or Email)</ControlLabel>
+          <FormControl
+            autoFocus
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup controlId="password" bsSize="large">
+          <ControlLabel>Password</ControlLabel>
+          <FormControl
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            type="password"
+          />
+        </FormGroup>
+        <div className="form-group">
+          <ControlLabel>Preferred Contact</ControlLabel>
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <select
+                onChange={this.handleChange}
+                value={this.state.contact}
+                name="contact"
+                className="custom-select"
+              >
+                <option value="email">Email</option>
+                <option value="call">Call</option>
+                <option value="text">Text</option>
+                <option value="chat">Web-Chat</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
+        <button className="btn btn-primary btn-sm" type="submit">
+          Submit
+        </button>
+        <Link to={"/login"} className="btn btn-link">
+          Login
+        </Link>
+      </form>
     );
   }
 
@@ -288,58 +320,6 @@ class UserRegistrationForm extends Component {
   }
 }
 
-//   render() {
-//     return (
-//       <div className="register_Container">
-//         {/* <h1 className="register_title">Register</h1> */}
-//         <div className="form_Register">
-//           <Form onSubmit={this.handleRegister}>
-//             {/* <div className="input_register" /> */}
-//             <Input
-//               type="text"
-//               name="first_name"
-//               value={this.state.first_name}
-//               onChange={this.handleChange}
-//               placeholder="First Name"
-//             />
-//             <Input
-//               type="text"
-//               name="last_name"
-//               value={this.state.last_name}
-//               onChange={this.handleChange}
-//               placeholder="Last Name"
-//             />
-//             <Input
-//               type="text"
-//               name="phone"
-//               value={this.state.phone}
-//               onChange={this.handleChange}
-//               placeholder="Phone Number"
-//             />
-//             <Input
-//               type="text"
-//               name="email"
-//               value={this.state.email}
-//               onChange={this.handleChange}
-//               placeholder="Email"
-//             />
-//             <Input
-//               type="text"
-//               name="password"
-//               value={this.state.password}
-//               onChange={this.handleChange}
-//               placeholder="Password"
-//             />
-//             <div className="register_button">
-//               <button type="submit">Sign up</button>
-//             </div>
-//           </Form>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
 const mapStateToProps = state => {
   return {
     users: state.users.users
@@ -348,8 +328,26 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: function(first_name, last_name, phone, email, password, user, redirectCallback) {
-      dispatch(register(first_name, last_name, phone, email, password, user, redirectCallback));
+    register: function(
+      first_name,
+      last_name,
+      contact,
+      username,
+      password,
+      user,
+      redirectCallback
+    ) {
+      dispatch(
+        register(
+          first_name,
+          last_name,
+          contact,
+          username,
+          password,
+          user,
+          redirectCallback
+        )
+      );
     }
   };
 };
