@@ -37,15 +37,18 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div class="container flex-center">
-        <div class="row flex-center pt-5 mt-3">
-          <div class="col-md-6 text-center text-md-left margins">
-            <div class="white-text">
-              <h1 class="h1-responsive wow fadeInLeft" data-wow-delay="0.3s">
+      <div className="container flex-center">
+        <div className="row flex-center pt-5 mt-3">
+          <div className="col-md-6 text-center text-md-left margins">
+            <div className="white-text">
+              <h1
+                className="h1-responsive wow fadeInLeft"
+                data-wow-delay="0.3s"
+              >
                 We Are Here For You
               </h1>
-              <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s" />
-              <h6 class="wow fadeInLeft" data-wow-delay="0.3s">
+              <hr className="hr-light wow fadeInLeft" data-wow-delay="0.3s" />
+              <h6 className="wow fadeInLeft" data-wow-delay="0.3s">
                 Take the Next Step
               </h6>
               <br />
@@ -86,54 +89,13 @@ class SearchBar extends Component {
                   </div>
                 </div>
               </form>
-              <i class="fa fa-android left right" aria-hidden="true" />
-              <i class="fa fa-apple left" aria-hidden="true" />
-              <i class="fa fa-windows" aria-hidden="true" />
+              <i className="fa fa-android left right" aria-hidden="true" />
+              <i className="fa fa-apple left" aria-hidden="true" />
+              <i className="fa fa-windows" aria-hidden="true" />
             </div>
           </div>
         </div>
       </div>
-
-      // <div className="container">
-
-      //   <div className="row justify-content-center">
-      //     <div className="jumbotron">
-      //       <h2 className="display-4 text-center">We Are Here For You</h2>
-      //       <p className="lead">Find Help</p>
-      //       <form onSubmit={this.onFormSubmit} action="/doctors/result">
-      //         <div className="form-group">
-      //           <div className="input-group">
-      //             <div className="input-group-prepend">
-      //               <select
-      //                 onChange={this.onSelect}
-      //                 value={this.state.type}
-      //                 name="type"
-      //                 className="custom-select"
-      //               >
-      //                 <option value="Therapist">Therapist</option>
-      //                 <option value="Psychiatrist">Psychiatrist</option>
-
-      //               </select>
-      //             </div>
-      //             <input
-      //               type="text"
-      //               className="form-control"
-      //               aria-label="Text input with dropdown button"
-      //               placeholder="Search by City"
-      //               name="location"
-      //               id="locationSearch"
-      //               value={this.state.location}
-      //               onChange={this.handleChange}
-      //             />
-      //           </div>
-      //         </div>
-      //         <button type = 'button' className="btn btn-sm btn-outline-white rounded-0 btn-block" type="submit">
-      //           Search
-      //         </button>
-      //       </form>
-      //     </div>
-      //   </div>
-      // </div>
     );
   }
 }

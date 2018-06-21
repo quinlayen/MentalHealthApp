@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/navBar.css';
-import '../styles/searchBar.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "../styles/navBar.css";
+import "../styles/searchBar.css";
 
 class NavBar extends Component {
   render() {
     return (
-        
-      <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar">
         <div className="container">
-          <Link  to="/" className="navbar-brand" >
+          <Link to="/" className="navbar-brand">
             <strong>FYW</strong>
           </Link>
           <button
@@ -23,11 +22,14 @@ class NavBar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent-7">
+          <div
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent-7"
+          >
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <Link className="nav-link" to="/">
-                  Home <span class="sr-only">(current)</span>
+                  Home <span className="sr-only">(current)</span>
                 </Link>
               </li>
               <li className="nav-item">
@@ -51,7 +53,6 @@ class NavBar extends Component {
           </div>
         </div>
       </nav>
-    
     );
   }
 }

@@ -6,7 +6,7 @@ import UserLoginForm from "./containers/userLoginForm";
 import SearchBar from "./containers/searchBar";
 import SendSms from "./containers/sms";
 import NavBar from "./components/navBar";
-import NavDrawer from "./components/navDrawer";
+// import NavDrawer from "./components/navDrawer";
 import ProviderList from "./containers/providerList";
 import ProviderDetail from "./containers/providerDetail";
 import { createStore } from "redux";
@@ -41,7 +41,7 @@ class App extends Component {
             <Route exact path="/doctors" component={ProviderList} />
             <Route exact path="/register" component={UserRegistrationForm} />
             <Route exact path="/login" component={UserLoginForm} />
-            <NavDrawer />
+            {/* <NavDrawer /> */}
             <img src={navigatorImg} alt="navigator" />
             <Route path="doctors/" component={SendSms} />
 
