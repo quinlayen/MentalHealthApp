@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './styles/App.css';
 import UserRegistrationForm from './components/userRegistrationForm';
-import SearchBar from './containers/searchBar';
+//import SearchBar from './containers/searchBar';
 import SendSms from './containers/sms';
+import Home from './components/home'
 import NavBar from './components/navBar';
 import NavDrawer from './components/navDrawer';
 import ProviderList from './containers/providerList';
@@ -22,33 +23,33 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <div className="background">
+          {/* <div className="background"> */}
             <NavBar />
-
-            <div className="row align-items-center no-gutters">
+            <Route exact path="/" component={Home} />
+            {/* <div className="row align-items-center no-gutters">
               <div className="col-sm" />
 
-              <div className="col-lg">
-                <img src={streamsImg} alt="streams" />
-              </div>
-                  <Route exact path="/" component={SearchBar} />
+              <div className="col-lg"> */}
+                {/* <img src={streamsImg} alt="streams" /> */}
+              {/* </div> */}
+                  {/* <Route exact path="/" component={SearchBar} /> */}
 
-              <div className="row offset-md-1">
+              {/* <div className="row offset-md-1">
                 <div className="col-md justify-content-start no-gutters">
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
             <Route exact path="/doctors" component={ProviderList} />
             <Route exact path="/doctors/:id" component={ProviderDetail} />
             <Route path="/register" component={UserRegistrationForm} />
             <Route path="/login" component={UserLoginForm} />
 
             <NavDrawer />
-            <img src={navigatorImg} alt="navigator" />
-            <Route path="doctors/" component={SendSms} />
+            {/* <img src={navigatorImg} alt="navigator" /> */}
+            {/* <Route path="doctors/" component={SendSms} /> */}
 
-            <SendCall />
-          </div>
+            {/* <SendCall /> */}
+          {/* </div> */}
         </div>
       </Router>
     );

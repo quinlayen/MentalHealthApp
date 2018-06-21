@@ -3,22 +3,45 @@ container {
 
 }
 
-.jumbotron {
-    background-color: rgba(229, 228, 255, 0.2);
+#locationsearh{
+    width:100%;
 }
+
+
+
+#button{
+    position: relative;;
+    left: -22px;
+    top: 4px;
+    border:none;
+    height:30px;
+    width:20px;
+    border-radius:100%;
+    outline:none;
+    text-align:center;
+    font-weight:bold;
+    padding:2px;
+    background: url('./static/google-web-search-24.png');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-color: transparent;
+  }
+  #button:hover{
+    cursor:pointer;
+  }
 
 .display-4 {
     background-color: #ff9375;
     padding: 0
 }
 
-.intro-2 {
-    background: url("./static/background.png")no-repeat center center;
-    background-size: cover;
-}
-.btn .fa {
+/* .background {
+    background: url("../styles/static/ocs_cropped.jpg")no-repeat center center;
+    background-size: 100%;
+} */
+/* .btn .fa {
     margin-left: 3px;
-}
+} */
 .top-nav-collapse {
     background-color: #424f95 !important;
 }

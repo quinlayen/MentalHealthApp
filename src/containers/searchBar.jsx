@@ -5,6 +5,7 @@ import { fetchDoctors } from '../actions/index';
 import '../styles/searchBar.css';
 import WOW from 'wow.js/dist/wow.js';
 
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,10 @@ class SearchBar extends Component {
 
   render() {
     return (
+      
       <div class="container flex-center">
+      <br/>
+      <br/>
         <div class="row flex-center pt-5 mt-3">
           <div class="col-md-6 text-center text-md-left margins">
             <div class="white-text">
@@ -69,10 +73,13 @@ class SearchBar extends Component {
                         id="locationSearch"
                         value={this.state.location}
                         onChange={this.handleChange}
+                        textarea="max-width: 280px"
+                      
                       />
+                      
                     </div>
-                  <button type="button" className="btn btn-sm btn-outline-white rounded-0 btn-block" type="submit">
-                    Search
+                  <button type="button" className="btn btn-sm btn-outline-white rounded-0" type="submit" id="button" >
+                S
                   </button>
                   </div>
                 </div>
@@ -84,18 +91,22 @@ class SearchBar extends Component {
           </div>
         </div>
       </div>
+  
 
-      // <div className="container">
 
+
+      //older code
+      // <section className="background">
+      //  <div className="container">
       //   <div className="row justify-content-center">
-      //     <div className="jumbotron">
-      //       <h2 className="display-4 text-center">We Are Here For You</h2>
-      //       <p className="lead">Find Help</p>
-      //       <form onSubmit={this.onFormSubmit} action="/doctors/result">
-      //         <div className="form-group">
-      //           <div className="input-group">
-      //             <div className="input-group-prepend">
-      //               <select
+      //      <div className="jumbotron">
+      //        <h2 className="display-4 text-center">We Are Here For You</h2>
+      //        <p className="lead">Find Help</p>
+      //        <form onSubmit={this.onFormSubmit} action="/doctors/result">
+      //          <div className="form-group">
+      //            <div className="input-group">
+      //              <div className="input-group-prepend">
+      //                <select
       //                 onChange={this.onSelect}
       //                 value={this.state.type}
       //                 name="type"
@@ -125,6 +136,14 @@ class SearchBar extends Component {
       //     </div>
       //   </div>
       // </div>
+      // </section>
+      
+      
+      
+      
+        
+
+
     );
   }
 }
