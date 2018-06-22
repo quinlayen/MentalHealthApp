@@ -51,7 +51,7 @@ class SearchBar extends Component {
               {/* <hr className="hr-light wow fadeInLeft" data-wow-delay="0.3s" />
               <h6 className="wow fadeInLeft" data-wow-delay="0.3s"></h6> */}
               {/* <br /> */}
-              <form onSubmit={this.onFormSubmit} action="/doctors/result">
+              <form onSubmit={this.onFormSubmit} action="/doctors">
                 <div className="form-group">
                   <div className="input-group">
                     <div className="input-group-prepend">
@@ -84,14 +84,6 @@ class SearchBar extends Component {
                       type="button"
                       className="btn btn-sm btn-outline-white rounded-0 btn-block"
                       type="submit"
-                    >
-                      Search
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline-white rounded-0"
-                      type="submit"
-                      id="button"
                     >
                       Search
                     </button>
