@@ -28,7 +28,6 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           {/* <div className="row align-items-center no-gutters">
               <div className="col-sm" />
-
               <div className="col-lg"> */}
           {/* <img src={streamsImg} alt="streams" /> */}
           {/* </div> */}
