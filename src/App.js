@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./styles/App.css";
 import UserRegistrationForm from "./containers/userRegistrationForm";
+import UserLoginForm from "./containers/userLoginForm";
 import SearchBar from "./containers/searchBar";
 import SendSms from "./containers/sms";
 import Home from "./components/home";
@@ -14,7 +15,6 @@ import reducer from "./reducers/index";
 import SendCall from "./containers/dialer";
 import navigatorImg from "./styles/static/800x600.jpg";
 import streamsImg from "./styles/static/ocs_cropped.jpg";
-import UserLoginForm from "./containers/userLoginForm";
 
 const store = createStore(reducer);
 console.log(store.getState());
