@@ -32,12 +32,10 @@
   }
 }
 
-.background {
-  background: url('./static/background.png');
-height: 100%;
-width: 100%;
-  background-size: 100%;
-}
+/* .background {
+background: url('../styles/static/ocs_cropped.jpg')no-repeat center center;
+background-size: cover;
+} */
 
 .col-lg {
  padding-top: 4em;

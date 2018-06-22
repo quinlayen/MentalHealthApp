@@ -75,6 +75,7 @@ class SearchBar extends Component {
                         id="locationSearch"
                         value={this.state.location}
                         onChange={this.handleChange}
+                        textarea="max-width: 280px"
                       />
                     </div>
                     <br />
@@ -83,6 +84,14 @@ class SearchBar extends Component {
                       type="button"
                       className="btn btn-sm btn-outline-white rounded-0 btn-block"
                       type="submit"
+                    >
+                      Search
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-white rounded-0"
+                      type="submit"
+                      id="button"
                     >
                       Search
                     </button>
