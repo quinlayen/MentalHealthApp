@@ -1,24 +1,24 @@
-.navbar-custom{
+.navbar-custom {
     color: white;
     font-family: 'Libre Franklin', sans-serif;
 }
 
 .MuiAppBar-colorPrimary-10 {
     background: transparent !important;
-      display: flex;
+    display: flex;
     vertical-align: middle;
     flex-direction: row;
     justify-content: space-between;
 }
 
-
 .app-name {
- justify-content: flex-start;
+    justify-content: flex-start;
 }
 
 .spacer {
-     flex-grow: 2
+    flex-grow: 2
 }
+
 .user-reg {
-justify-content: flex-end;
+    justify-content: flex-end;
 }
