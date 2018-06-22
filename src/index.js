@@ -12,7 +12,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import createLogger from "redux-logger";
 import {AppContainer} from 'react-hot-loader';
 
-require("dotenv").config();
+// require("dotenv").config();
 
 // console.log(process.env.REACT_APP_BETTERDOC_KEY);
 // console.log(process.env.REACT_APP_ACCOUNTSID);

@@ -13,6 +13,7 @@ import reducer from "./reducers/index";
 import SendCall from "./containers/dialer";
 import navigatorImg from "./styles/static/800x600.jpg";
 import streamsImg from "./styles/static/ocs_cropped.jpg";
+import pwa from './components/pwa.jsx';
 
 const store = createStore(reducer);
 console.log(store.getState());

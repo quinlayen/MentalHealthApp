@@ -110,13 +110,12 @@ export function itemsIsLoading(bool) {
   };
 }
 
-export function pushNotifs(bool) {
+export function pushNotifs(message) {
 
-console.log(process.env.VAPID_PUBLIC_KEY)
-  const vapidPublicKey= process.env.VAPID_PUBLIC_KEY;
+  const vapidPublicKey= 'BBu87OF65cmp6KOqf_bayXewo7j-tiOuuzb3wmeAl3eHTVDt4hfd4t89vf07TJCg-BvAUOP2dV_pDQyc3Da3kaU'
 
  const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
-
+//converting public Vapid Key
 function urlBase64ToUint8Array(base64String) {
   const padding = "=".repeat((4 - base64String.length % 4) % 4)
   const base64 = (base64String + padding).replace(/\-/g, "+").replace(/_/g, "/")
@@ -126,6 +125,7 @@ function urlBase64ToUint8Array(base64String) {
 
   for (let i = 0; i < rawData.length; ++i) {
     outputArray[i] = rawData.charCodeAt(i)
+  
   }
   return outputArray
 }
@@ -136,6 +136,7 @@ function urlBase64ToUint8Array(base64String) {
       return
     }
     console.log(registration, 'in reg action')
+
     registration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationsServerKey: convertedVapidKey
@@ -145,7 +146,7 @@ function urlBase64ToUint8Array(base64String) {
 
 return {
   type: PUSH_NOTIFS,
-  pushNotif: bool
+  pushNotif: message
 }
 }
 

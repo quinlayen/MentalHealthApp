@@ -133,18 +133,15 @@ app.post("/api/call", (req,res) => {
 
 let subscription;
 let pushIntervalID;
-const testData = {
-  body: "you're interested!",
-  icon: '../src/styles/static/ocs_cropped.jpg'
-}
+
 
 app.post('api/notifs', (req,res,next) => {
   console.log('in notifs route')
   subscription = req.body
-  console.log(subscription)
+  console.log("is subsription", subscription)
   res.sendStatuc(201)
   pushIntervalID = setInterval(() => {
-    webpush.sendNotification(subscription, JSON.stringify(testData)).catch(() => 
+    webpush.sendNotification(subscription, JSON.stringify(req.body)).catch(() => 
       clearInterval(pushIntervalID))
     }, 3000)
   })

@@ -7,6 +7,8 @@ export default function(state={}, action) {
         const newState = { ...state, message: action.payload};
         console.log('in reducer', newState);
         return newState;
+        default:
+        break;
     }
     return state;
 }

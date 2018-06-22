@@ -4,6 +4,8 @@ import { getDetails, pushNotifs } from "../actions/index";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import Button from '@material-ui/core/Button';
+import compose from 'recompose/compose';
+import {Notifications} from '../components/notifications.jsx'
 
 
 class ProviderDetail extends Component {
@@ -17,8 +19,44 @@ class ProviderDetail extends Component {
 
   pushNotifications(e) {
     e.preventDefault();
-    this.props.pushNotifs(true);
+
+
+//     self.addEventListener('push', e => {
+//       if (!(self.Notification && self.Notification.permission ==='granted'))
+// {
+//   return;
+// }  
+
+// var data = {};
+// if (e.data) {
+//   data = e.data.json();
+// } 
+// var title = data.title || "You're Interested!";
+// var message = data.message || "Your doctor will be in contact";
+// var icon = '../src/styles/static/ocs_cropped.jpg'
+
+// var notification = new self.Notification(title, {
+//   body: message,
+//   tag: 'doctor-notif',
+//   icon:icon
+// });
+// notification.addEventListener('click', function() {
+//   if (clients.openWindow) {
+//     clients.openWindow('https://google.com')
+//   }
+// });
+
+//  });
+
+
+    const testData = {
+  body: "you're interested!",
+  icon: '../src/styles/static/ocs_cropped.jpg'
+}
+    this.props.pushNotifs(testData);
     this.setState({pushNotifs: true})
+
+   
   }
 
   render() {
@@ -69,7 +107,8 @@ function mapStateToProps({ doctors, details }) {
   return { doctors, details };
 }
 
-export default connect(
+export default compose(
+  connect(
   mapStateToProps,
-  mapDispatchToProps
-)(ProviderDetail);
+  mapDispatchToProps)
+)(ProviderDetail)

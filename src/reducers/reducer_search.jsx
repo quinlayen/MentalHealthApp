@@ -14,6 +14,8 @@ export default function(state = [], action) {
     case FETCH_DOCTORS:
       //console.log('action in the reducer', action.payload.data);
       return action.payload.data;
+       default:
+        break;
   }
   return state;
 }

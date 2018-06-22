@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const port = process.env.PORT || 3000;
 
-module.exports = {
+module.exports = env => {
     mode: 'development',
     entry: './src/index.js',
     output: {
@@ -11,12 +11,11 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin();
-        new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-  'process.env.DEBUG': JSON.stringify(process.env.DEBUG)
-})
-new Dotenv();
+        new webpack.HotModuleReplacementPlugin(),
+new Dotenv(),
+new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+}),
     ]
     devtool: 'inline-source-map',
     devServer: {
@@ -55,5 +54,12 @@ new Dotenv();
       favicon: 'public/favicon.ico'
     })
   ],
-  // Webpack configuration goes here
+  return {
+      entry: './src/index.js',
+      output: {
+          filename: 'bundle.js',
+          path: path.resolve(__dirname, 'dist')
+      }
+  }
+  
 };
