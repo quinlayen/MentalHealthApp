@@ -1,28 +1,14 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../styles/navBar.css";
 import "../styles/searchBar.css";
-=======
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/navBar.css';
-import '../styles/searchBar.css';
->>>>>>> bootstrapRefactor
 
 class NavBar extends Component {
   render() {
     return (
-<<<<<<< HEAD
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar">
-        <div className="container">
-          <Link to="/" className="navbar-brand">
-=======
-        
       <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar">
         <div className="container">
-          <Link  to="/" className="navbar-brand" >
->>>>>>> bootstrapRefactor
+          <Link to="/" className="navbar-brand">
             <strong>FYW</strong>
           </Link>
           <button
@@ -36,7 +22,6 @@ class NavBar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-<<<<<<< HEAD
           <div
             className="collapse navbar-collapse"
             id="navbarSupportedContent-7"
@@ -44,14 +29,7 @@ class NavBar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <Link className="nav-link" to="/">
-                  Home <span className="sr-only">(current)</span>
-=======
-          <div className="collapse navbar-collapse" id="navbarSupportedContent-7">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <Link className="nav-link" to="/">
                   Home <span class="sr-only">(current)</span>
->>>>>>> bootstrapRefactor
                 </Link>
               </li>
               <li className="nav-item">
@@ -75,10 +53,6 @@ class NavBar extends Component {
           </div>
         </div>
       </nav>
-<<<<<<< HEAD
-=======
-    
->>>>>>> bootstrapRefactor
     );
   }
 }
