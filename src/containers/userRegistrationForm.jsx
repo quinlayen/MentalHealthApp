@@ -10,7 +10,8 @@ class UserRegistrationForm extends Component {
     this.state = {
       first_name: "",
       last_name: "",
-      contact: "email",
+      method: "Email",
+      contact: "",
       username: "",
       password: "",
       phone: "",
@@ -38,7 +39,8 @@ class UserRegistrationForm extends Component {
     event.preventDefault();
     if (this.state.username !== "" && this.state.password !== "") {
       this.props.register(this.state, () => {
-        this.props.history.push("/register");
+        console.log("NEW CLIENT REGISTERED");
+        this.props.history.push("/");
       });
     }
   }
@@ -65,7 +67,7 @@ class UserRegistrationForm extends Component {
           />
         </FormGroup>
         <FormGroup controlId="username" bsSize="large">
-          <ControlLabel>Username (or Email)</ControlLabel>
+          <ControlLabel>Username</ControlLabel>
           <FormControl
             autoFocus
             name="username"
@@ -88,17 +90,27 @@ class UserRegistrationForm extends Component {
             <div className="input-group-prepend">
               <select
                 onChange={this.handleChange}
-                value={this.state.contact}
-                name="contact"
+                value={this.state.method}
+                name="method"
                 className="custom-select"
               >
-                <option value="email">Email</option>
-                <option value="call">Call</option>
-                <option value="text">Text</option>
-                <option value="chat">Web-Chat</option>
+                <option value="Email">Email</option>
+                <option value="Call">Call</option>
+                <option value="Text">Text</option>
+                <option value="Chat">Web-Chat</option>
               </select>
             </div>
           </div>
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Text input with dropdown button"
+            placeholder="Contact Information"
+            name="contact"
+            value={this.state.contact}
+            onChange={this.handleChange}
+          />
         </div>
         <button className="btn btn-primary btn-sm" type="submit">
           Submit
@@ -110,11 +122,11 @@ class UserRegistrationForm extends Component {
     );
   }
 
-  render() {
-    if (this.state.newUser === null) {
-      return <div className="Signup">{this.renderForm()}</div>;
-    }
-  }
+  // render() {
+  //   if (this.state.newUser === null) {
+  //     return <div className="Signup">{this.renderForm()}</div>;
+  //   }
+  // }
 }
 
 const mapStateToProps = state => {
@@ -125,26 +137,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: function(
-      first_name,
-      last_name,
-      contact,
-      username,
-      password,
-      user,
-      redirectCallback
-    ) {
-      dispatch(
-        register(
-          first_name,
-          last_name,
-          contact,
-          username,
-          password,
-          user,
-          redirectCallback
-        )
-      );
+    register: function(user, redirectCallback) {
+      dispatch(register(user, redirectCallback));
     }
   };
 };

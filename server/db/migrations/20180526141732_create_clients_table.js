@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments("client_id").primary();
     table.string("first_name").notNullable();
     table.string("last_name").notNullable();
+    table.string("method").notNullable();
     table.string("contact").notNullable();
     table
       .string("username")

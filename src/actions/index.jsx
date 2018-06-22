@@ -7,7 +7,7 @@ export const TELL_TWILIO = "TELL_TWILIO";
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
-export const PUSH_NOTIFS = 'PUSH_NOTIFS';
+export const PUSH_NOTIFS = "PUSH_NOTIFS";
 
 const HOST = "http://localhost:8080";
 
@@ -34,23 +34,16 @@ export function getDetails(providerID) {
   };
 }
 
-export function register(
-  first_name,
-  last_name,
-  contact,
-  username,
-  password,
-  newUser,
-  redirectCallback
-) {
+export function register(user, redirectCallback) {
   return dispatch => {
     return axios
       .post(`${HOST}/auth/register`, {
-        first_name,
-        last_name,
-        contact,
-        username,
-        password
+        first_name: user.first_name,
+        last_name: user.last_name,
+        method: user.method,
+        contact: user.contact,
+        username: user.username,
+        password: user.password
       })
       .then(newUser => {
         dispatch({
@@ -74,7 +67,7 @@ export function loginAction(user, redirectCallback) {
       })
       .then(loginInfo => {
         localStorage.setItem("id", loginInfo.data.client_id);
-        console.log("length", localStorage.length);
+        // console.log("length", localStorage.length);
         dispatch({
           type: LOGIN_USER,
           payload: loginInfo
@@ -103,44 +96,6 @@ export function logout() {
   };
 }
 
-// export function login(username, password) {
-//   return dispatch => {
-//     dispatch(request({ username }));
-
-//     userService.login(username, password).then(
-//       user => {
-//         dispatch(success(user));
-//         history.push("/");
-//       },
-//       err => {
-//         console.log({ err: err.message });
-//       }
-//     );
-//   };
-// }
-
-// export function logout() {
-//   userService.logout();
-//   return { type: userConstants.LOGOUT };
-// }
-
-// export function register(user) {
-//   return dispatch => {
-//     dispatch(request(user));
-
-//     userService.register(user).then(
-//       user => {
-//         dispatch(success());
-//         history.push("/login");
-//         dispatch(alertActions.success("Registration successful"));
-//       },
-//       err => {
-//         console.log({ err: err.message });
-//       }
-//     );
-//   };
-// }
-
 export function itemsIsLoading(bool) {
   return {
     type: "ITEMS_LOADING",
@@ -149,42 +104,45 @@ export function itemsIsLoading(bool) {
 }
 
 export function pushNotifs(bool) {
+  console.log(process.env.VAPID_PUBLIC_KEY);
+  const vapidPublicKey = process.env.VAPID_PUBLIC_KEY;
 
-console.log(process.env.VAPID_PUBLIC_KEY)
-  const vapidPublicKey= process.env.VAPID_PUBLIC_KEY;
+  const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
 
- const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
+  function urlBase64ToUint8Array(base64String) {
+    const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding)
+      .replace(/\-/g, "+")
+      .replace(/_/g, "/");
 
-function urlBase64ToUint8Array(base64String) {
-  const padding = "=".repeat((4 - base64String.length % 4) % 4)
-  const base64 = (base64String + padding).replace(/\-/g, "+").replace(/_/g, "/")
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
 
-  const rawData = window.atob(base64)
-  const outputArray = new Uint8Array(rawData.length)
-
-  for (let i = 0; i < rawData.length; ++i) {
-    outputArray[i] = rawData.charCodeAt(i)
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
   }
-  return outputArray
-}
 
   navigator.serviceWorker.ready.then(registration => {
     if (!registration.pushManager) {
-      alert ('push unsupported')
-      return
+      alert("push unsupported");
+      return;
     }
-    console.log(registration, 'in reg action')
-    registration.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationsServerKey: convertedVapidKey
-    }).then(subscription => 
-      axios.post('/api/notifs', subscription)).catch(err => console.log(err))
-  })
+    console.log(registration, "in reg action");
+    registration.pushManager
+      .subscribe({
+        userVisibleOnly: true,
+        applicationsServerKey: convertedVapidKey
+      })
+      .then(subscription => axios.post("/api/notifs", subscription))
+      .catch(err => console.log(err));
+  });
 
-return {
-  type: PUSH_NOTIFS,
-  pushNotif: bool
-}
+  return {
+    type: PUSH_NOTIFS,
+    pushNotif: bool
+  };
 }
 
 export function twilioSuccess(bool) {

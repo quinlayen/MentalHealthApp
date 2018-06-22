@@ -57,7 +57,14 @@ passport.use(
 
 // registers a new user //
 router.post("/register", (req, res) => {
-  const { first_name, last_name, contact, username, password } = req.body;
+  const {
+    first_name,
+    last_name,
+    method,
+    contact,
+    username,
+    password
+  } = req.body;
   bcrypt
     .genSalt(12)
     .then(salt => {
@@ -69,6 +76,7 @@ router.post("/register", (req, res) => {
       return Client.forge({
         first_name,
         last_name,
+        method,
         contact,
         username,
         password: hash
