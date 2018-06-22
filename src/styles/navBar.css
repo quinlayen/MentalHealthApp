@@ -1,3 +1,8 @@
+.navbar-custom{
+    color: white;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
 .MuiAppBar-colorPrimary-10 {
     background: transparent !important;
       display: flex;

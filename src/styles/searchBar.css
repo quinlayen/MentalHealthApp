@@ -93,3 +93,19 @@ h6 {
         height: 1040px;
     }
 }
+
+* {
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+#button:hover {
+    cursor: pointer;
+}
+
+h1,
+h4,
+h6,
+br {
+    color: white;
+    font-family: 'Libre Franklin', sans-serif;
+}
