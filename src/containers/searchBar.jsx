@@ -30,9 +30,10 @@ class SearchBar extends Component {
   onSelect = event => this.setState({ type: event.target.value });
 
   onFormSubmit(event) {
-    this.props.history.push("/doctors");
     event.preventDefault();
     this.props.fetchDoctors(this.state);
+    // console.log("this.props", this.props);
+    this.props.history.push("/doctors");
   }
 
   render() {

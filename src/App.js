@@ -23,29 +23,16 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {/* <div className="background"> */}
-          {/* <div className="row align-items-center no-gutters">
-              <div className="col-sm" />
-              <div className="col-lg"> */}
-          {/* <img src={streamsImg} alt="streams" /> */}
-          {/* </div> */}
-          {/* <div className="row offset-md-1">
-                <div className="col-md justify-content-start no-gutters">
-                </div>
-              </div> */}
-          {/* </div> */}
           <NavBar />
           <Route exact path="/doctors/:id" component={ProviderDetail} />
           <Route exact path="/doctors" component={ProviderList} />
           <Route exact path="/register" component={UserRegistrationForm} />
           <Route exact path="/login" component={UserLoginForm} />
-          {/* <Route exact path="/" component={Home} /> */}
-          <Route exact path="/" component={SearchBar} />
+          <Route exact path="/" component={Home} />
+          {/* <Route exact path="/" component={SearchBar} /> */}
           <NavDrawer />
-          {/* <img src={navigatorImg} alt="navigator" /> */}
           <Route path="doctors/" component={SendSms} />
           <SendCall />
-          {/* </div> */}
         </div>
       </Router>
     );
