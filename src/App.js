@@ -4,7 +4,7 @@ import './styles/App.css';
 import UserRegistrationForm from './components/userRegistrationForm';
 //import SearchBar from './containers/searchBar';
 import SendSms from './containers/sms';
-import Home from './components/home'
+import Home from './components/home';
 import NavBar from './components/navBar';
 import NavDrawer from './components/navDrawer';
 import ProviderList from './containers/providerList';
@@ -24,31 +24,31 @@ class App extends Component {
       <Router>
         <div>
           {/* <div className="background"> */}
-            <NavBar />
-            <Route exact path="/" component={Home} />
-            {/* <div className="row align-items-center no-gutters">
+          <NavBar />
+          <Route exact path="/" component={Home} />
+          {/* <div className="row align-items-center no-gutters">
               <div className="col-sm" />
 
               <div className="col-lg"> */}
-                {/* <img src={streamsImg} alt="streams" /> */}
-              {/* </div> */}
-                  {/* <Route exact path="/" component={SearchBar} /> */}
+          {/* <img src={streamsImg} alt="streams" /> */}
+          {/* </div> */}
+          {/* <Route exact path="/" component={SearchBar} /> */}
 
-              {/* <div className="row offset-md-1">
+          {/* <div className="row offset-md-1">
                 <div className="col-md justify-content-start no-gutters">
                 </div>
               </div> */}
-            {/* </div> */}
-            <Route exact path="/doctors" component={ProviderList} />
-            <Route exact path="/doctors/:id" component={ProviderDetail} />
-            <Route path="/register" component={UserRegistrationForm} />
-            <Route path="/login" component={UserLoginForm} />
+          {/* </div> */}
+          <Route path="/doctors" component={ProviderList} />
+          <Route exact path="/doctors/:id" component={ProviderDetail} />
+          <Route path="/register" component={UserRegistrationForm} />
+          <Route path="/login" component={UserLoginForm} />
 
-            <NavDrawer />
-            {/* <img src={navigatorImg} alt="navigator" /> */}
-            {/* <Route path="doctors/" component={SendSms} /> */}
+          <NavDrawer />
+          {/* <img src={navigatorImg} alt="navigator" /> */}
+          {/* <Route path="doctors/" component={SendSms} /> */}
 
-            {/* <SendCall /> */}
+          {/* <SendCall /> */}
           {/* </div> */}
         </div>
       </Router>

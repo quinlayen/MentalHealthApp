@@ -41,20 +41,22 @@ class SearchBar extends Component {
       
       <div class="container flex-center">
       <br/>
-      <br/>
         <div class="row flex-center pt-5 mt-3">
-          <div class="col-md-6 text-center text-md-left margins">
-            <div class="white-text">
-              <h1 class="h1-responsive wow fadeInLeft" data-wow-delay="0.3s">
-                We Are Here For You{' '}
+          //<div class="col-md-6 text-center text-md-left margins">
+            
+              <h1>
+                We Are Here For You
               </h1>
-              <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s" />
-              <h6 class="wow fadeInLeft" data-wow-delay="0.3s">
+              
+              <h4>
                 Take the Next Step
-              </h6>
+              </h4>
+              <h6>
+                Let us help you Find Your Way!
+                </h6>
               <br />
 
-              <form onSubmit={this.onFormSubmit} action="/doctors/result">
+              <form onSubmit={this.onFormSubmit} action="/doctors">
                 <div className="form-group">
                   <div className="input-group">
                     <div className="input-group-prepend">
@@ -73,14 +75,16 @@ class SearchBar extends Component {
                         id="locationSearch"
                         value={this.state.location}
                         onChange={this.handleChange}
-                        textarea="max-width: 280px"
+
                       
                       />
                       
                     </div>
-                  <button type="button" className="btn btn-sm btn-outline-white rounded-0" type="submit" id="button" >
+                    <div className="input-group-append">
+                  <button type="button" className="btn btn-sm btn-outline" type="submit" >
                 S
                   </button>
+                  </div>
                   </div>
                 </div>
               </form>
@@ -89,7 +93,7 @@ class SearchBar extends Component {
               <i class="fa fa-windows" aria-hidden="true" />
             </div>
           </div>
-        </div>
+     
       </div>
   
 
