@@ -41,18 +41,16 @@ class SearchBar extends Component {
         <div className="row flex-center pt-5 mt-3">
           <div className="col-md-6 text-center text-md-left margins">
             <div className="white-text">
-              <h1
+              {/* <h1
                 className="h1-responsive wow fadeInLeft"
                 data-wow-delay="0.3s"
-              >
-                We Are Here For You
-              </h1>
-              <hr className="hr-light wow fadeInLeft" data-wow-delay="0.3s" />
-              <h6 className="wow fadeInLeft" data-wow-delay="0.3s">
-                Take the Next Step
-              </h6>
-              <br />
-
+              > */}
+              {/* </h1> */}
+              <h2 className="display-4 text-center">We Are Here For You</h2>
+              <p className="lead">Take the Next Step</p>
+              {/* <hr className="hr-light wow fadeInLeft" data-wow-delay="0.3s" />
+              <h6 className="wow fadeInLeft" data-wow-delay="0.3s"></h6> */}
+              {/* <br /> */}
               <form onSubmit={this.onFormSubmit} action="/doctors/result">
                 <div className="form-group">
                   <div className="input-group">
@@ -79,6 +77,8 @@ class SearchBar extends Component {
                         onChange={this.handleChange}
                       />
                     </div>
+                    <br />
+                    <br />
                     <button
                       type="button"
                       className="btn btn-sm btn-outline-white rounded-0 btn-block"

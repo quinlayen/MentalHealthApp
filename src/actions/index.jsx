@@ -7,6 +7,7 @@ export const TELL_TWILIO = "TELL_TWILIO";
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
+export const PUSH_NOTIFS = 'PUSH_NOTIFS';
 
 const HOST = "http://localhost:8080";
 
@@ -147,6 +148,45 @@ export function itemsIsLoading(bool) {
   };
 }
 
+export function pushNotifs(bool) {
+
+console.log(process.env.VAPID_PUBLIC_KEY)
+  const vapidPublicKey= process.env.VAPID_PUBLIC_KEY;
+
+ const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
+
+function urlBase64ToUint8Array(base64String) {
+  const padding = "=".repeat((4 - base64String.length % 4) % 4)
+  const base64 = (base64String + padding).replace(/\-/g, "+").replace(/_/g, "/")
+
+  const rawData = window.atob(base64)
+  const outputArray = new Uint8Array(rawData.length)
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i)
+  }
+  return outputArray
+}
+
+  navigator.serviceWorker.ready.then(registration => {
+    if (!registration.pushManager) {
+      alert ('push unsupported')
+      return
+    }
+    console.log(registration, 'in reg action')
+    registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationsServerKey: convertedVapidKey
+    }).then(subscription => 
+      axios.post('/api/notifs', subscription)).catch(err => console.log(err))
+  })
+
+return {
+  type: PUSH_NOTIFS,
+  pushNotif: bool
+}
+}
+
 export function twilioSuccess(bool) {
   return {
     type: "TWILIO_SUCCESS",
@@ -162,8 +202,6 @@ export function tellTwilio(medium) {
           recipient: medium.recipient,
           message: medium.message
         });
-        //console.log(medium.recipient, medium.message, "in action");
-        // console.log (request.data, 'is req')
 
         smsRequest
           .then(res => {

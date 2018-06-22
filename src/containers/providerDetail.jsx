@@ -1,12 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getDetails } from "../actions/index";
+import { getDetails, pushNotifs } from "../actions/index";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+
 
 class ProviderDetail extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pushNotifs: false
+    }
+    this.pushNotifications = this.pushNotifications.bind(this)
+  }
+
+  pushNotifications(e) {
+    e.preventDefault();
+    this.props.pushNotifs(true);
+    this.setState({pushNotifs: true})
   }
 
   render() {
@@ -39,9 +51,7 @@ class ProviderDetail extends Component {
                       About Me: {doctorData.bio}
                     </div>
 
-                    <Link to={"/register"} className="btn btn-primary">
-                      I'm Interested
-                    </Link>
+                   <Button key='notifs' onClick={this.pushNotifications}> I'm Interested</Button>
                   </div>
                 </div>
               </div>
@@ -54,7 +64,7 @@ class ProviderDetail extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getDetails }, dispatch);
+  return bindActionCreators({ getDetails, pushNotifs }, dispatch);
 }
 
 function mapStateToProps({ doctors, details }) {

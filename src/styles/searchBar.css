@@ -1,6 +1,5 @@
 container {
     font-family: 'Tajawal', sans-serif;
-
 }
 
 .jumbotron {
@@ -16,23 +15,29 @@ container {
     background: url("./static/background.png")no-repeat center center;
     background-size: cover;
 }
+
 .btn .fa {
     margin-left: 3px;
 }
+
 .top-nav-collapse {
     background-color: #424f95 !important;
 }
+
 .navbar:not(.top-nav-collapse) {
     background: transparent !important;
 }
+
 @media (max-width: 768px) {
     .navbar:not(.top-nav-collapse) {
         background: #424f95 !important;
     }
 }
+
 h6 {
     line-height: 1.7;
 }
+
 .hm-gradient .full-bg-img {
     background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
     background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
@@ -40,12 +45,14 @@ h6 {
     background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
     background: linear-gradient(to 45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
 }
+
 @media (max-width: 450px) {
     .margins {
         margin-right: 1rem;
         margin-left: 1rem;
     }
 }
+
 @media (max-width: 740px) {
     .full-height,
     .full-height body,

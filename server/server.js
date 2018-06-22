@@ -14,8 +14,7 @@ const PORT = process.env.PORT || 8080;
 
 const providersRoute = require("./routes/care_providers.js");
 const authRoute = require("./routes/auth.js");
-
-const MessagingResponse = require("twilio").twiml.MessagingResponse;
+const webpush = require("web-push");
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").load();
@@ -48,8 +47,6 @@ app.use(passport.session());
 app.use("/auth", authRoute);
 app.use("/doctors", providersRoute);
 
-// app.use(twilioNotifications.notifyOnError)
-
 // app.get("/", (req, res) => {
 //   console.log(req.body);
 //   console.log("sanity check");
@@ -60,6 +57,16 @@ let SID = process.env.TWILIO_API_KEY;
 let TOKEN = process.env.TWILIO_AUTH_TOKEN;
 let SENDER = process.env.TWILIO_SMS_NUMBER;
 let SERVICE = process.env.TWILIO_SERVICE_SID;
+
+let GOOGLE_KEY = process.env.GOOGLE_BROWSER_KEY;
+let VAPID_PUBLIC = process.env.VAPID_PUBLIC_KEY;
+let VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY;
+webpush.setGCMAPIKey(GOOGLE_KEY);
+webpush.setVapidDetails(
+  "mailto:etherealtoast@gmail.com",
+  VAPID_PUBLIC,
+  VAPID_PRIVATE
+);
 
 //processing sms
 app.post("/api/sms", (req, res) => {
@@ -96,76 +103,45 @@ app.post("/api/sms", (req, res) => {
       // res.writeHead(200, {'Content-Type': 'text/xml'});
       // res.write(twiml.toString())
       console.log(req.session.counter);
-    });
-  // .then(message => console.log(message, 'message sid'))
-  // .done();
-
-  //storing recipient's numbers
-  // let identity = 0000001
-  //         client.notify.services(SERVICE).bindings.create({
-  //           identity: '0000001',
-  //           bindingType: 'sms',
-  //           address: '+1' + req.body.recipient,
-  //         }).then(binding => {
-
-  //           console.log(binding.sid, 'binding sid')
-
-  //           console.log("new identity", identity)
-
-  //           }).done()
-  // adding push notifications
-  client.notify
-    .services(SERVICE)
-    .notifications.create({
-      body: "New SMS" + req.body.message,
-      toBinding: {
-        binding_type: "sms",
-        address: "+1" + req.body.recipient
-      },
-      identity: "00001" //['identity']
     })
-    .then(notification => console.log(notification, "is notification"))
+    .then(message => console.log(message, "message sid"))
     .done();
 });
 
-//app.use(bundler.middleware());
-
 //processing call
 app.post("/api/call", (req, res) => {
-  console.log("1");
   if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
   }
-  console.log("2");
+
   let client = require("twilio")(SID, TOKEN);
 
-  console.log("3");
   client.calls.create({
     url: "http://demo.twilio.com/docs/voice.xml",
     to: "+1" + req.body.recipient,
     from: SENDER
   });
+});
 
-  console.log("4");
+//push notifs
 
-  client.notify
-    .services(SERVICE)
-    .notifications.create({ body: "Hello Bob", identity: "6083459798" })
-    .then(notification => console.log(notification.sid))
-    .done();
+let subscription;
+let pushIntervalID;
+const testData = {
+  body: "you're interested!",
+  icon: "../src/styles/static/ocs_cropped.jpg"
+};
 
-  // client.notify.services(SERVICE).notifications.create({
-  //   body: "New SMS" + req.body.message,
-  //   toBinding: {
-  //     binding_type: 'sms',
-  //     address: '+1' + req.body.recipient,
-  //   },
-  //   identity: '000001'
-  // }).then(
-  //   notification => console.log(notification, 'is notification')
-  // ).done();
-
-  console.log("5");
+app.post("api/notifs", (req, res, next) => {
+  console.log("in notifs route");
+  subscription = req.body;
+  console.log(subscription);
+  res.sendStatuc(201);
+  pushIntervalID = setInterval(() => {
+    webpush
+      .sendNotification(subscription, JSON.stringify(testData))
+      .catch(() => clearInterval(pushIntervalID));
+  }, 3000);
 });
 
 app.listen(PORT, () => {
