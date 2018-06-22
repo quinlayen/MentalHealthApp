@@ -45,7 +45,7 @@ class UserRegistrationForm extends Component {
     }
   }
 
-  renderForm() {
+  render() {
     return (
       <form onSubmit={this.handleRegister}>
         <FormGroup controlId="first_name" bsSize="large">

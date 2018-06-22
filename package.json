@@ -26,6 +26,7 @@
     "knex": "^0.14.6",
     "mdbreact": "^4.4.0",
     "nodemon": "^1.17.5",
+    "npm": "^6.1.0",
     "parcel-bundler": "^1.8.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
