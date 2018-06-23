@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
 import "./styles/App.css";
 import UserRegistrationForm from "./containers/userRegistrationForm";
 import UserLoginForm from "./containers/userLoginForm";
@@ -24,14 +29,18 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <Route exact path="/doctors/:id" component={ProviderDetail} />
-          <Route exact path="/doctors" component={ProviderList} />
-          <Route exact path="/register" component={UserRegistrationForm} />
-          <Route exact path="/login" component={UserLoginForm} />
-          <Route exact path="/" component={Home} />
+          <Switch>
+            <Route exact path="/doctors/:id" component={ProviderDetail} />
+            <Route exact path="/doctors" component={ProviderList} />
+            <Route exact path="/register" component={UserRegistrationForm} />
+            <Route exact path="/login" component={UserLoginForm} />
+            <Route exact path="/" component={Home} />
+            <Redirect from="/*" to="/" />
+          </Switch>
           {/* <Route exact path="/" component={SearchBar} /> */}
           <NavDrawer />
-          <Route path="doctors/" component={SendSms} />
+          {/* <Route path="doctors/" component={SendSms} /> */}
+          <SendSms />
           <SendCall />
         </div>
       </Router>

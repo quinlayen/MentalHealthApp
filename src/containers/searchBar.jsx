@@ -38,10 +38,10 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div class="container flex-center">
+      <div className="container flex-center">
         <br />
-        <div class="row flex-center pt-5 mt-3">
-          <div class="col-md-6 text-center text-md-left margins">
+        <div className="row flex-center pt-5 mt-3">
+          <div className="col-md-6 text-center text-md-left margins">
             <h1>We Are Here For You</h1>
 
             <h4>Take the Next Step</h4>

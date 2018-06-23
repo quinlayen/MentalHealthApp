@@ -72,8 +72,8 @@ webpush.setVapidDetails(
 app.post("/api/sms", (req, res) => {
   console.log("Main req");
 
-  const smsCount = req.session.counter || 0;
-  console.log(req.session.counter, "dis is req session count");
+  // const smsCount = req.session.counter || 0;
+  // console.log(req.session.counter, "dis is req session count");
   // console.log(req, 'is req')
   if (!SID || !TOKEN) {
     return res.json({ message: "need Twilio SID and Twilio Token" });
@@ -91,18 +91,18 @@ app.post("/api/sms", (req, res) => {
       // statusCallback: `http://${PORT}/client/home`
     })
     .then(message => {
-      if (smsCount > 0) {
-        msg = message + (smsCount + 1);
-      }
+      // if (smsCount > 0) {
+      //   msg = message + (smsCount + 1);
+      // }
       const twiml = new MessagingResponse();
-      console.log(req.session.counter);
-      req.session.counter = smsCount + 1;
+      // console.log(req.session.counter);
+      // req.session.counter = smsCount + 1;
       //tracking currently sent message + old messages
       twiml.message(msg);
 
       // res.writeHead(200, {'Content-Type': 'text/xml'});
       // res.write(twiml.toString())
-      console.log(req.session.counter);
+      // console.log(req.session.counter);
     })
     .then(message => console.log(message, "message sid"))
     .done();

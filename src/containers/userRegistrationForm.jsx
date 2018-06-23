@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { register } from "../actions/index";
+import { registerAction } from "../actions/index";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class UserRegistrationForm extends Component {
@@ -13,10 +13,9 @@ class UserRegistrationForm extends Component {
       method: "Email",
       contact: "",
       username: "",
-      password: "",
-      phone: "",
+      password: ""
       // showPassword: false,
-      newUser: null
+      // newUser: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
@@ -138,7 +137,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     register: function(user, redirectCallback) {
-      dispatch(register(user, redirectCallback));
+      dispatch(registerAction(user, redirectCallback));
     }
   };
 };

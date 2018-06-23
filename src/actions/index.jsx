@@ -34,7 +34,7 @@ export function getDetails(providerID) {
   };
 }
 
-export function register(user, redirectCallback) {
+export function registerAction(user, redirectCallback) {
   return dispatch => {
     return axios
       .post(`${HOST}/auth/register`, {
@@ -80,7 +80,7 @@ export function loginAction(user, redirectCallback) {
   };
 }
 
-export function logout() {
+export function logoutAction() {
   localStorage.clear();
   return dispatch => {
     return fetch(`${HOST}/auth/logout`)
