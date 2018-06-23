@@ -41,7 +41,7 @@ class SearchBar extends Component {
       <div class="container flex-center">
       <br/>
         <div class="row flex-center pt-5 mt-3">
-          //<div class="col-md-6 text-center text-md-left margins">
+          <div class="col-md-6 text-center text-md-left margins">
             
               <h1>
                 We Are Here For You

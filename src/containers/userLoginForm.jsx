@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginAction } from "../actions/index";
+import "../styles/userLoginForm.css";
 
 class UserLoginForm extends React.Component {
   constructor(props) {
@@ -33,7 +34,15 @@ class UserLoginForm extends React.Component {
 
   render() {
     return (
-      <div className="col-md-6 col-md-offset-3">
+      
+      <div className="col-md-6 col-centered">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      
+        <div className="col-6">
         <h2>Login</h2>
         <form name="form" onSubmit={this.handleLogin}>
           <div className={"form-group"}>
@@ -63,6 +72,8 @@ class UserLoginForm extends React.Component {
             </Link>
           </div>
         </form>
+
+      </div>
       </div>
     );
   }

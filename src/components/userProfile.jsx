@@ -6,7 +6,7 @@ import { register } from "../actions/index";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 
-class UserRegistrationForm extends Component {
+class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -186,7 +186,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(UserRegistrationForm);
+)(UserProfile);
 
 
 

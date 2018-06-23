@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './styles/App.css';
-import UserRegistrationForm from './components/userRegistrationForm';
+import UserRegistrationForm from './containers/userRegistrationForm';
 //import SearchBar from './containers/searchBar';
 import SendSms from './containers/sms';
 import Home from './components/home';
@@ -38,12 +38,12 @@ class App extends Component {
                 </div>
               </div> */}
           {/* </div> */}
-          <Route path="/doctors" component={ProviderList} />
+          <Route exact path="/doctors" component={ProviderList} />
           <Route exact path="/doctors/:id" component={ProviderDetail} />
           <Route path="/register" component={UserRegistrationForm} />
           <Route path="/login" component={UserLoginForm} />
 
-          <NavDrawer />
+          {/* <NavDrawer /> */}
           {/* <img src={navigatorImg} alt="navigator" /> */}
           {/* <Route path="doctors/" component={SendSms} /> */}
 

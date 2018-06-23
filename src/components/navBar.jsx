@@ -28,11 +28,11 @@ class NavBar extends Component {
             id="navbarSupportedContent-7"
           >
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
+              {/* <li className="nav-item active">
                 <Link className="nav-link" to="/">
                   Home <span className="sr-only">(current)</span>
                 </Link>
-              </li>
+              </li> */}
               {/* <li className="nav-item">
                 <Link className="nav-link" to="/register">
                   Profile

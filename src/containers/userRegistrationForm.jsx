@@ -47,6 +47,14 @@ class UserRegistrationForm extends Component {
 
   render() {
     return (
+      <div className="container">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <div className="col-3"></div>
+      <div className="col -6">
       <form onSubmit={this.handleRegister}>
         <FormGroup controlId="first_name" bsSize="large">
           <ControlLabel>First Name</ControlLabel>
@@ -119,6 +127,8 @@ class UserRegistrationForm extends Component {
           Login
         </Link>
       </form>
+      </div>
+      </div>
     );
   }
 
