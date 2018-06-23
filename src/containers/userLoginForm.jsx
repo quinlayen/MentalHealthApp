@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginAction } from "../actions/index";
+import { bindActionCreators } from "redux";
 import "../styles/userLoginForm.css";
 
 class UserLoginForm extends Component {
@@ -42,10 +43,9 @@ class UserLoginForm extends Component {
 
     this.setState({ submitted: true });
     if (this.state.username !== "" && this.state.password !== "") {
-      this.props.login(this.state, () => {
-        console.log("LOGGINED IN");
-        this.props.history.push("/");
-      });
+      this.props.loginAction(this.state);
+      // console.log("LOGGINED IN");
+      this.props.history.push("/");
     }
   }
 
@@ -121,19 +121,28 @@ class UserLoginForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    login: state.users.user
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     login: state.users.user
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    login: function(user, redirectCallback) {
-      dispatch(loginAction(user, redirectCallback));
-    }
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     login: function(user, redirectCallback) {
+//       dispatch(loginAction(user, redirectCallback));
+//     }
+//   };
+// };
+
+function mapStateToProps({ users }) {
+  return { users };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ loginAction }, dispatch);
+}
+
 export default withRouter(
   connect(
     mapStateToProps,

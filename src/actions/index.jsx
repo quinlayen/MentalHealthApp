@@ -50,51 +50,84 @@ export function closeModal(obj) {
   };
 }
 
-export function registerAction(user, redirectCallback) {
-  return dispatch => {
-    return axios
-      .post(`${HOST}/auth/register`, {
-        first_name: user.first_name,
-        last_name: user.last_name,
-        method: user.method,
-        contact: user.contact,
-        username: user.username,
-        password: user.password
-      })
-      .then(newUser => {
-        dispatch({
-          type: REGISTER_USER,
-          users: newUser
-        });
-        redirectCallback();
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-      });
+// export function registerAction(user, redirectCallback) {
+//   return dispatch => {
+//     return axios
+//       .post(`${HOST}/auth/register`, {
+//         first_name: user.first_name,
+//         last_name: user.last_name,
+//         method: user.method,
+//         contact: user.contact,
+//         username: user.username,
+//         password: user.password
+//       })
+//       .then(newUser => {
+//         dispatch({
+//           type: REGISTER_USER,
+//           users: newUser
+//         });
+//         redirectCallback();
+//       })
+//       .catch(err => {
+//         console.log({ err: err.message });
+//       });
+//   };
+// }
+
+export function registerAction(user) {
+  const registeredUser = axios.post(`${HOST}/auth/register`, {
+    first_name: user.first_name,
+    last_name: user.last_name,
+    method: user.method,
+    contact: user.contact,
+    username: user.username,
+    password: user.password
+  });
+
+  return {
+    type: REGISTER_USER,
+    payload: registeredUser
+  };
+}
+//       redirectCallback();
+//     })
+//     .catch(err => {
+//       console.log({ err: err.message });
+//     });
+// };
+
+export function loginAction(user) {
+  const loggedinUser = axios.post(`${HOST}/auth/login`, {
+    username: user.username,
+    password: user.password
+  });
+  return {
+    type: LOGIN_USER,
+    payload: loggedinUser
   };
 }
 
-export function loginAction(user, redirectCallback) {
-  return dispatch => {
-    return axios
-      .post(`${HOST}/auth/login`, {
-        username: user.username,
-        password: user.password
-      })
-      .then(loginInfo => {
-        localStorage.setItem("id", loginInfo.data.client_id);
-        // console.log("length", localStorage.length);
-        dispatch({
-          type: LOGIN_USER,
-          payload: loginInfo
-        });
-        redirectCallback();
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-      });
-  };
-}
+// export function loginAction(user, redirectCallback) {
+//   return dispatch => {
+//     return axios
+//       .post(`${HOST}/auth/login`, {
+//         username: user.username,
+//         password: user.password
+//       })
+//       .then(loginInfo => {
+//         localStorage.setItem("id", loginInfo.data.client_id);
+//         // console.log("length", localStorage.length);
+//         dispatch({
+//           type: LOGIN_USER,
+//           payload: loginInfo
+//         });
+//         redirectCallback();
+//       })
+//       .catch(err => {
+//         console.log({ err: err.message });
+//       });
+//   };
+// }
 
 export function logoutAction() {
   localStorage.clear();

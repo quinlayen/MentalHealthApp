@@ -2,10 +2,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-
-// import { bindActionCreators } from "redux";
-// import { fetchDoctors } from "../actions/index";
-
 import { Link } from "react-router-dom";
 import { getDetails } from "../actions/index";
 
