@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginAction } from "../actions/index";
 import "../styles/userLoginForm.css";
 
-class UserLoginForm extends React.Component {
+class UserLoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -79,7 +79,7 @@ class UserLoginForm extends React.Component {
               />
               {this.state.submitted &&
                 !this.state.username && (
-                  <div className="help-block">Username is required</div>
+                  <div className="help-block">Username is Required</div>
                 )}
             </div>
             <div
@@ -105,7 +105,7 @@ class UserLoginForm extends React.Component {
               </span>
               {this.state.submitted &&
                 !this.state.password && (
-                  <div className="help-block">Password is required</div>
+                  <div className="help-block">Password is Required</div>
                 )}
             </div>
             <div className="form-group">

@@ -3,6 +3,8 @@ import axios from "axios";
 export const TOGGLE_ACTION = "TOGGLE_ACTION";
 export const FETCH_DOCTORS = "FETCH_DOCTORS";
 export const GET_DETAILS = "GET_DETAILS";
+export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_MODAL = "CLOSE_MODAL";
 export const TELL_TWILIO = "TELL_TWILIO";
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
@@ -31,6 +33,20 @@ export function getDetails(providerID) {
   return {
     type: GET_DETAILS,
     payload: providerID
+  };
+}
+
+export function openModal(obj) {
+  return {
+    type: OPEN_MODAL,
+    payload: obj
+  };
+}
+
+export function closeModal(obj) {
+  return {
+    type: CLOSE_MODAL,
+    payload: obj
   };
 }
 
