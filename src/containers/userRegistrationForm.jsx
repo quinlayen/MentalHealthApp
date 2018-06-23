@@ -14,7 +14,8 @@ class UserRegistrationForm extends Component {
       contact: "",
       username: "",
       password: "",
-      type: "input"
+      type: "input",
+      submitted: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
@@ -36,6 +37,8 @@ class UserRegistrationForm extends Component {
 
   handleRegister(event) {
     event.preventDefault();
+
+    this.setState({ submitted: true });
     if (this.state.username !== "" && this.state.password !== "") {
       this.props.register(this.state, () => {
         console.log("NEW CLIENT REGISTERED");
@@ -53,9 +56,16 @@ class UserRegistrationForm extends Component {
         <br />
         <br />
         <div className="col-3" />
-        <div className="col -6">
+        <div className="col-6">
           <form onSubmit={this.handleRegister}>
-            <FormGroup controlId="first_name" bsSize="large">
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.first_name
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>First Name</ControlLabel>
               <FormControl
                 autoFocus
@@ -63,8 +73,19 @@ class UserRegistrationForm extends Component {
                 value={this.state.first_name}
                 onChange={this.handleChange}
               />
-            </FormGroup>
-            <FormGroup controlId="last_name" bsSize="large">
+              {this.state.submitted &&
+                !this.state.first_name && (
+                  <div className="help-block">First Name is Required</div>
+                )}
+            </div>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.last_name
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>Last Name</ControlLabel>
               <FormControl
                 autoFocus
@@ -72,8 +93,19 @@ class UserRegistrationForm extends Component {
                 value={this.state.last_name}
                 onChange={this.handleChange}
               />
-            </FormGroup>
-            <FormGroup controlId="username" bsSize="large">
+              {this.state.submitted &&
+                !this.state.last_name && (
+                  <div className="help-block">Last Name is Required</div>
+                )}
+            </div>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.username
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>Username</ControlLabel>
               <FormControl
                 autoFocus
@@ -81,8 +113,19 @@ class UserRegistrationForm extends Component {
                 value={this.state.username}
                 onChange={this.handleChange}
               />
-            </FormGroup>
-            <FormGroup controlId="password" bsSize="large">
+              {this.state.submitted &&
+                !this.state.username && (
+                  <div className="help-block">Username is Required</div>
+                )}
+            </div>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.password
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>Password</ControlLabel>
               <FormControl
                 autoFocus
@@ -91,11 +134,24 @@ class UserRegistrationForm extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
+              {this.state.submitted &&
+                !this.state.password && (
+                  <div className="help-block">Password is Required</div>
+                )}
               <span onClick={this.handleClickShowPassword}>
-                {this.state.type === "input" ? "Hide" : "Show"}
+                <button className="btn btn-primary btn-sm">
+                  {this.state.type === "input" ? "Hide" : "Show"}
+                </button>
               </span>
-            </FormGroup>
-            <div className="form-group">
+            </div>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.contact
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>Preferred Contact</ControlLabel>
               <div className="input-group">
                 <div className="input-group-prepend">
@@ -122,6 +178,10 @@ class UserRegistrationForm extends Component {
                 value={this.state.contact}
                 onChange={this.handleChange}
               />
+              {this.state.submitted &&
+                !this.state.contact && (
+                  <div className="help-block">Contact is Required</div>
+                )}
             </div>
             <button className="btn btn-primary btn-sm" type="submit">
               Submit
@@ -134,12 +194,6 @@ class UserRegistrationForm extends Component {
       </div>
     );
   }
-
-  // render() {
-  //   if (this.state.newUser === null) {
-  //     return <div className="Signup">{this.renderForm()}</div>;
-  //   }
-  // }
 }
 
 const mapStateToProps = state => {

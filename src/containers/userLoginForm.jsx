@@ -41,10 +41,12 @@ class UserLoginForm extends React.Component {
     event.preventDefault();
 
     this.setState({ submitted: true });
-    this.props.login(this.state, () => {
-      console.log("LOGGINED IN");
-      this.props.history.push("/");
-    });
+    if (this.state.username !== "" && this.state.password !== "") {
+      this.props.login(this.state, () => {
+        console.log("LOGGINED IN");
+        this.props.history.push("/");
+      });
+    }
   }
 
   render() {
@@ -97,16 +99,10 @@ class UserLoginForm extends React.Component {
                 onChange={this.handleChange}
               />
               <span onClick={this.handleClickShowPassword}>
-                {this.state.type === "input" ? "Hide" : "Show"}
+                <button className="btn btn-primary btn-sm">
+                  {this.state.type === "input" ? "Hide" : "Show"}
+                </button>
               </span>
-              {/* <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              /> */}
               {this.state.submitted &&
                 !this.state.password && (
                   <div className="help-block">Password is required</div>
