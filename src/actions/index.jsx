@@ -50,10 +50,34 @@ export function closeModal(obj) {
   };
 }
 
-export function registerAction(user, redirectCallback) {
-  return dispatch => {
-    return axios
-      .post(`${HOST}/auth/register`, {
+// export function registerAction(user, redirectCallback) {
+//   return dispatch => {
+//     return axios
+//       .post(`${HOST}/auth/register`, {
+//         first_name: user.first_name,
+//         last_name: user.last_name,
+//         method: user.method,
+//         contact: user.contact,
+//         username: user.username,
+//         password: user.password
+//       })
+//       .then(newUser => {
+//         dispatch({
+//           type: REGISTER_USER,
+//           users: newUser
+//         });
+//         redirectCallback();
+//       })
+//       .catch(err => {
+//         console.log({ err: err.message });
+//       });
+//   };
+// }
+
+
+export function registerAction(user) {
+ 
+    const registeredUser = axios.post(`${HOST}/auth/register`, {
         first_name: user.first_name,
         last_name: user.last_name,
         method: user.method,
@@ -61,18 +85,19 @@ export function registerAction(user, redirectCallback) {
         username: user.username,
         password: user.password
       })
-      .then(newUser => {
-        dispatch({
+
+      return {
           type: REGISTER_USER,
-          users: newUser
-        });
-        redirectCallback();
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-      });
-  };
-}
+          payload: registeredUser
+      }
+    }
+  //       redirectCallback();
+  //     })
+  //     .catch(err => {
+  //       console.log({ err: err.message });
+  //     });
+  // };
+
 
 export function loginAction(user, redirectCallback) {
   return dispatch => {

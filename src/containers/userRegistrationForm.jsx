@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerAction } from "../actions/index";
+import {bindActionCreators} from'redux'
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class UserRegistrationForm extends Component {
@@ -40,10 +41,9 @@ class UserRegistrationForm extends Component {
 
     this.setState({ submitted: true });
     if (this.state.username !== "" && this.state.password !== "") {
-      this.props.register(this.state, () => {
-        console.log("NEW CLIENT REGISTERED");
-        this.props.history.push("/");
-      });
+      this.props.registerAction(this.state)
+      this.props.history.push("/");
+    
     }
   }
 
@@ -196,19 +196,15 @@ class UserRegistrationForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    users: state.users.users
-  };
+function mapStateToProps({users}){
+  return {users} 
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    register: function(user, redirectCallback) {
-      dispatch(registerAction(user, redirectCallback));
-    }
-  };
-};
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({registerAction}, dispatch)
+}
+
 
 export default withRouter(
   connect(

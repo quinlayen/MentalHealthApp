@@ -2,15 +2,15 @@ import { REGISTER_USER } from "../actions/index";
 import { LOGIN_USER } from "../actions/index";
 import { LOGOUT_USER } from "../actions/index";
 
-const initialState = {
-  users: [],
-  user: []
-};
+// const initialState = {
 
-export default (state = initialState, action = {}) => {
+//   user: []
+// };
+
+export default (state = {}, action) => {
   switch (action.type) {
     case REGISTER_USER:
-      return { ...state, users: action.payload };
+      return action.payload.data
     case LOGIN_USER:
       return { ...state, user: action.payload };
     case LOGOUT_USER:

@@ -76,7 +76,7 @@ class ProviderDetail extends Component {
           //           <br />
           //           <div className="card-text-right">
           //             About Me: {doctorData.bio}
-          //           </div>
+          // //           </div>
           //           <Link to="/register" className="btn btn-primary btn-sm">
           //             I'm Interested
           //           </Link>
