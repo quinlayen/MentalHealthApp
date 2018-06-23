@@ -16,6 +16,9 @@ class ProviderList extends Component {
 
   renderDoctors(doctorData) {
     return (
+
+
+      
       <li className="list-group-item" key={doctorData.provider_id}>
         <div className="card">
           <div className="card-header">
@@ -33,10 +36,7 @@ class ProviderList extends Component {
           <div className="card-body">
             <h5 className="card-text">{doctorData.location}</h5>
             <h6 className="card-text">{doctorData.type}</h6>
-            {/* <div className="card-text-right">Phone: {doctorData.phone}</div> */}
-            {/* <Link to={"/auth/register"} className="btn btn-primary">
-              I'm Interested
-            </Link> */}
+        
           </div>
         </div>
       </li>
@@ -46,8 +46,13 @@ class ProviderList extends Component {
   render() {
     return (
       <div className="container">
+      <br/>
+      <br/>
+      <br/>
+      <br/>
         <div className="row">
-          <div className="col=8">
+       
+          <div className="col-8">
             <ul className="list-group list-group-flush">
               {this.props.doctors.map(this.renderDoctors)}
             </ul>
@@ -70,3 +75,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProviderList);
+
+

@@ -6,7 +6,7 @@ import "../styles/searchBar.css";
 class NavBar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
         <div className="container navbar-custom">
           <Link to="/" className="navbar-brand">
             <strong>FYW</strong>
@@ -27,11 +27,16 @@ class NavBar extends Component {
             id="navbarSupportedContent-7"
           >
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
+              {/* <li className="nav-item active">
                 <Link className="nav-link" to="/">
                   Home <span className="sr-only">(current)</span>
                 </Link>
-              </li>
+              </li> */}
+              {/* <li className="nav-item">
+                <Link className="nav-link" to="/register">
+                  Profile
+                </Link>
+              </li> */}
             </ul>
             <ul className="navbar-nav">
               <li className="nav-item">

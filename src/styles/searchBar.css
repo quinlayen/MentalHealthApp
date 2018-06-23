@@ -1,4 +1,4 @@
-container {
+/* container {
     font-family: 'Tajawal', sans-serif;
 }
 
@@ -43,15 +43,6 @@ container {
     margin-left: 3px;
 }
 
-/* .background {
-    background: url("../styles/static/ocs_cropped.jpg")no-repeat center center;
-    background-size: 100%;
-} */
-
-/* .btn .fa {
-    margin-left: 3px;
-} */
-
 .top-nav-collapse {
     background-color: #424f95 !important;
 }
@@ -92,7 +83,7 @@ h6 {
     .full-height header .view {
         height: 1040px;
     }
-}
+} */
 
 * {
     font-family: 'Libre Franklin', sans-serif;
