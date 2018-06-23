@@ -22,7 +22,7 @@ import navigatorImg from "./styles/static/800x600.jpg";
 import streamsImg from "./styles/static/ocs_cropped.jpg";
 
 const store = createStore(reducer);
-console.log(store.getState());
+// console.log(store.getState());
 class App extends Component {
   render() {
     return (

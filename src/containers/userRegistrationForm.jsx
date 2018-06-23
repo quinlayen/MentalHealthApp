@@ -138,11 +138,12 @@ class UserRegistrationForm extends Component {
                 !this.state.password && (
                   <div className="help-block">Password is Required</div>
                 )}
-              <span onClick={this.handleClickShowPassword}>
-                <button className="btn btn-primary btn-sm">
-                  {this.state.type === "input" ? "Hide" : "Show"}
-                </button>
-              </span>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={this.handleClickShowPassword}
+              >
+                {this.state.type === "input" ? "Show" : "Hide"}
+              </button>
             </div>
             <div
               className={
