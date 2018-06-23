@@ -6,7 +6,7 @@ import "../styles/searchBar.css";
 class NavBar extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
         <div className="container navbar-custom">
           <Link to="/" className="navbar-brand">
             <strong>FYW</strong>

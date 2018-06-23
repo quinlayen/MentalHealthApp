@@ -26,24 +26,26 @@ class ProviderDetail extends Component {
       if (doctorData.provider_id == this.props.match.params.id) {
         return (
           <div className="body">
-          <br/>
-          <br/>
-          <br/>
-          <img src={doctorData.image} alt=""/>
-            <h2>{doctorData.first_name} {doctorData.last_name}</h2>
+            <br />
+            <br />
+            <br />
+            <img src={doctorData.image} alt="" />
+            <h2>
+              {doctorData.first_name} {doctorData.last_name}
+            </h2>
             <div className="body-left">
               <h5>{doctorData.specialties}</h5>
               <p>{doctorData.insurance}</p>
             </div>
             <div className="body-right">
               <h5>Phone: {doctorData.phone}</h5>
-              <br/>
-              <section>
-                {doctorData.bio}
-              </section>
+              <br />
+              <section>{doctorData.bio}</section>
             </div>
+            <Link to="/register" className="btn btn-primary btn-sm">
+              I'm Interested
+            </Link>
           </div>
-          
 
           // <div className="container">
           // <br/>

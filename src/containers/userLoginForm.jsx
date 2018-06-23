@@ -7,16 +7,30 @@ import "../styles/userLoginForm.css";
 class UserLoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "", submitted: false };
+    this.state = {
+      username: "",
+      password: "",
+      submitted: false,
+      type: "input"
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
   }
 
   componentDidMount() {
     if (localStorage.getItem("id")) {
       this.props.history.push("/login");
     }
+  }
+
+  handleClickShowPassword(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.setState({
+      type: this.state.type === "input" ? "password" : "input"
+    });
   }
 
   handleChange(event) {
@@ -76,12 +90,23 @@ class UserLoginForm extends React.Component {
             >
               <label htmlFor="password">Password</label>
               <input
-                type="password"
+                type={this.state.type}
                 className="form-control"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleChange}
               />
+              <span onClick={this.handleClickShowPassword}>
+                {this.state.type === "input" ? "Hide" : "Show"}
+              </span>
+              {/* <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              /> */}
               {this.state.submitted &&
                 !this.state.password && (
                   <div className="help-block">Password is required</div>
