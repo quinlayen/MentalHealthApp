@@ -7,12 +7,24 @@ import "../styles/searchBar.css";
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    console.log("users state", this.props.users);
+    this.state = {
+      isLoggedIn: false,
+      user: {},
+      currentUser: ""
+    };
+    this.changeUser = this.changeUser.bind(this);
   }
 
-  static getDerivedStateFromProps(props) {
-    console.log("derived users", props.users);
+  static getDerivedStateFromProps(props, state) {
     return props.users;
+  }
+
+  changeUser() {
+    if (this.state.isLoggedIn === true) {
+      return (this.state.currentUser = `Welcome, ${this.state.user.username}`);
+    } else {
+      return "Login";
+    }
   }
 
   render() {
@@ -46,7 +58,7 @@ class NavBar extends Component {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
-                  Login
+                  {this.changeUser(() => {})}
                 </Link>
               </li>
             </ul>

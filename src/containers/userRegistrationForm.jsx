@@ -158,10 +158,10 @@ class UserRegistrationForm extends Component {
                     name="method"
                     className="custom-select"
                   >
-                    <option value="Email">Email</option>
+                    {/* <option value="Email">Email</option> */}
                     <option value="Call">Call</option>
                     <option value="Text">Text</option>
-                    <option value="Chat">Web-Chat</option>
+                    {/* <option value="Chat">Web-Chat</option> */}
                   </select>
                 </div>
               </div>

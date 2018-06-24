@@ -95,7 +95,7 @@ router.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/auth/login" }),
   (req, res) => {
-    console.log("logggggged in!!");
+    //console.log('in passport',req.body);
     return res.send(req.body);
   }
 );
