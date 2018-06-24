@@ -10,8 +10,9 @@ class NavBar extends Component {
     this.state = {
       isLoggedIn: false,
       user: {},
-      currentUser: 'Login'
+      currentUser: ''
     }
+    this.changeUser=this.changeUser.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -19,18 +20,26 @@ class NavBar extends Component {
   }
 
   changeUser(){
-    this.setState({currentUser:this.state.user.username})
+
+    if(this.state.isLoggedIn === true){
+    console.log(this.state.user.username)
+    return this.state.currentUser = `Welcome: ${this.state.user.username}`
+  }else{
+    return "Login"
   }
+
+}
   
   render() {
-     console.log('state in navbar after prop change',this.state);
-     console.log('current user',this.state.currentUser)
-     console.log('isLoggedIn', this.state.isLoggedIn)
-     console.log('user in state', this.state.user.username)
-     //console.log('in props', this.props.users.user.username)
-    if(this.state.isLoggedin === true){
-      this.changeUser();
-     }
+    //  console.log('state in navbar after prop change',this.state);
+    //  console.log('current user',this.state.currentUser)
+    //  console.log('isLoggedIn', this.state.isLoggedIn)
+    //  console.log('user in state', this.state.user.username)
+  
+    // if(this.state.isLoggedin === true){
+    //   console.log('its hewre')
+    //   this.changeUser();
+    //  }
     
     
     return (
@@ -63,7 +72,7 @@ class NavBar extends Component {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
-                  {this.state.currentUser}
+                 {this.changeUser(()=>{})}
                 </Link>
               </li>
             </ul>
