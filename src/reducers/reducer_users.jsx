@@ -11,7 +11,7 @@ export default (state = {}, action) => {
       console.log("IN THE REDUCER", action.payload.data);
       return { isLoggedIn: true, user: action.payload.data };
     case LOGOUT_USER:
-      return { ...state, user: null };
+      return { user: null };
     default:
       return state;
   }

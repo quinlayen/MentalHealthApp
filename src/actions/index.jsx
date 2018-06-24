@@ -68,10 +68,10 @@ export function registerAction(user) {
 
 export function loginAction(user) {
   const loggedinUser = axios.post(`${HOST}/auth/login`, {
-    first_name: user.first_name,
-    last_name: user.last_name,
-    method: user.method,
-    contact: user.contact,
+    // first_name: user.first_name,
+    // last_name: user.last_name,
+    // method: user.method,
+    // contact: user.contact,
     username: user.username,
     password: user.password
   });
@@ -83,19 +83,27 @@ export function loginAction(user) {
 }
 
 export function logoutAction() {
-  localStorage.clear();
-  return dispatch => {
-    return fetch(`${HOST}/auth/logout`)
-      .then(logout => {
-        dispatch({
-          type: LOGOUT_USER,
-          payload: logout
-        });
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-      });
+  // localStorage.clear();
+  const loggedOutUser = axios.post(`${HOST}/auth/logout`);
+
+  console.log("in the reducer", loggedOutUser);
+  return {
+    type: LOGOUT_USER,
+    payload: loggedOutUser
   };
+
+  // return dispatch => {
+  //   return fetch(`${HOST}/auth/logout`)
+  //     .then(logout => {
+  //       dispatch({
+  //         type: LOGOUT_USER,
+  //         payload: logout
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log({ err: err.message });
+  //     });
+  // };
 }
 
 export function itemsIsLoading(bool) {

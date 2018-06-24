@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "../styles/navBar.css";
 import "../styles/searchBar.css";
+import { logoutAction } from "../actions/index";
 
 class NavBar extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class NavBar extends Component {
       currentUser: ""
     };
     this.changeUser = this.changeUser.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -24,6 +26,14 @@ class NavBar extends Component {
       return (this.state.currentUser = `Welcome: ${this.state.user.username}`);
     } else {
       return "Login";
+    }
+  }
+
+  handleLogout(event) {
+    if (this.state.isLoggedIn === true) {
+      this.props.logoutAction(this.state);
+      console.log("COMPONENT LOGGEDOUT");
+      this.props.history.push("/login");
     }
   }
 
@@ -59,6 +69,15 @@ class NavBar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
                   {this.changeUser(() => {})}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/login"
+                  className="nav-link"
+                  onClick={this.handleLogout}
+                >
+                  Logout
                 </Link>
               </li>
             </ul>

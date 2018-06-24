@@ -11,7 +11,7 @@ class UserRegistrationForm extends Component {
     this.state = {
       first_name: "",
       last_name: "",
-      method: "Email",
+      method: "Text",
       contact: "",
       username: "",
       password: "",
@@ -158,10 +158,14 @@ class UserRegistrationForm extends Component {
                     name="method"
                     className="custom-select"
                   >
-                    <option disabled value="Email">Email</option>
-                    <option value="Call">Call</option>
                     <option value="Text">Text</option>
-                    <option disabled value="Chat">Web-Chat</option>
+                    <option value="Call">Call</option>
+                    <option disabled value="Email">
+                      Email
+                    </option>
+                    <option disabled value="Chat">
+                      Web-Chat
+                    </option>
                   </select>
                 </div>
               </div>

@@ -38,7 +38,7 @@ class App extends Component {
           {/* <Route exact path="/" component={SearchBar} /> */}
           {/* <NavDrawer /> */}
           {/* <Route path="doctors/" component={SendSms} /> */}
-          <SendSms />
+          {/* <SendSms /> */}
           {/* <SendCall /> */}
         </div>
       </Router>

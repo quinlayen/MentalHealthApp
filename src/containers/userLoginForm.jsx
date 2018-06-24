@@ -121,20 +121,6 @@ class UserLoginForm extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {
-//     login: state.users.user
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     login: function(user, redirectCallback) {
-//       dispatch(loginAction(user, redirectCallback));
-//     }
-//   };
-// };
-
 function mapStateToProps({ users }) {
   return { users };
 }
