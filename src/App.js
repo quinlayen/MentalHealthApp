@@ -38,7 +38,7 @@ class App extends Component {
             <Redirect from="/*" to="/" />
           </Switch>
           {/* <Route exact path="/" component={SearchBar} /> */}
-          <NavDrawer />
+          {/* <NavDrawer /> */}
           {/* <Route path="doctors/" component={SendSms} /> */}
           <SendSms />
           <SendCall />
