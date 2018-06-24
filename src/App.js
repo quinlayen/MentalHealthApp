@@ -9,7 +9,7 @@ import "./styles/App.css";
 import UserRegistrationForm from "./containers/userRegistrationForm";
 import UserLoginForm from "./containers/userLoginForm";
 //import SearchBar from "./containers/searchBar";
-//import SendSms from "./containers/sms";
+import SendSms from "./containers/sms";
 import Home from "./components/home";
 import NavBar from "./components/navBar";
 //import NavDrawer from "./components/navDrawer";
@@ -17,8 +17,7 @@ import ProviderList from "./containers/providerList";
 import ProviderDetail from "./containers/providerDetail";
 import { createStore } from "redux";
 import reducer from "./reducers/index";
-//import SendCall from "./containers/dialer";
-
+import SendCall from "./containers/dialer";
 
 const store = createStore(reducer);
 // console.log(store.getState());
@@ -39,7 +38,7 @@ class App extends Component {
           {/* <Route exact path="/" component={SearchBar} /> */}
           {/* <NavDrawer /> */}
           {/* <Route path="doctors/" component={SendSms} /> */}
-          {/* <SendSms /> */}
+          <SendSms />
           {/* <SendCall /> */}
         </div>
       </Router>

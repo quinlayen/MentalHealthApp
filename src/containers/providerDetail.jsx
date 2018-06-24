@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getDetails, pushNotifs } from "../actions/index";
+import { getDetails, pushNotifs, tellTwilio } from "../actions/index";
 import { bindActionCreators } from "redux";
 import "../styles/providerDetail.css";
 import { Link } from "react-router-dom";
@@ -10,22 +10,50 @@ class ProviderDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pushNotifs: false
+      // pushNotifs: false,
+      user: {},
+      contact: "",
+      medium: "sms"
+      // confirmationSnackbarOpen: false,
+      // snackbarDisabled: false
     };
-    this.pushNotifications = this.pushNotifications.bind(this);
+    // this.pushNotifications = this.pushNotifications.bind(this);
+    this.sendSms = this.sendSms.bind(this);
   }
 
-  pushNotifications(e) {
+  static getDerivedStateFromProps(props, state) {
+    return props.users;
+  }
+
+  // pushNotifications(e) {
+  //   e.preventDefault();
+  //   this.props.pushNotifs(true);
+  //   this.setState({ pushNotifs: true });
+  // }
+
+  sendSms(e) {
     e.preventDefault();
-    this.props.pushNotifs(true);
-    this.setState({ pushNotifs: true });
+
+    console.log("PHONE NUMBER", this.props.users.user.contact);
+    // {method: 'sms', contact: 'blah'}
+    this.setState(
+      {
+        // confirmationSnackbarMessage: "Message Sent!",
+        // confirmationSnackbarOpen: true,
+        processed: true,
+        contact: this.props.users.user.contact
+      },
+      () => {
+        this.props.tellTwilio(this.state);
+      }
+    );
   }
 
   render() {
     return this.props.doctors.map(doctorData => {
       if (doctorData.provider_id == this.props.match.params.id) {
         return (
-          <div className="body">
+          <div key="doctor" className="body">
             <br />
             <br />
             <br />
@@ -45,6 +73,9 @@ class ProviderDetail extends Component {
             <Link to="/register" className="btn btn-primary btn-sm">
               I'm Interested
             </Link>
+            <button key="sms" onClick={this.sendSms}>
+              Testing Messages
+            </button>
           </div>
 
           // <div className="container">
@@ -95,11 +126,11 @@ class ProviderDetail extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getDetails, pushNotifs }, dispatch);
+  return bindActionCreators({ getDetails, pushNotifs, tellTwilio }, dispatch);
 }
 
-function mapStateToProps({ doctors, details }) {
-  return { doctors, details };
+function mapStateToProps({ doctors, details, users }) {
+  return { doctors, details, users };
 }
 
 export default connect(

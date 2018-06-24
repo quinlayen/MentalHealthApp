@@ -81,29 +81,29 @@ app.post("/api/sms", (req, res) => {
 
   let client = require("twilio")(SID, TOKEN);
 
-  console.log(req.body, "this is in server");
+  console.log(req.body.contact, "this is in server");
   //creating new message to send to client
   client.messages
     .create({
-      to: "+1" + req.body.recipient,
+      to: "+1" + req.body.contact,
       from: SENDER,
-      body: req.body.message
+      body: "Hello! Thank you for reaching out. How can I help you today?"
       // statusCallback: `http://${PORT}/client/home`
     })
-    .then(message => {
-      // if (smsCount > 0) {
-      //   msg = message + (smsCount + 1);
-      // }
-      const twiml = new MessagingResponse();
-      // console.log(req.session.counter);
-      // req.session.counter = smsCount + 1;
-      //tracking currently sent message + old messages
-      twiml.message(msg);
+    // .then(message => {
+    //   // if (smsCount > 0) {
+    //   //   msg = message + (smsCount + 1);
+    //   // }
+    //   const twiml = new MessagingResponse();
+    //   // console.log(req.session.counter);
+    //   // req.session.counter = smsCount + 1;
+    //   //tracking currently sent message + old messages
+    //   twiml.message(msg);
 
-      // res.writeHead(200, {'Content-Type': 'text/xml'});
-      // res.write(twiml.toString())
-      // console.log(req.session.counter);
-    })
+    //   // res.writeHead(200, {'Content-Type': 'text/xml'});
+    //   // res.write(twiml.toString())
+    //   // console.log(req.session.counter);
+    // })
     .then(message => console.log(message, "message sid"))
     .done();
 });
@@ -118,7 +118,7 @@ app.post("/api/call", (req, res) => {
 
   client.calls.create({
     url: "http://demo.twilio.com/docs/voice.xml",
-    to: "+1" + req.body.recipient,
+    to: "+1" + req.body.contact,
     from: SENDER
   });
 });

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import '../styles/navBar.css';
-import '../styles/searchBar.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import "../styles/navBar.css";
+import "../styles/searchBar.css";
 
 class NavBar extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class NavBar extends Component {
     this.state = {
       isLoggedIn: false,
       user: {},
-      currentUser: ''
+      currentUser: ""
     };
     this.changeUser = this.changeUser.bind(this);
   }
@@ -23,7 +23,7 @@ class NavBar extends Component {
     if (this.state.isLoggedIn === true) {
       return (this.state.currentUser = `Welcome: ${this.state.user.username}`);
     } else {
-      return 'Login';
+      return "Login";
     }
   }
 
@@ -45,7 +45,10 @@ class NavBar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent-7">
+          <div
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent-7"
+          >
             <ul className="navbar-nav mr-auto" />
             <ul className="navbar-nav">
               <li className="nav-item">
