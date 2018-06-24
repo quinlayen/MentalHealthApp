@@ -2,8 +2,6 @@ import { REGISTER_USER } from "../actions/index";
 import { LOGIN_USER } from "../actions/index";
 import { LOGOUT_USER } from "../actions/index";
 
-
-
 export default (state = {}, action) => {
   switch (action.type) {
     case REGISTER_USER:
