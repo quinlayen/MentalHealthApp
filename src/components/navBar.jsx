@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import "../styles/navBar.css";
-import "../styles/searchBar.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import '../styles/navBar.css';
+import '../styles/searchBar.css';
 
 class NavBar extends Component {
   constructor(props) {
@@ -11,37 +11,23 @@ class NavBar extends Component {
       isLoggedIn: false,
       user: {},
       currentUser: ''
-    }
-    this.changeUser=this.changeUser.bind(this);
+    };
+    this.changeUser = this.changeUser.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
     return props.users;
   }
 
-  changeUser(){
-
-    if(this.state.isLoggedIn === true){
-    console.log(this.state.user.username)
-    return this.state.currentUser = `Welcome: ${this.state.user.username}`
-  }else{
-    return "Login"
+  changeUser() {
+    if (this.state.isLoggedIn === true) {
+      return (this.state.currentUser = `Welcome: ${this.state.user.username}`);
+    } else {
+      return 'Login';
+    }
   }
 
-}
-  
   render() {
-    //  console.log('state in navbar after prop change',this.state);
-    //  console.log('current user',this.state.currentUser)
-    //  console.log('isLoggedIn', this.state.isLoggedIn)
-    //  console.log('user in state', this.state.user.username)
-  
-    // if(this.state.isLoggedin === true){
-    //   console.log('its hewre')
-    //   this.changeUser();
-    //  }
-    
-    
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
         <div className="container navbar-custom">
@@ -59,10 +45,7 @@ class NavBar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div
-            className="collapse navbar-collapse"
-            id="navbarSupportedContent-7"
-          >
+          <div className="collapse navbar-collapse" id="navbarSupportedContent-7">
             <ul className="navbar-nav mr-auto" />
             <ul className="navbar-nav">
               <li className="nav-item">
@@ -72,7 +55,7 @@ class NavBar extends Component {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
-                 {this.changeUser(()=>{})}
+                  {this.changeUser(() => {})}
                 </Link>
               </li>
             </ul>

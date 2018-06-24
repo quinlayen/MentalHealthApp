@@ -1,17 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 
-export const TOGGLE_ACTION = "TOGGLE_ACTION";
-export const FETCH_DOCTORS = "FETCH_DOCTORS";
-export const GET_DETAILS = "GET_DETAILS";
-export const OPEN_MODAL = "OPEN_MODAL";
-export const CLOSE_MODAL = "CLOSE_MODAL";
-export const TELL_TWILIO = "TELL_TWILIO";
-export const REGISTER_USER = "REGISTER_USER";
-export const LOGIN_USER = "LOGIN_USER";
-export const LOGOUT_USER = "LOGOUT_USER";
-export const PUSH_NOTIFS = "PUSH_NOTIFS";
+export const TOGGLE_ACTION = 'TOGGLE_ACTION';
+export const FETCH_DOCTORS = 'FETCH_DOCTORS';
+export const GET_DETAILS = 'GET_DETAILS';
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+export const TELL_TWILIO = 'TELL_TWILIO';
+export const REGISTER_USER = 'REGISTER_USER';
+export const LOGIN_USER = 'LOGIN_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
+export const PUSH_NOTIFS = 'PUSH_NOTIFS';
 
-const HOST = "http://localhost:8080";
+const HOST = 'http://localhost:8080';
 
 export function toggleAction(open) {
   return {
@@ -50,29 +50,6 @@ export function closeModal(obj) {
   };
 }
 
-// export function registerAction(user, redirectCallback) {
-//   return dispatch => {
-//     return axios
-//       .post(`${HOST}/auth/register`, {
-//         first_name: user.first_name,
-//         last_name: user.last_name,
-//         method: user.method,
-//         contact: user.contact,
-//         username: user.username,
-//         password: user.password
-//       })
-//       .then(newUser => {
-//         dispatch({
-//           type: REGISTER_USER,
-//           users: newUser
-//         });
-//         redirectCallback();
-//       })
-//       .catch(err => {
-//         console.log({ err: err.message });
-//       });
-//   };
-// }
 
 export function registerAction(user) {
   const registeredUser = axios.post(`${HOST}/auth/register`, {
@@ -90,41 +67,17 @@ export function registerAction(user) {
   };
 }
 
-
 export function loginAction(user) {
   const loggedinUser = axios.post(`${HOST}/auth/login`, {
     username: user.username,
     password: user.password
-   
   });
-  console.log('in the reducer', loggedinUser)
+  console.log('in the reducer', loggedinUser);
   return {
     type: LOGIN_USER,
     payload: loggedinUser
   };
 }
-
-// export function loginAction(user, redirectCallback) {
-//   return dispatch => {
-//     return axios
-//       .post(`${HOST}/auth/login`, {
-//         username: user.username,
-//         password: user.password
-//       })
-//       .then(loginInfo => {
-//         localStorage.setItem("id", loginInfo.data.client_id);
-//         // console.log("length", localStorage.length);
-//         dispatch({
-//           type: LOGIN_USER,
-//           payload: loginInfo
-//         });
-//         redirectCallback();
-//       })
-//       .catch(err => {
-//         console.log({ err: err.message });
-//       });
-//   };
-// }
 
 export function logoutAction() {
   localStorage.clear();
@@ -144,7 +97,7 @@ export function logoutAction() {
 
 export function itemsIsLoading(bool) {
   return {
-    type: "ITEMS_LOADING",
+    type: 'ITEMS_LOADING',
     isLoading: bool
   };
 }
@@ -156,10 +109,8 @@ export function pushNotifs(bool) {
   const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
 
   function urlBase64ToUint8Array(base64String) {
-    const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
-    const base64 = (base64String + padding)
-      .replace(/\-/g, "+")
-      .replace(/_/g, "/");
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
 
     const rawData = window.atob(base64);
     const outputArray = new Uint8Array(rawData.length);
@@ -172,16 +123,16 @@ export function pushNotifs(bool) {
 
   navigator.serviceWorker.ready.then(registration => {
     if (!registration.pushManager) {
-      alert("push unsupported");
+      alert('push unsupported');
       return;
     }
-    console.log(registration, "in reg action");
+    console.log(registration, 'in reg action');
     registration.pushManager
       .subscribe({
         userVisibleOnly: true,
         applicationsServerKey: convertedVapidKey
       })
-      .then(subscription => axios.post("/api/notifs", subscription))
+      .then(subscription => axios.post('/api/notifs', subscription))
       .catch(err => console.log(err));
   });
 
@@ -193,7 +144,7 @@ export function pushNotifs(bool) {
 
 export function twilioSuccess(bool) {
   return {
-    type: "TWILIO_SUCCESS",
+    type: 'TWILIO_SUCCESS',
     isSuccess: bool
   };
 }
@@ -201,7 +152,7 @@ export function twilioSuccess(bool) {
 export function tellTwilio(medium) {
   return dispatch => {
     switch (medium.medium) {
-      case "sms":
+      case 'sms':
         let smsRequest = axios.post(`${HOST}/api/sms`, {
           recipient: medium.recipient,
           message: medium.message
@@ -210,7 +161,7 @@ export function tellTwilio(medium) {
         smsRequest
           .then(res => {
             dispatch(twilioSuccess(true));
-            console.log(res, "is going to twilio");
+            console.log(res, 'is going to twilio');
             return {
               type: TELL_TWILIO,
               payload: res
@@ -223,29 +174,23 @@ export function tellTwilio(medium) {
 
         break;
 
-      // case web:
-      // break;
-
-      // case email:
-      // break;
-
-      case "call":
+      case 'call':
         let callRequest = axios.post(`${HOST}/api/call`, {
           recipient: medium.recipient
         });
-        console.log("here!!!", medium.recipient);
+        console.log('here!!!', medium.recipient);
         callRequest
           .then(res => {
-            console.log("got back res", res);
+            console.log('got back res', res);
             dispatch(twilioSuccess(true));
-            console.log(res, "is going to twilio");
+            console.log(res, 'is going to twilio');
             return {
               type: TELL_TWILIO,
               payload: res
             };
           })
           .catch(err => {
-            console.log("the error: ", err);
+            console.log('the error: ', err);
             dispatch(twilioSuccess(false));
           });
         break;

@@ -1,24 +1,22 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { fetchDoctors } from "../actions/index";
-import "../styles/searchBar.css";
-
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchDoctors } from '../actions/index';
+import '../styles/searchBar.css';
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      type: "Therapist",
-      location: ""
+      type: 'Therapist',
+      location: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onSelect = this.onSelect.bind(this);
   }
-  
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -30,8 +28,8 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     this.props.fetchDoctors(this.state);
-    // console.log("this.props", this.props);
-    this.props.history.push("/doctors");
+
+    this.props.history.push('/doctors');
   }
 
   render() {
@@ -50,12 +48,7 @@ class SearchBar extends Component {
               <div className="form-group">
                 <div className="input-group">
                   <div className="input-group-prepend">
-                    <select
-                      onChange={this.onSelect}
-                      value={this.state.type}
-                      name="type"
-                      className="custom-select"
-                    >
+                    <select onChange={this.onSelect} value={this.state.type} name="type" className="custom-select">
                       <option value="Therapist">Therapist</option>
                       <option value="Psychiatrist">Psychiatrist</option>
                     </select>
@@ -73,11 +66,7 @@ class SearchBar extends Component {
                     />
                   </div>
                   <div className="input-group-append">
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline"
-                      type="submit"
-                    >
+                    <button type="button" className="btn btn-sm btn-outline" type="submit">
                       S
                     </button>
                   </div>
