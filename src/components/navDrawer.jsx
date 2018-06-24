@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core';
-import { SwipeableDrawer} from '@material-ui/core';
-import {} from '@material-ui/icons';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { toggleAction } from '../actions/index';
-import compose from 'recompose/compose';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core";
+import { SwipeableDrawer } from "@material-ui/core";
+import {} from "@material-ui/icons";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { toggleAction } from "../actions/index";
+import compose from "recompose/compose";
 
 const styles = {
   list: {
     width: 250
   },
   fullList: {
-    width: 'auto'
+    width: "auto"
   }
 };
 
@@ -43,13 +43,14 @@ class NavDrawer extends Component {
       </div>
     );
 
-    const fullList = (
-      <div className={classes.fullList}>
-        <List>Hello 4</List>
-        <Divider />
-        <List>Hello 3</List>
-      </div>
-    );
+    // const fullList = (
+    //   <div className={classes.fullList}>
+    //     <List>Hello 4</List>
+    //     <Divider />
+    //     <List>Hello 3</List>
+    //   </div>
+    // );
+
     return (
       <div>
         <SwipeableDrawer
@@ -91,4 +92,10 @@ function mapStateToProps({ drawer }) {
   return { drawer };
 }
 
-export default compose(withStyles(styles), connect(mapStateToProps, mapDispatchToProps))(NavDrawer);
+export default compose(
+  withStyles(styles),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(NavDrawer);

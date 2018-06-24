@@ -68,10 +68,6 @@ export function registerAction(user) {
 
 export function loginAction(user) {
   const loggedinUser = axios.post(`${HOST}/auth/login`, {
-    // first_name: user.first_name,
-    // last_name: user.last_name,
-    // method: user.method,
-    // contact: user.contact,
     username: user.username,
     password: user.password
   });
@@ -86,7 +82,7 @@ export function logoutAction() {
   // localStorage.clear();
   const loggedOutUser = axios.post(`${HOST}/auth/logout`);
 
-  console.log("in the reducer", loggedOutUser);
+  console.log("in the action", loggedOutUser);
   return {
     type: LOGOUT_USER,
     payload: loggedOutUser
@@ -122,7 +118,7 @@ export function pushNotifs(bool) {
   function urlBase64ToUint8Array(base64String) {
     const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
     const base64 = (base64String + padding)
-      .replace(/\-/g, "+")
+      .replace(/-/g, "+")
       .replace(/_/g, "/");
 
     const rawData = window.atob(base64);
@@ -165,7 +161,7 @@ export function twilioSuccess(bool) {
 export function tellTwilio(medium) {
   console.log("IN THE ACTION", medium);
   return dispatch => {
-    switch (medium.medium) {
+    switch (medium.method) {
       case "sms":
         let smsRequest = axios.post(`${HOST}/api/sms`, {
           contact: medium.contact

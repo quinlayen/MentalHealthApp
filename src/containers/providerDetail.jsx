@@ -13,7 +13,7 @@ class ProviderDetail extends Component {
       // pushNotifs: false,
       user: {},
       contact: "",
-      medium: "sms"
+      method: "sms"
       // confirmationSnackbarOpen: false,
       // snackbarDisabled: false
     };
