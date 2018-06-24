@@ -1,6 +1,9 @@
-/* container {
-    font-family: 'Tajawal', sans-serif;
+container {
+  font-family: 'Tajawal', sans-serif;
+  position: absolute;
+  z-index: 1;
 }
+/* 
 
 #locationsearh {
     width: 100%;
@@ -86,17 +89,17 @@ h6 {
 } */
 
 * {
-    font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
 #button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 h1,
 h4,
 h6,
 br {
-    color: white;
-    font-family: 'Libre Franklin', sans-serif;
+  color: white;
+  font-family: 'Libre Franklin', sans-serif;
 }

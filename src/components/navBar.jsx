@@ -1,13 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "../styles/navBar.css";
-import "../styles/searchBar.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/navBar.css';
+import '../styles/searchBar.css';
 
 class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
-        <div className="container navbar-custom">
+        <div className="container-fluid navbar-custom">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true" />
           <Link to="/" className="navbar-brand">
             <strong>FYW</strong>
           </Link>

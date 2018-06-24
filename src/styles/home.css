@@ -3,7 +3,6 @@ background: url('../styles/static/ocs_cropped_2.jpg')no-repeat center center;
 background-size: cover;
 } */
 
-
 img.bg {
   /* Set rules to fill background */
   min-height: 100%;
@@ -15,7 +14,5 @@ img.bg {
 
   /* Set up positioning */
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  z-index: 0;
 }
