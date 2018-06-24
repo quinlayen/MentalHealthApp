@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchDoctors } from "../actions/index";
 import "../styles/searchBar.css";
-import WOW from "wow.js/dist/wow.js";
+
 
 class SearchBar extends Component {
   constructor(props) {
@@ -18,9 +18,7 @@ class SearchBar extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onSelect = this.onSelect.bind(this);
   }
-  componentDidMount() {
-    new WOW().init();
-  }
+  
 
   handleChange = e => {
     const { name, value } = e.target;

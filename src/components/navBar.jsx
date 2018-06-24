@@ -7,15 +7,32 @@ import "../styles/searchBar.css";
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    console.log("users state", this.props.users);
+    this.state = {
+      isLoggedIn: false,
+      user: {},
+      currentUser: 'Login'
+    }
   }
 
-  static getDerivedStateFromProps(props) {
-    console.log("derived users", props.users);
+  static getDerivedStateFromProps(props, state) {
     return props.users;
   }
 
+  changeUser(){
+    this.setState({currentUser:this.state.user.username})
+  }
+  
   render() {
+     console.log('state in navbar after prop change',this.state);
+     console.log('current user',this.state.currentUser)
+     console.log('isLoggedIn', this.state.isLoggedIn)
+     console.log('user in state', this.state.user.username)
+     //console.log('in props', this.props.users.user.username)
+    if(this.state.isLoggedin === true){
+      this.changeUser();
+     }
+    
+    
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
         <div className="container navbar-custom">
@@ -46,7 +63,7 @@ class NavBar extends Component {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
-                  Login
+                  {this.state.currentUser}
                 </Link>
               </li>
             </ul>

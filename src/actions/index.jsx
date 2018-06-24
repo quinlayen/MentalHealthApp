@@ -89,18 +89,15 @@ export function registerAction(user) {
     payload: registeredUser
   };
 }
-//       redirectCallback();
-//     })
-//     .catch(err => {
-//       console.log({ err: err.message });
-//     });
-// };
+
 
 export function loginAction(user) {
   const loggedinUser = axios.post(`${HOST}/auth/login`, {
     username: user.username,
     password: user.password
+   
   });
+  console.log('in the reducer', loggedinUser)
   return {
     type: LOGIN_USER,
     payload: loggedinUser
