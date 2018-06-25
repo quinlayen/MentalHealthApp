@@ -7,6 +7,8 @@ export default function(state = {}, action) {
       const newState = { contact: action.payload.data.contact };
       //console.log('in reducer', newState);
       return newState;
+      default:
+      return state;
   }
-  return state;
+  // return state;
 }

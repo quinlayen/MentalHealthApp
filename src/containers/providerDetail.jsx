@@ -4,7 +4,7 @@ import { getDetails, pushNotifs, tellTwilio } from "../actions/index";
 import { bindActionCreators } from "redux";
 import "../styles/providerDetail.css";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 class ProviderDetail extends Component {
   constructor(props) {
@@ -13,12 +13,12 @@ class ProviderDetail extends Component {
       // pushNotifs: false,
       user: {},
       contact: "",
-      medium: "sms"
+      method: ""
       // confirmationSnackbarOpen: false,
       // snackbarDisabled: false
     };
     // this.pushNotifications = this.pushNotifications.bind(this);
-    this.sendSms = this.sendSms.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -31,16 +31,17 @@ class ProviderDetail extends Component {
   //   this.setState({ pushNotifs: true });
   // }
 
-  sendSms(e) {
-    e.preventDefault();
+  sendMessage(event) {
+    event.preventDefault();
 
-    console.log("PHONE NUMBER", this.props.users.user.contact);
-    // {method: 'sms', contact: 'blah'}
+    console.log("PERSON MAKING CONTACT", this.props.users.user);
+    // console.log("PHONE NUMBER", this.props.users.user);
     this.setState(
       {
         // confirmationSnackbarMessage: "Message Sent!",
         // confirmationSnackbarOpen: true,
-        processed: true,
+        // processed: true,
+        method: this.props.users.user.method,
         contact: this.props.users.user.contact
       },
       () => {
@@ -70,55 +71,17 @@ class ProviderDetail extends Component {
               <br />
               <section>{doctorData.bio}</section>
             </div>
-            <Link to="/register" className="btn btn-primary btn-sm">
-              I'm Interested
+            <Link to="/register">
+              <button className="btn btn-primary btn-sm">I'm Interested</button>
             </Link>
-            <button key="sms" onClick={this.sendSms}>
+            <button
+              key="message"
+              className="btn btn-primary btn-sm"
+              onClick={this.sendMessage}
+            >
               Testing Messages
             </button>
           </div>
-
-          // <div className="container">
-          // <br/>
-          // <br/>
-          // <br/>
-          // <br/>
-          // <br/>
-          //   <div className="row">
-          //     <div className="col-8">
-          //       <div className="card">
-          //         <div className="card-header">
-          //           <h2>
-          //             {doctorData.first_name} {doctorData.last_name}
-          //           </h2>
-          //         </div>
-          //         <img
-          //           className="card-img-top img-thumbnail"
-          //           src={doctorData.image}
-          //           alt="Card image cap"
-          //         />
-          //         <div className="card-body">
-          //           <h5 className="card-text">{doctorData.specialties}</h5>
-          //           <p className="card-text">{doctorData.insurance}</p>
-          //           <br />
-          //           <h5 className="card-text-right">
-          //             Phone: {doctorData.phone}
-          //           </h5>
-          //           <br />
-          //           <div className="card-text-right">
-          //             About Me: {doctorData.bio}
-          // //           </div>
-          //           <Link to="/register" className="btn btn-primary btn-sm">
-          //             I'm Interested
-          //           </Link>
-          //           {/* <Button key="notifs" onClick={this.pushNotifications}>
-          //             I'm Interested
-          //           </Button> */}
-          //         </div>
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
         );
       }
     });

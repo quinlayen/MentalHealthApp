@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerAction } from "../actions/index";
 import { bindActionCreators } from "redux";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { FormControl, ControlLabel } from "react-bootstrap";
 
 class UserRegistrationForm extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class UserRegistrationForm extends Component {
     this.state = {
       first_name: "",
       last_name: "",
-      method: "Text",
+      method: "sms",
       contact: "",
       username: "",
       password: "",
@@ -158,8 +158,8 @@ class UserRegistrationForm extends Component {
                     name="method"
                     className="custom-select"
                   >
-                    <option value="Text">Text</option>
-                    <option value="Call">Call</option>
+                    <option value="sms">Text</option>
+                    <option value="call">Call</option>
                     <option disabled value="Email">
                       Email
                     </option>

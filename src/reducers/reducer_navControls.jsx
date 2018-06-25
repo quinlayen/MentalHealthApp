@@ -1,4 +1,4 @@
-import { TOGGLE_ACTION } from '../actions/index';
+import { TOGGLE_ACTION } from "../actions/index";
 
 export default function(state = {}, action) {
   //console.log('action in reducer: ', action)
@@ -9,6 +9,8 @@ export default function(state = {}, action) {
       const newState = { ...state, left: action.payload };
       //console.log('new state in reducer', newState);
       return newState;
+    default:
+      return state;
   }
-  return state;
+  // return state;
 }

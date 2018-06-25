@@ -105,7 +105,7 @@ router.post("/logout", (req, res) => {
   console.log("logggged out!!!");
   req.logout();
   // console.log("in passport", req.body);
-  return res.send("USER IS LOGGED OUT");
+  return res.json({ message: "User logged out~!!" });
 });
 
 router.get("/profile/:id", isAuthenticated, (req, res) => {
