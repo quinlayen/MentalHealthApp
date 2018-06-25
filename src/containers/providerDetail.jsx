@@ -4,7 +4,7 @@ import { getDetails, pushNotifs, tellTwilio } from "../actions/index";
 import { bindActionCreators } from "redux";
 import "../styles/providerDetail.css";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 class ProviderDetail extends Component {
   constructor(props) {
@@ -31,11 +31,11 @@ class ProviderDetail extends Component {
   //   this.setState({ pushNotifs: true });
   // }
 
-  sendMessage(e) {
-    e.preventDefault();
+  sendMessage(event) {
+    event.preventDefault();
 
-    console.log("METHOD", this.props.users.user.method);
-    console.log("PHONE NUMBER", this.props.users.user.contact);
+    console.log("PERSON MAKING CONTACT", this.props.users.user);
+    // console.log("PHONE NUMBER", this.props.users.user);
     this.setState(
       {
         // confirmationSnackbarMessage: "Message Sent!",
@@ -71,55 +71,17 @@ class ProviderDetail extends Component {
               <br />
               <section>{doctorData.bio}</section>
             </div>
-            <Link to="/register" className="btn btn-primary btn-sm">
-              I'm Interested
+            <Link to="/register">
+              <button className="btn btn-primary btn-sm">I'm Interested</button>
             </Link>
-            <button key="message" onClick={this.sendMessage}>
+            <button
+              key="message"
+              className="btn btn-primary btn-sm"
+              onClick={this.sendMessage}
+            >
               Testing Messages
             </button>
           </div>
-
-          // <div className="container">
-          // <br/>
-          // <br/>
-          // <br/>
-          // <br/>
-          // <br/>
-          //   <div className="row">
-          //     <div className="col-8">
-          //       <div className="card">
-          //         <div className="card-header">
-          //           <h2>
-          //             {doctorData.first_name} {doctorData.last_name}
-          //           </h2>
-          //         </div>
-          //         <img
-          //           className="card-img-top img-thumbnail"
-          //           src={doctorData.image}
-          //           alt="Card image cap"
-          //         />
-          //         <div className="card-body">
-          //           <h5 className="card-text">{doctorData.specialties}</h5>
-          //           <p className="card-text">{doctorData.insurance}</p>
-          //           <br />
-          //           <h5 className="card-text-right">
-          //             Phone: {doctorData.phone}
-          //           </h5>
-          //           <br />
-          //           <div className="card-text-right">
-          //             About Me: {doctorData.bio}
-          // //           </div>
-          //           <Link to="/register" className="btn btn-primary btn-sm">
-          //             I'm Interested
-          //           </Link>
-          //           {/* <Button key="notifs" onClick={this.pushNotifications}>
-          //             I'm Interested
-          //           </Button> */}
-          //         </div>
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
         );
       }
     });
