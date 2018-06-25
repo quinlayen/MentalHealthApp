@@ -4,3 +4,7 @@ body {
   background-position: inherit;
   z-index: 2;
 }
+.container {
+  margin-top: 2em;
+  display: inline-block;
+}
