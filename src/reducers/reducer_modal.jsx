@@ -1,21 +1,16 @@
 import { OPEN_MODAL, CLOSE_MODAL } from "../actions/index";
 
-const initialState = {
-  modals: []
-};
 
-export default function(state = initialState, action) {
+
+export default function(state = {}, action) {
   switch (action.type) {
     case OPEN_MODAL:
-      return {
-        ...state,
-        modals: state.modals.concat(action.obj)
-      };
+      return {isHidden: action.payload}
+      
     case CLOSE_MODAL:
-      return {
-        ...state,
-        modals: state.modals.filter(item => item.id !== action.obj.id)
-      };
+      return {isHidden: action.payload}
+     
+     
     default:
       return state;
   }

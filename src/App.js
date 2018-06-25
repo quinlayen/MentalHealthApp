@@ -6,6 +6,7 @@ import {
   Switch
 } from "react-router-dom";
 import "./styles/App.css";
+import ContactModal from './containers/contactModal'
 import UserRegistrationForm from "./containers/userRegistrationForm";
 import UserLoginForm from "./containers/userLoginForm";
 //import SearchBar from "./containers/searchBar";

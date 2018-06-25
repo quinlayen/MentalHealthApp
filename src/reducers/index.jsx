@@ -4,13 +4,15 @@ import DoctorsReducer from "./reducer_search";
 import DoctorDetails from "./reducer_docDetails";
 import UsersReducer from "./reducer_users";
 import TwilioReducer from "./reducer_twilio";
+import ModalReducer from './reducer_modal'
 
 const rootReducer = combineReducers({
-  drawer: NavControlsReducer,
+  toggle: NavControlsReducer,
   doctors: DoctorsReducer,
   details: DoctorDetails,
   users: UsersReducer,
-  twilio: TwilioReducer
+  twilio: TwilioReducer,
+  modalToggle: ModalReducer
 });
 
 export default rootReducer;
