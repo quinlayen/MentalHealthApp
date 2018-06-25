@@ -33,7 +33,7 @@ class NavBar extends Component {
     if (this.state.isLoggedIn === true) {
       this.props.logoutAction(this.state);
       console.log("COMPONENT LOGGEDOUT");
-      this.props.history.push("/login");
+      // this.props.history.push("/login");
     }
   }
 

@@ -13,12 +13,12 @@ class ProviderDetail extends Component {
       // pushNotifs: false,
       user: {},
       contact: "",
-      method: "sms"
+      method: ""
       // confirmationSnackbarOpen: false,
       // snackbarDisabled: false
     };
     // this.pushNotifications = this.pushNotifications.bind(this);
-    this.sendSms = this.sendSms.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -31,16 +31,17 @@ class ProviderDetail extends Component {
   //   this.setState({ pushNotifs: true });
   // }
 
-  sendSms(e) {
+  sendMessage(e) {
     e.preventDefault();
 
+    console.log("METHOD", this.props.users.user.method);
     console.log("PHONE NUMBER", this.props.users.user.contact);
-    // {method: 'sms', contact: 'blah'}
     this.setState(
       {
         // confirmationSnackbarMessage: "Message Sent!",
         // confirmationSnackbarOpen: true,
-        processed: true,
+        // processed: true,
+        method: this.props.users.user.method,
         contact: this.props.users.user.contact
       },
       () => {
@@ -73,7 +74,7 @@ class ProviderDetail extends Component {
             <Link to="/register" className="btn btn-primary btn-sm">
               I'm Interested
             </Link>
-            <button key="sms" onClick={this.sendSms}>
+            <button key="message" onClick={this.sendMessage}>
               Testing Messages
             </button>
           </div>
