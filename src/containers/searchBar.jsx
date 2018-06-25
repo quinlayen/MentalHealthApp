@@ -80,7 +80,7 @@ class SearchBar extends Component {
                       className="btn btn-sm btn-outline"
                       type="submit"
                     >
-                      <span class="oi oi-magnifying-glass" aria-hidden="true" />
+                    <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                   </div>
                 </div>

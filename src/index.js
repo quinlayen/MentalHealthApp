@@ -12,7 +12,8 @@ import registerServiceWorker from './registerServiceWorker';
 import createLogger from 'redux-logger';
 import { AppContainer } from 'react-hot-loader';
 import ScrollReveal from 'scrollreveal';
-var octicons = require('octicons');
+import 'font-awesome/css/font-awesome.min.css';
+import 'mdbreact/dist/css/mdb.css';
 
 window.sr = ScrollReveal();
 window.sr.reveal('.box');
