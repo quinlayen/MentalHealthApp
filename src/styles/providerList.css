@@ -1,0 +1,6 @@
+body {
+  background-image: url ('../styles/static/background.png');
+  background-size: auto;
+  background-position: inherit;
+  z-index: 2;
+}

@@ -15,8 +15,7 @@ import ProviderList from './containers/providerList';
 import ProviderDetail from './containers/providerDetail';
 import { createStore } from 'redux';
 import reducer from './reducers/index';
-import navigatorImg from './styles/static/800x600.jpg';
-import streamsImg from './styles/static/ocs_cropped.jpg';
+
 import Background from './styles/static/background.png';
 
 const store = createStore(reducer);
@@ -29,42 +28,29 @@ class App extends Component {
           <img src={Background} className="bg" alt="background" />
           <NavBar />
           <div className="container-fluid">
-            <div className="row justify-content-center">
-              <div className="col-*">
-                <img
-                  src={navigatorImg}
-                  className="float-right"
-                  alt="navigator"
-                />
-              </div>
-            </div>
             <div className="row">
-              <div className="col-*">
-                <Switch>
-                  <Route exact path="/doctors/:id" component={ProviderDetail} />
-                  <Route exact path="/doctors" component={ProviderList} />
-                  <Route
-                    exact
-                    path="/register"
-                    component={UserRegistrationForm}
-                  />
-                  <Route exact path="/login" component={UserLoginForm} />
-                  <div className="main-box">
+              <div className="col">
+                <div className="main-box">
+                  <Switch>
+                    <Route
+                      exact
+                      path="/doctors/:id"
+                      component={ProviderDetail}
+                    />
+                    <Route exact path="/doctors" component={ProviderList} />
+                    <Route
+                      exact
+                      path="/register"
+                      component={UserRegistrationForm}
+                    />
+                    <Route exact path="/login" component={UserLoginForm} />
+
                     <Route exact path="/" component={Home} />
-                    <Redirect from="/*" to="/" />
-                  </div>
-                </Switch>
+                  </Switch>
+                </div>
               </div>
             </div>
-            <div className="row justify-content-start">
-              <div className="col-*">
-                <img
-                  src={streamsImg}
-                  className="float-left"
-                  alt="background-stream"
-                />
-              </div>
-            </div>
+
             {/* <Route exact path="/" component={SearchBar} /> */}
             <NavDrawer />
             {/* <Route path="doctors/" component={SendSms} /> */}

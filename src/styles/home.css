@@ -16,3 +16,29 @@ img.bg {
   position: fixed;
   z-index: 0;
 }
+.float-right {
+  align-self: right;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  margin-bottom: 5em;
+  margin-left: -10em;
+}
+.search {
+  margin-top: 10em;
+}
+.info {
+  margin-top: 30em;
+  position: absolute;
+  z-index: 1;
+}
+.float-left {
+  align-self: left;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+  margin-top: 35em;
+  margin-left: -10em;
+}
