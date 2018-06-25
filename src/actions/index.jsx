@@ -3,6 +3,8 @@ import axios from "axios";
 export const TOGGLE_ACTION = "TOGGLE_ACTION";
 export const FETCH_DOCTORS = "FETCH_DOCTORS";
 export const GET_DETAILS = "GET_DETAILS";
+export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_MODAL = "CLOSE_MODAL";
 export const TELL_TWILIO = "TELL_TWILIO";
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
@@ -34,66 +36,70 @@ export function getDetails(providerID) {
   };
 }
 
-export function registerAction(user, redirectCallback) {
-  return dispatch => {
-    return axios
-      .post(`${HOST}/auth/register`, {
-        first_name: user.first_name,
-        last_name: user.last_name,
-        method: user.method,
-        contact: user.contact,
-        username: user.username,
-        password: user.password
-      })
-      .then(newUser => {
-        dispatch({
-          type: REGISTER_USER,
-          users: newUser
-        });
-        redirectCallback();
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-      });
+export function openModal(obj) {
+  return {
+    type: OPEN_MODAL,
+    payload: obj
   };
 }
 
-export function loginAction(user, redirectCallback) {
-  return dispatch => {
-    return axios
-      .post(`${HOST}/auth/login`, {
-        username: user.username,
-        password: user.password
-      })
-      .then(loginInfo => {
-        localStorage.setItem("id", loginInfo.data.client_id);
-        // console.log("length", localStorage.length);
-        dispatch({
-          type: LOGIN_USER,
-          payload: loginInfo
-        });
-        redirectCallback();
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-      });
+export function closeModal(obj) {
+  return {
+    type: CLOSE_MODAL,
+    payload: obj
+  };
+}
+
+export function registerAction(user) {
+  const registeredUser = axios.post(`${HOST}/auth/register`, {
+    first_name: user.first_name,
+    last_name: user.last_name,
+    method: user.method,
+    contact: user.contact,
+    username: user.username,
+    password: user.password
+  });
+
+  return {
+    type: REGISTER_USER,
+    payload: registeredUser
+  };
+}
+
+export function loginAction(user) {
+  const loggedinUser = axios.post(`${HOST}/auth/login`, {
+    username: user.username,
+    password: user.password
+  });
+  // console.log("in the reducer", loggedinUser);
+  return {
+    type: LOGIN_USER,
+    payload: loggedinUser
   };
 }
 
 export function logoutAction() {
-  localStorage.clear();
-  return dispatch => {
-    return fetch(`${HOST}/auth/logout`)
-      .then(logout => {
-        dispatch({
-          type: LOGOUT_USER,
-          payload: logout
-        });
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-      });
+  // localStorage.clear();
+  const loggedOutUser = axios.post(`${HOST}/auth/logout`);
+
+  console.log("in the action", loggedOutUser);
+  return {
+    type: LOGOUT_USER,
+    payload: loggedOutUser
   };
+
+  // return dispatch => {
+  //   return fetch(`${HOST}/auth/logout`)
+  //     .then(logout => {
+  //       dispatch({
+  //         type: LOGOUT_USER,
+  //         payload: logout
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log({ err: err.message });
+  //     });
+  // };
 }
 
 export function itemsIsLoading(bool) {
@@ -112,7 +118,7 @@ export function pushNotifs(bool) {
   function urlBase64ToUint8Array(base64String) {
     const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
     const base64 = (base64String + padding)
-      .replace(/\-/g, "+")
+      .replace(/-/g, "+")
       .replace(/_/g, "/");
 
     const rawData = window.atob(base64);
@@ -153,14 +159,13 @@ export function twilioSuccess(bool) {
 }
 
 export function tellTwilio(medium) {
+  console.log("IN THE ACTION", medium);
   return dispatch => {
-    switch (medium.medium) {
+    switch (medium.method) {
       case "sms":
         let smsRequest = axios.post(`${HOST}/api/sms`, {
-          recipient: medium.recipient,
-          message: medium.message
+          contact: medium.contact
         });
-
         smsRequest
           .then(res => {
             dispatch(twilioSuccess(true));
@@ -177,17 +182,11 @@ export function tellTwilio(medium) {
 
         break;
 
-      // case web:
-      // break;
-
-      // case email:
-      // break;
-
       case "call":
         let callRequest = axios.post(`${HOST}/api/call`, {
-          recipient: medium.recipient
+          contact: medium.contact
         });
-        console.log("here!!!", medium.recipient);
+        console.log("here!!!", medium.contact);
         callRequest
           .then(res => {
             console.log("got back res", res);

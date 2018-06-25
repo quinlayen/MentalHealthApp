@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerAction } from "../actions/index";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { bindActionCreators } from "redux";
+import { FormControl, ControlLabel } from "react-bootstrap";
 
 class UserRegistrationForm extends Component {
   constructor(props) {
@@ -10,11 +11,12 @@ class UserRegistrationForm extends Component {
     this.state = {
       first_name: "",
       last_name: "",
-      method: "Email",
+      method: "sms",
       contact: "",
       username: "",
       password: "",
-      type: "input"
+      type: "input",
+      submitted: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
@@ -30,17 +32,17 @@ class UserRegistrationForm extends Component {
   }
 
   handleChange(event) {
-    console.log(this.state);
+    // console.log(this.state);
     this.setState({ [event.target.name]: event.target.value });
   }
 
   handleRegister(event) {
     event.preventDefault();
+
+    this.setState({ submitted: true });
     if (this.state.username !== "" && this.state.password !== "") {
-      this.props.register(this.state, () => {
-        console.log("NEW CLIENT REGISTERED");
-        this.props.history.push("/");
-      });
+      this.props.registerAction(this.state);
+      this.props.history.push("/");
     }
   }
 
@@ -53,9 +55,16 @@ class UserRegistrationForm extends Component {
         <br />
         <br />
         <div className="col-3" />
-        <div className="col -6">
+        <div className="col-6">
           <form onSubmit={this.handleRegister}>
-            <FormGroup controlId="first_name" bsSize="large">
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.first_name
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>First Name</ControlLabel>
               <FormControl
                 autoFocus
@@ -63,39 +72,83 @@ class UserRegistrationForm extends Component {
                 value={this.state.first_name}
                 onChange={this.handleChange}
               />
-            </FormGroup>
-            <FormGroup controlId="last_name" bsSize="large">
+              {this.state.submitted &&
+                !this.state.first_name && (
+                  <div className="help-block">First Name is Required</div>
+                )}
+            </div>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.last_name
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>Last Name</ControlLabel>
               <FormControl
-                autoFocus
                 name="last_name"
                 value={this.state.last_name}
                 onChange={this.handleChange}
               />
-            </FormGroup>
-            <FormGroup controlId="username" bsSize="large">
+              {this.state.submitted &&
+                !this.state.last_name && (
+                  <div className="help-block">Last Name is Required</div>
+                )}
+            </div>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.username
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>Username</ControlLabel>
               <FormControl
-                autoFocus
                 name="username"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
-            </FormGroup>
-            <FormGroup controlId="password" bsSize="large">
+              {this.state.submitted &&
+                !this.state.username && (
+                  <div className="help-block">Username is Required</div>
+                )}
+            </div>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.password
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>Password</ControlLabel>
               <FormControl
-                autoFocus
                 name="password"
                 type={this.state.type}
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-              <span onClick={this.handleClickShowPassword}>
+              {this.state.submitted &&
+                !this.state.password && (
+                  <div className="help-block">Password is Required</div>
+                )}
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={this.handleClickShowPassword}
+              >
                 {this.state.type === "input" ? "Hide" : "Show"}
-              </span>
-            </FormGroup>
-            <div className="form-group">
+              </button>
+            </div>
+            <div
+              className={
+                "form-group" +
+                (this.state.submitted && !this.state.contact
+                  ? " has-error"
+                  : "")
+              }
+            >
               <ControlLabel>Preferred Contact</ControlLabel>
               <div className="input-group">
                 <div className="input-group-prepend">
@@ -105,10 +158,14 @@ class UserRegistrationForm extends Component {
                     name="method"
                     className="custom-select"
                   >
-                    <option value="Email">Email</option>
-                    <option value="Call">Call</option>
-                    <option value="Text">Text</option>
-                    <option value="Chat">Web-Chat</option>
+                    <option value="sms">Text</option>
+                    <option value="call">Call</option>
+                    <option disabled value="Email">
+                      Email
+                    </option>
+                    <option disabled value="Chat">
+                      Web-Chat
+                    </option>
                   </select>
                 </div>
               </div>
@@ -122,6 +179,10 @@ class UserRegistrationForm extends Component {
                 value={this.state.contact}
                 onChange={this.handleChange}
               />
+              {this.state.submitted &&
+                !this.state.contact && (
+                  <div className="help-block">Contact is Required</div>
+                )}
             </div>
             <button className="btn btn-primary btn-sm" type="submit">
               Submit
@@ -134,27 +195,15 @@ class UserRegistrationForm extends Component {
       </div>
     );
   }
-
-  // render() {
-  //   if (this.state.newUser === null) {
-  //     return <div className="Signup">{this.renderForm()}</div>;
-  //   }
-  // }
 }
 
-const mapStateToProps = state => {
-  return {
-    users: state.users.users
-  };
-};
+function mapStateToProps({ users }) {
+  return { users };
+}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    register: function(user, redirectCallback) {
-      dispatch(registerAction(user, redirectCallback));
-    }
-  };
-};
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ registerAction }, dispatch);
+}
 
 export default withRouter(
   connect(

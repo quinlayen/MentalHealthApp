@@ -18,9 +18,6 @@ class SearchBar extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onSelect = this.onSelect.bind(this);
   }
-  componentDidMount() {
-    new WOW().init();
-  }
 
   handleChange = e => {
     const { name, value } = e.target;
@@ -32,7 +29,6 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     this.props.fetchDoctors(this.state);
-    // console.log("this.props", this.props);
     this.props.history.push('/doctors');
   }
 
@@ -80,7 +76,7 @@ class SearchBar extends Component {
                       className="btn btn-sm btn-outline"
                       type="submit"
                     >
-                    <i class="fa fa-search" aria-hidden="true"></i>
+                      <i class="fa fa-search" aria-hidden="true" />
                     </button>
                   </div>
                 </div>

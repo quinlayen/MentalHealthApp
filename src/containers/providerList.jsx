@@ -1,24 +1,12 @@
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-
-// import { bindActionCreators } from "redux";
-// import { fetchDoctors } from "../actions/index";
-
 import { Link } from "react-router-dom";
 import { getDetails } from "../actions/index";
 
-const HOST = "http://localhost:8080";
-
 class ProviderList extends Component {
-
-
   renderDoctors(doctorData) {
     return (
-
-
-      
       <li className="list-group-item" key={doctorData.provider_id}>
         <div className="card">
           <div className="card-header">
@@ -36,7 +24,6 @@ class ProviderList extends Component {
           <div className="card-body">
             <h5 className="card-text">{doctorData.location}</h5>
             <h6 className="card-text">{doctorData.type}</h6>
-        
           </div>
         </div>
       </li>
@@ -46,12 +33,11 @@ class ProviderList extends Component {
   render() {
     return (
       <div className="container">
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+        <br />
+        <br />
+        <br />
+        <br />
         <div className="row">
-       
           <div className="col-8">
             <ul className="list-group list-group-flush">
               {this.props.doctors.map(this.renderDoctors)}
@@ -75,5 +61,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ProviderList);
-
-

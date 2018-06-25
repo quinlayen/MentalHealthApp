@@ -2,19 +2,16 @@ import { REGISTER_USER } from "../actions/index";
 import { LOGIN_USER } from "../actions/index";
 import { LOGOUT_USER } from "../actions/index";
 
-const initialState = {
-  users: [],
-  user: []
-};
-
-export default (state = initialState, action = {}) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case REGISTER_USER:
-      return { ...state, users: action.payload };
+      console.log("IN THE REDUCER", action.payload.data);
+      return { user: action.payload.data };
     case LOGIN_USER:
-      return { ...state, user: action.payload };
+      console.log("IN THE REDUCER", action.payload.data);
+      return { isLoggedIn: true, user: action.payload.data };
     case LOGOUT_USER:
-      return { ...state, user: null };
+      return { user: null };
     default:
       return state;
   }

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, appMiddleware, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
 import reducers from './reducers';
 import './styles/index.css';
@@ -12,11 +11,11 @@ import registerServiceWorker from './registerServiceWorker';
 import createLogger from 'redux-logger';
 import { AppContainer } from 'react-hot-loader';
 import ScrollReveal from 'scrollreveal';
-import 'font-awesome/css/font-awesome.min.css';
-import 'mdbreact/dist/css/mdb.css';
+import { createStore, applyMiddleware } from 'redux';
 
 window.sr = ScrollReveal();
 window.sr.reveal('.box');
+
 // console.log(process.env.REACT_APP_BETTERDOC_KEY);
 // console.log(process.env.REACT_APP_ACCOUNTSID);
 // console.log(process.env.REACT_APP_AUTHTOKEN);

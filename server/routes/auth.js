@@ -85,7 +85,7 @@ router.post("/register", (req, res) => {
     .then(user => {
       console.log("new user registered");
       user = user.toJSON();
-      return res.send("new user registered");
+      return res.send(user);
     })
     .catch(err => res.status(400).json({ message: err.message }));
 });
@@ -95,8 +95,8 @@ router.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/auth/login" }),
   (req, res) => {
-    console.log("logggggged in!!");
-    return res.send("user is logged in!!");
+    //console.log('in passport',req.body);
+    return res.send(req.body);
   }
 );
 
@@ -104,7 +104,8 @@ router.post(
 router.post("/logout", (req, res) => {
   console.log("logggged out!!!");
   req.logout();
-  return res.send("user is logged out!!");
+  // console.log("in passport", req.body);
+  return res.json({ message: "User logged out~!!" });
 });
 
 router.get("/profile/:id", isAuthenticated, (req, res) => {
