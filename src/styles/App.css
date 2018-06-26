@@ -1,9 +1,6 @@
-
-
 .App {
   text-align: center;
   font-family: 'Libre Franklin', sans-serif;
- 
 }
 
 .App-logo {
@@ -14,7 +11,7 @@
 .App-header {
   background-color: #222;
   height: 150px;
-  padding: 20px;
+
   color: white;
 }
 
@@ -35,16 +32,13 @@
   }
 }
 
-/* .background {
-background: url('../styles/static/ocs_cropped.jpg')no-repeat center center;
-background-size: cover;
-} */
-
-.col-lg {
- padding-top: 4em;
- padding-bottom: -10em
+.main-box {
+  margin-top: 0em;
+  padding: 1em;
+  position: relative;
+  margin-left: 5em;
+  z-index: 0;
 }
-
 .no-gutters {
   padding-bottom: -10em;
   padding-top: 0;

@@ -1,18 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import ReduxPromise from "redux-promise";
-import reducers from "./reducers";
-import "./styles/index.css";
-import App from "./App";
-import ReduxThunk from "redux-thunk";
-import registerServiceWorker from "./registerServiceWorker";
-import createLogger from "redux-logger";
-import { AppContainer } from "react-hot-loader";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import ReduxPromise from 'redux-promise';
+import reducers from './reducers';
+import './styles/index.css';
+import App from './App';
+import ReduxThunk from 'redux-thunk';
+import registerServiceWorker from './registerServiceWorker';
+import createLogger from 'redux-logger';
+import { AppContainer } from 'react-hot-loader';
+import ScrollReveal from 'scrollreveal';
+import { createStore, applyMiddleware } from 'redux';
 
-require("dotenv").config();
+window.sr = ScrollReveal();
+window.sr.reveal('.box');
 
 // console.log(process.env.REACT_APP_BETTERDOC_KEY);
 // console.log(process.env.REACT_APP_ACCOUNTSID);
@@ -32,6 +34,6 @@ ReactDOM.render(
       </Router>
     </Provider>
   </AppContainer>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 registerServiceWorker();

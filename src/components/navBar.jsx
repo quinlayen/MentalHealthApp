@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import "../styles/navBar.css";
-import "../styles/searchBar.css";
-import { logoutAction } from "../actions/index";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import '../styles/navBar.css';
+import '../styles/searchBar.css';
+import { logoutAction } from '../actions/index';
 
 class NavBar extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class NavBar extends Component {
     this.state = {
       isLoggedIn: false,
       user: {},
-      currentUser: ""
+      currentUser: ''
     };
     this.changeUser = this.changeUser.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -25,14 +25,14 @@ class NavBar extends Component {
     if (this.state.isLoggedIn === true) {
       return (this.state.currentUser = `Welcome: ${this.state.user.username}`);
     } else {
-      return "Login";
+      return 'Login';
     }
   }
 
   handleLogout() {
     if (this.state.isLoggedIn === true) {
       this.props.logoutAction(this.state);
-      console.log("COMPONENT LOGGEDOUT");
+      console.log('COMPONENT LOGGEDOUT');
       // this.props.history.push("/login");
     }
   }
@@ -40,7 +40,8 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
-        <div className="container navbar-custom">
+        <div className="container-fluid navbar-custom">
+          <span class="glyphicon glyphicon-arrow-right" aria-hidden="true" />
           <Link to="/" className="navbar-brand">
             <strong>FYW</strong>
           </Link>
