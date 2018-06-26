@@ -61,7 +61,7 @@ let SERVICE = process.env.TWILIO_SERVICE_SID;
 let GOOGLE_KEY = process.env.GOOGLE_BROWSER_KEY;
 let VAPID_PUBLIC = process.env.VAPID_PUBLIC_KEY;
 let VAPID_PRIVATE = process.env.VAPID_PRIVATE_KEY;
-// webpush.setGCMAPIKey(GOOGLE_KEY);
+webpush.setGCMAPIKey(GOOGLE_KEY);
 webpush.setVapidDetails(
   "mailto:etherealtoast@gmail.com",
   VAPID_PUBLIC,
