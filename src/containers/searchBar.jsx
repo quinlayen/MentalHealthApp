@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchDoctors } from '../actions/index';
-import '../styles/searchBar.css';
-import WOW from 'wow.js/dist/wow.js';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchDoctors } from "../actions/index";
+import "../styles/searchBar.css";
+import WOW from "wow.js/dist/wow.js";
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      type: 'Therapist',
-      location: ''
+      type: "Therapist",
+      location: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -29,7 +29,7 @@ class SearchBar extends Component {
   onFormSubmit(event) {
     event.preventDefault();
     this.props.fetchDoctors(this.state);
-    this.props.history.push('/doctors');
+    this.props.history.push("/doctors");
   }
 
   render() {
@@ -76,7 +76,8 @@ class SearchBar extends Component {
                       className="btn btn-sm btn-outline"
                       type="submit"
                     >
-                      <i class="fa fa-search" aria-hidden="true" />
+                      Go!
+                      <i className="fa fa-search" aria-hidden="true" />
                     </button>
                   </div>
                 </div>
