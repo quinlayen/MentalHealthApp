@@ -8,3 +8,37 @@ body {
   margin-top: 2em;
   display: inline-block;
 }
+
+h2 {
+  font-size: 1.2em;
+}
+.alert-link:hover {
+  text-decoration: none;
+  text-shadow: 1px 0 0#202326;
+}
+a {
+  text-decoration: none !important;
+}
+
+.list-inline-item .card {
+  min-height: 25em;
+  margin-bottom: 0.5em;
+}
+
+.alert.alert-danger {
+  white-space: nowrap;
+  overflow: scroll;
+  padding: 0.5em;
+  background-color: black !important;
+}
+.card-img-top {
+  max-height: 20em;
+  max-width: auto;
+}
+.card-body {
+  padding: 1em;
+}
+p {
+  text-overflow: ellipsis;
+  max-height: 3em;
+}
