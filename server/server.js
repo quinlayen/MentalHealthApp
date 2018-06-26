@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 //const Bundler = require('parcel-bundler');
 const session = require("express-session");
 const RedisStore = require("connect-redis")(session);
+const path = require("path");
 const passport = require("passport");
 const http = require("http");
 const twilio = require("twilio");
@@ -21,7 +22,8 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 app.use(express.static(__dirname + "/styles/static"));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "../build")));
+// app.use(express.static("public"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -48,11 +50,11 @@ app.use(passport.session());
 app.use("/auth", authRoute);
 app.use("/doctors", providersRoute);
 
-// app.get("/", (req, res) => {
-//   console.log(req.body);
-//   console.log("sanity check");
-//   return res.json("hewwwwwwo");
-// });
+app.get("/", (req, res) => {
+  // console.log(req.body);
+  console.log("sanity check");
+  return res.sendFile(path.join(__dirname, "../build", "../public"));
+});
 
 let SID = process.env.TWILIO_API_KEY;
 let TOKEN = process.env.TWILIO_AUTH_TOKEN;
