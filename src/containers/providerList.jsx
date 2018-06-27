@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { getDetails } from '../actions/index';
 import '../styles/providerList.css';
+import archway from '../styles/static/bemocs_rei_4_dribbble.jpg';
 
 class ProviderList extends Component {
   // constructor(props) {

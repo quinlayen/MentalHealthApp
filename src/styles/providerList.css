@@ -10,14 +10,14 @@ body {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 1.5em;
   margin-bottom: 0em;
 }
 
-.alert-link:hover {
-  text-decoration: none;
-  text-shadow: 1px 0 0#202326;
+.alert-link {
+  font-weight: 700;
 }
+
 a {
   text-decoration: none !important;
 }
@@ -27,6 +27,9 @@ a {
   margin-bottom: 0.5em;
 }
 
+.alert {
+  padding: 0.5rem 1.25rem;
+}
 .alert.alert-danger {
   white-space: nowrap;
   overflow: scroll;
@@ -38,6 +41,15 @@ a {
 .card-img-top {
   max-height: 20em;
   max-width: auto;
+}
+
+.card:hover {
+  text-decoration: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card:hover .alert-link {
+  text-shadow: 1px 0 0#202326;
 }
 .card-body {
   padding: 1em;
