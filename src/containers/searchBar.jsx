@@ -73,7 +73,10 @@ class SearchBar extends Component {
                   </div>
                   <div className="input-group-append">
                     <button className="btn btn-sm btn-outline" type="submit">
-                      <FontAwesomeIcon icon="search" />
+                      <FontAwesomeIcon
+                        className="search-button"
+                        icon="search"
+                      />
                     </button>
                   </div>
                 </div>

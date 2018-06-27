@@ -4,6 +4,14 @@ container {
   z-index: 1;
 }
 
+.container .flex-center {
+  margin-top: -0.5em;
+}
+.search {
+  background-color: #ff9d84;
+  position: absolute;
+  z-index: 3;
+}
 .hm-gradient .full-bg-img {
   background: -moz-linear-gradient(
     45deg,
@@ -61,6 +69,11 @@ br {
 .input-group-append {
   margin: 0;
 }
+
 .btn .btn-sm .btn-outline {
   margin-top: 0 !important;
+}
+
+.search-button:hover {
+  margin-left: 2px;
 }
