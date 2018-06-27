@@ -16,7 +16,7 @@ class ProviderList extends Component {
     console.log(doctorData, 'in render doctors');
     return (
       <li className="list-inline-item" key={doctorData.provider_id}>
-        <div className="card" style={{ width: 18 + 'em' }}>
+        <div className="card card-list" style={{ width: 18 + 'em' }}>
           <div className="card-header">
             <Link to={'doctors/' + doctorData.provider_id}>
               <div className="alert alert-danger" role="alert">

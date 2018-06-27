@@ -4,7 +4,8 @@ import { getDetails, pushNotifs, tellTwilio } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import '../styles/providerDetail.css';
 import { Link } from 'react-router-dom';
-// import Button from "@material-ui/core/Button";
+import ScrollReveal from 'scrollreveal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ProviderDetail extends Component {
   constructor(props) {
@@ -55,11 +56,12 @@ class ProviderDetail extends Component {
       if (doctorData.provider_id == this.props.match.params.id) {
         return (
           <div key="doctor" className="body">
-            <div className="row">
-              <div className="col">
+            <div className="card-columns">
+              <div className="card card-detail-picture">
                 <img src={doctorData.image} className="doc-image" alt="" />
               </div>
-              <div className="col">
+
+              <div className="card card-detail">
                 <h1>
                   {doctorData.first_name} {doctorData.last_name}
                 </h1>
@@ -68,7 +70,9 @@ class ProviderDetail extends Component {
                   <p>Insurance: {doctorData.insurance}</p>
                 </div>
                 <div className="body-right">
-                  <h5>Phone: {doctorData.phone}</h5>
+                  <h5>
+                    <FontAwesomeIcon icon="phone" /> {doctorData.phone}
+                  </h5>
                 </div>
 
                 <section>{doctorData.bio}</section>
@@ -102,7 +106,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps({ doctors, details, users }) {
   return { doctors, details, users };
 }
-
+window.sr = ScrollReveal();
+window.sr.reveal('button-bank');
 export default connect(
   mapStateToProps,
   mapDispatchToProps
