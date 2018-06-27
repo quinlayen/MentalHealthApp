@@ -11,7 +11,9 @@ body {
 
 h2 {
   font-size: 1.2em;
+  margin-bottom: 0em;
 }
+
 .alert-link:hover {
   text-decoration: none;
   text-shadow: 1px 0 0#202326;
@@ -28,8 +30,10 @@ a {
 .alert.alert-danger {
   white-space: nowrap;
   overflow: scroll;
-  padding: 0.5em;
-  background-color: black !important;
+  padding-top: 0.5em;
+
+  background-color: #ff9d84 !important;
+  text-align: center;
 }
 .card-img-top {
   max-height: 20em;

@@ -52,6 +52,7 @@ class ProviderList extends Component {
   // }
 
   render() {
+    console.log(this.props.doctorData);
     return (
       <div className="container">
         <ul className="list-inline">
