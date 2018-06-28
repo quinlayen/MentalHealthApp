@@ -11,7 +11,7 @@ export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const PUSH_NOTIFS = "PUSH_NOTIFS";
 
-const HOST = "http://localhost:8080";
+const HOST = "http://52.34.12.107";
 
 export function toggleAction(open) {
   return {
