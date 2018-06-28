@@ -1,12 +1,12 @@
 col-centered {
-    float: none;
-    margin: 0 auto;
+  float: none;
+  margin: 0 auto;
 }
 
 .help-block {
-    color: red;
+  color: red;
 }
 
 button {
-    margin-top: 5px;
+  margin-top: 5px;
 }

@@ -1,0 +1,39 @@
+.container-reg {
+  display: flex;
+}
+.arch-img {
+  position: absolute;
+  margin: 4em;
+  z-index: 1;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.col-reg-form {
+  position: absolute;
+  z-index: 2;
+  margin-top: 5.8em;
+}
+
+.user-reg-form {
+  background-color: rgba(255, 255, 255, 0.95);
+  margin: 0 auto;
+  padding: 1em;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-link {
+  color: #ff9d84;
+}
+
+.btn-link:hover {
+  color: #343a3f;
+}
+.btn-primary {
+  background-color: #ff9d84;
+}
+.btn-primary:hover {
+  background-color: #343a3f;
+}
+.pw-row {
+  display: flex;
+}

@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Link } from "react-router-dom";
-import { getDetails } from "../actions/index";
-import "../styles/providerList.css";
-import archway from "../styles/static/bemocs_rei_4_dribbble.jpg";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
+import { getDetails } from '../actions/index';
+import '../styles/providerList.css';
 
 class ProviderList extends Component {
   // constructor(props) {
@@ -16,9 +15,9 @@ class ProviderList extends Component {
     // console.log(doctorData, 'in render doctors');
     return (
       <li className="list-inline-item" key={doctorData.provider_id}>
-        <div className="card card-list" style={{ width: 18 + "em" }}>
+        <div className="card card-list" style={{ width: 18 + 'em' }}>
           <div className="card-header">
-            <Link to={"doctors/" + doctorData.provider_id}>
+            <Link to={'doctors/' + doctorData.provider_id}>
               <div className="alert alert-danger" role="alert">
                 <h2 className="alert-link">
                   {doctorData.first_name} {doctorData.last_name}
