@@ -7,6 +7,18 @@
   z-index: 1;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.reg-greeting {
+  display: block;
+  text-align: left;
+  position: absolute;
+  z-index: 2;
+  margin-top: -1.3em;
+  margin-left: 35em;
+  background-color: #fed87f;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 0.5em;
+}
+
 .col-reg-form {
   position: absolute;
   z-index: 2;
@@ -14,7 +26,7 @@
 }
 
 .user-reg-form {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.92);
   margin: 0 auto;
   padding: 1em;
 

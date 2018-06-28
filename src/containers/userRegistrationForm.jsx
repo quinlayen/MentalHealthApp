@@ -58,6 +58,9 @@ class UserRegistrationForm extends Component {
           </div>
 
           <div className="col-reg-form">
+            <div className="col reg-greeting">
+              <h1>Welcome Home</h1>
+            </div>
             <div className="user-reg-form">
               <form onSubmit={this.handleRegister}>
                 <div

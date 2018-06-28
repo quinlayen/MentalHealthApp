@@ -57,7 +57,9 @@ class UserLoginForm extends Component {
           <img src={camp} alt="campground" />
         </div>
         <div className="col">
-          <h1 className="greeting">Welcome</h1>
+          <div className="col-9">
+            <h1 className="greeting">Welcome Back</h1>
+          </div>
           <div className="login-form">
             <h2 className="login">Login</h2>
             <form name="form" onSubmit={this.handleLogin}>
