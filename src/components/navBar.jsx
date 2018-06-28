@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import '../styles/navBar.css';
-import '../styles/searchBar.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import "../styles/navBar.css";
+import "../styles/searchBar.css";
+import { logoutAction } from "../actions/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class NavBar extends Component {
   constructor(props) {
@@ -10,9 +12,10 @@ class NavBar extends Component {
     this.state = {
       isLoggedIn: false,
       user: {},
-      currentUser: ''
+      currentUser: ""
     };
     this.changeUser = this.changeUser.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -23,16 +26,28 @@ class NavBar extends Component {
     if (this.state.isLoggedIn === true) {
       return (this.state.currentUser = `Welcome: ${this.state.user.username}`);
     } else {
-      return 'Login';
+      return "Login";
+    }
+  }
+
+  handleLogout() {
+    if (this.state.isLoggedIn === true) {
+      this.props.logoutAction(this.state);
+      console.log("COMPONENT LOGGEDOUT");
+      // this.props.history.push("/login");
     }
   }
 
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top scrolling-navbar navbar-custom">
-        <div className="container navbar-custom">
+        <div className="container-fluid navbar-custom">
           <Link to="/" className="navbar-brand">
-            <strong>FYW</strong>
+            <div>
+              <FontAwesomeIcon icon="arrow-alt-circle-right" />
+
+              <strong>FYW</strong>
+            </div>
           </Link>
           <button
             className="navbar-toggler"
@@ -45,7 +60,10 @@ class NavBar extends Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent-7">
+          <div
+            className="collapse navbar-collapse"
+            id="navbarSupportedContent-7"
+          >
             <ul className="navbar-nav mr-auto" />
             <ul className="navbar-nav">
               <li className="nav-item">
@@ -56,6 +74,15 @@ class NavBar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/login">
                   {this.changeUser(() => {})}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/login"
+                  className="nav-link"
+                  onClick={this.handleLogout}
+                >
+                  Logout
                 </Link>
               </li>
             </ul>

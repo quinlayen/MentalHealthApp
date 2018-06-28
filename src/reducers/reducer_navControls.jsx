@@ -1,4 +1,4 @@
-import { TOGGLE_ACTION } from '../actions/index';
+import { TOGGLE_ACTION } from "../actions/index";
 
 export default function(state = {}, action) {
   switch (action.type) {
@@ -8,6 +8,7 @@ export default function(state = {}, action) {
       
       //console.log('new state in reducer', newState);
       return action.payload;
+   
   }
-  return state;
+   return state;
 }

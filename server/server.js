@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 //const Bundler = require('parcel-bundler');
 const session = require("express-session");
 const RedisStore = require("connect-redis")(session);
+const path = require("path");
 const passport = require("passport");
 const http = require("http");
 const twilio = require("twilio");
@@ -21,6 +22,8 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 app.use(express.static(__dirname + "/styles/static"));
+app.use(express.static(path.join(__dirname, "../build")));
+// app.use(express.static("public"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -47,11 +50,11 @@ app.use(passport.session());
 app.use("/auth", authRoute);
 app.use("/doctors", providersRoute);
 
-// app.get("/", (req, res) => {
-//   console.log(req.body);
-//   console.log("sanity check");
-//   return res.json("hewwwwwwo");
-// });
+app.get("/", (req, res) => {
+  // console.log(req.body);
+  console.log("sanity check");
+  return res.sendFile(path.join(__dirname, "../build", "../public"));
+});
 
 let SID = process.env.TWILIO_API_KEY;
 let TOKEN = process.env.TWILIO_AUTH_TOKEN;
@@ -81,29 +84,29 @@ app.post("/api/sms", (req, res) => {
 
   let client = require("twilio")(SID, TOKEN);
 
-  console.log(req.body, "this is in server");
+  console.log(req.body.contact, "this is in server");
   //creating new message to send to client
   client.messages
     .create({
-      to: "+1" + req.body.recipient,
+      to: "+1" + req.body.contact,
       from: SENDER,
-      body: req.body.message
+      body: "Hello! Thank you for reaching out. How can I help you today?"
       // statusCallback: `http://${PORT}/client/home`
     })
-    .then(message => {
-      // if (smsCount > 0) {
-      //   msg = message + (smsCount + 1);
-      // }
-      const twiml = new MessagingResponse();
-      // console.log(req.session.counter);
-      // req.session.counter = smsCount + 1;
-      //tracking currently sent message + old messages
-      twiml.message(msg);
+    // .then(message => {
+    //   // if (smsCount > 0) {
+    //   //   msg = message + (smsCount + 1);
+    //   // }
+    //   const twiml = new MessagingResponse();
+    //   // console.log(req.session.counter);
+    //   // req.session.counter = smsCount + 1;
+    //   //tracking currently sent message + old messages
+    //   twiml.message(msg);
 
-      // res.writeHead(200, {'Content-Type': 'text/xml'});
-      // res.write(twiml.toString())
-      // console.log(req.session.counter);
-    })
+    //   // res.writeHead(200, {'Content-Type': 'text/xml'});
+    //   // res.write(twiml.toString())
+    //   // console.log(req.session.counter);
+    // })
     .then(message => console.log(message, "message sid"))
     .done();
 });
@@ -118,7 +121,7 @@ app.post("/api/call", (req, res) => {
 
   client.calls.create({
     url: "http://demo.twilio.com/docs/voice.xml",
-    to: "+1" + req.body.recipient,
+    to: "+1" + req.body.contact,
     from: SENDER
   });
 });

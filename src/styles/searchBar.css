@@ -1,102 +1,60 @@
-/* container {
-    font-family: 'Tajawal', sans-serif;
+container {
+  font-family: 'Tajawal', sans-serif;
+  position: absolute;
+  z-index: 1;
 }
 
-#locationsearh {
-    width: 100%;
+.container .flex-center {
+  margin-top: -0.5em;
 }
 
-#button {
-    position: relative;
-    ;
-    left: -22px;
-    top: 4px;
-    border: none;
-    height: 30px;
-    width: 20px;
-    border-radius: 100%;
-    outline: none;
-    text-align: center;
-    font-weight: bold;
-    padding: 2px;
-    background: url('./static/google-web-search-24.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-}
-
-#button:hover {
-    cursor: pointer;
-}
-
-.display-4 {
-    background-color: #ff9375;
-    padding: 0
-}
-
-.intro-2 {
-    background: url("./static/background.png")no-repeat center center;
-    background-size: cover;
-}
-
-.btn .fa {
-    margin-left: 3px;
-}
-
-.top-nav-collapse {
-    background-color: #424f95 !important;
-}
-
-.navbar:not(.top-nav-collapse) {
-    background: transparent !important;
-}
-
-@media (max-width: 768px) {
-    .navbar:not(.top-nav-collapse) {
-        background: #424f95 !important;
-    }
-}
-
-h6 {
-    line-height: 1.7;
+.search {
+  background-color: #ff9d84;
+  position: absolute;
+  z-index: 3;
 }
 
 .hm-gradient .full-bg-img {
-    background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
-    background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
-    background: -webkit-gradient(linear, 45deg, from(rgba(42, 27, 161, 0.6)), to(rgba(29, 210, 177, 0.6)));
-    background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
-    background: linear-gradient(to 45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
+  background: -moz-linear-gradient( 45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
+  background: -webkit-linear-gradient( 45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
+  background: -o-linear-gradient( 45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
+  background: linear-gradient( 45deg, rgba(42, 27, 161, 0.6), rgba(29, 210, 177, 0.6) 100%);
 }
-
-@media (max-width: 450px) {
-    .margins {
-        margin-right: 1rem;
-        margin-left: 1rem;
-    }
-}
-
-@media (max-width: 740px) {
-    .full-height,
-    .full-height body,
-    .full-height header,
-    .full-height header .view {
-        height: 1040px;
-    }
-} */
 
 * {
-    font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
 }
 
-#button:hover {
-    cursor: pointer;
+button:hover {
+  cursor: pointer;
+}
+
+button {
+  margin-top: 0px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
 
 h1,
 h4,
 h6,
 br {
-    color: white;
-    font-family: 'Libre Franklin', sans-serif;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.input-group-append {
+  margin: 0;
+}
+
+.btn .btn-sm .btn-outline {
+  margin-top: 0 !important;
+}
+
+.search-button:hover {
+  margin-left: 2px;
 }
