@@ -11,7 +11,8 @@ export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const PUSH_NOTIFS = "PUSH_NOTIFS";
 
-const HOST = "https://www.findyourway.site";
+// const HOST = "https://www.findyourway.site";
+const HOST = "http://localhost:8080";
 
 export function toggleAction(open) {
   return {
