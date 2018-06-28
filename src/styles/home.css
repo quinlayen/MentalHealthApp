@@ -24,6 +24,8 @@ img.bg {
   z-index: 0;
   margin-bottom: 5em;
   margin-left: -10em;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .search {
   margin-top: 10em;
@@ -35,6 +37,7 @@ img.bg {
   z-index: 1;
 }
 .float-left {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   align-self: left;
   position: absolute;
   width: 100%;
