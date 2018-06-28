@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getDetails, pushNotifs, tellTwilio } from "../actions/index";
-import { bindActionCreators } from "redux";
-import "../styles/providerDetail.css";
-import { Link } from "react-router-dom";
-// import Button from "@material-ui/core/Button";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getDetails, pushNotifs, tellTwilio } from '../actions/index';
+import { bindActionCreators } from 'redux';
+import '../styles/providerDetail.css';
+import { Link } from 'react-router-dom';
+import ScrollReveal from 'scrollreveal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ProviderDetail extends Component {
   constructor(props) {
@@ -12,8 +13,8 @@ class ProviderDetail extends Component {
     this.state = {
       // pushNotifs: false,
       user: {},
-      contact: "",
-      method: ""
+      contact: '',
+      method: ''
       // confirmationSnackbarOpen: false,
       // snackbarDisabled: false
     };
@@ -34,7 +35,7 @@ class ProviderDetail extends Component {
   sendMessage(event) {
     event.preventDefault();
 
-    console.log("PERSON MAKING CONTACT", this.props.users.user);
+    console.log('PERSON MAKING CONTACT', this.props.users.user);
     // console.log("PHONE NUMBER", this.props.users.user);
     this.setState(
       {
@@ -55,32 +56,42 @@ class ProviderDetail extends Component {
       if (doctorData.provider_id == this.props.match.params.id) {
         return (
           <div key="doctor" className="body">
-            <br />
-            <br />
-            <br />
-            <img src={doctorData.image} alt="" />
-            <h2>
-              {doctorData.first_name} {doctorData.last_name}
-            </h2>
-            <div className="body-left">
-              <h5>{doctorData.specialties}</h5>
-              <p>{doctorData.insurance}</p>
+            <div className="card-columns">
+              <div className="card card-detail-picture">
+                <img src={doctorData.image} className="doc-image" alt="" />
+              </div>
+
+              <div className="card card-detail">
+                <h1>
+                  {doctorData.first_name} {doctorData.last_name}
+                </h1>
+                <div className="body-left">
+                  <h5>{doctorData.specialties}</h5>
+                  <p>Insurance: {doctorData.insurance}</p>
+                </div>
+                <div className="body-right">
+                  <h5>
+                    <FontAwesomeIcon icon="phone" /> {doctorData.phone}
+                  </h5>
+                </div>
+
+                <section>{doctorData.bio}</section>
+                <div className="button-bank">
+                  <Link to="/register">
+                    <button className="btn-detail btn-primary btn-sm-1">
+                      I'm Interested
+                    </button>
+                  </Link>
+                  <button
+                    key="message"
+                    className="btn-detail btn-primary btn-sm-2"
+                    onClick={this.sendMessage}
+                  >
+                    Testing Messages
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="body-right">
-              <h5>Phone: {doctorData.phone}</h5>
-              <br />
-              <section>{doctorData.bio}</section>
-            </div>
-            <Link to="/register">
-              <button className="btn btn-primary btn-sm">I'm Interested</button>
-            </Link>
-            <button
-              key="message"
-              className="btn btn-primary btn-sm"
-              onClick={this.sendMessage}
-            >
-              Testing Messages
-            </button>
           </div>
         );
       }
@@ -95,7 +106,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps({ doctors, details, users }) {
   return { doctors, details, users };
 }
-
+window.sr = ScrollReveal();
+window.sr.reveal('button-bank');
 export default connect(
   mapStateToProps,
   mapDispatchToProps

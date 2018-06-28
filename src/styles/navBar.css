@@ -19,7 +19,9 @@
 .spacer {
   flex-grow: 2;
 }
-
+strong {
+  padding: 0.5em;
+}
 .user-reg {
   justify-content: flex-end;
 }

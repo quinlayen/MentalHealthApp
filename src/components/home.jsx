@@ -3,6 +3,7 @@ import React from 'react';
 import SearchBar from '../containers/searchBar';
 import navigatorImg from '../styles/static/800x600.jpg';
 import streamsImg from '../styles/static/ocs_cropped.jpg';
+import ScrollReveal from 'scrollreveal';
 
 import '../styles/home.css';
 
@@ -34,4 +35,7 @@ const Main = props => {
     </div>
   );
 };
+window.sr = ScrollReveal();
+window.sr.reveal('.info');
+window.sr.reveal('.float-left');
 export default Main;

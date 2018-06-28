@@ -12,6 +12,17 @@ import createLogger from 'redux-logger';
 import { AppContainer } from 'react-hot-loader';
 import ScrollReveal from 'scrollreveal';
 import { createStore, applyMiddleware } from 'redux';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import {
+  faSearch,
+  faPhone,
+  faArrowAltCircleRight,
+  faComments
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(fab, faSearch, faPhone, faArrowAltCircleRight, faComments);
 
 window.sr = ScrollReveal();
 window.sr.reveal('.box');
