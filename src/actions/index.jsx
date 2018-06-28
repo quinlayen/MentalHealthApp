@@ -11,7 +11,7 @@ export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const PUSH_NOTIFS = "PUSH_NOTIFS";
 
-const HOST = "http://findyourway.site";
+const HOST = "http://www.findyourway.site";
 
 export function toggleAction(open) {
   return {
@@ -21,6 +21,7 @@ export function toggleAction(open) {
 }
 
 export function fetchDoctors(info) {
+  console.log("info in fetchDoctors", info);
   const response = axios.post(`${HOST}/doctors`, info);
 
   return {
