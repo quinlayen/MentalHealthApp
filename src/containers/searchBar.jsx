@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { fetchDoctors } from "../actions/index";
-import "../styles/searchBar.css";
-import WOW from "wow.js/dist/wow.js";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchDoctors } from '../actions/index';
+import '../styles/searchBar.css';
+import WOW from 'wow.js/dist/wow.js';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -71,13 +72,11 @@ class SearchBar extends Component {
                     />
                   </div>
                   <div className="input-group-append">
-                    <button
-                      type="button"
-                      className="btn btn-sm btn-outline"
-                      type="submit"
-                    >
-                      Go!
-                      <i className="fa fa-search" aria-hidden="true" />
+                    <button className="btn btn-sm btn-outline" type="submit">
+                      <FontAwesomeIcon
+                        className="search-button"
+                        icon="search"
+                      />
                     </button>
                   </div>
                 </div>

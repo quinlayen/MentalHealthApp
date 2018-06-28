@@ -1,3 +1,69 @@
-.body{
-    margin: auto
+.body {
+  margin: 3em;
+  display: flex;
+}
+
+h1 {
+  color: #343a3f;
+}
+.doc-image {
+  min-height: 20em;
+  max-width: auto;
+}
+
+.card .card-detail .card-detail-picture {
+  text-decoration: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.body-left {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.card .card-detail .card-detail-picture :hover {
+  box-shadow: none !important;
+}
+.card-columns .card {
+  display: inline-block;
+  width: auto;
+}
+.card-detail-picture {
+  padding: 1em;
+  margin-left: -3em;
+  position: absolute;
+  z-index: 2;
+}
+.card-detail {
+  position: absolute;
+  max-width: 50em;
+  padding: 2em;
+  margin-left: 20em;
+  margin-top: 8em;
+  z-index: 3;
+}
+.button-bank {
+  padding-top: 0.5em;
+}
+.btn-detail {
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  background-color: #ff9d84 !important;
+}
+.btn-detail:hover {
+  text-shadow: 1px 0 0#202326 !important;
+  color: #343a3f;
+}
+.btn-primary {
+  border-color: #343a3f;
+  color: #343a3f;
+}
+.btn-sm-1 {
+  margin-right: 0.5em;
+
+  font-size: 1.2em;
+}
+.btn-sm-2 {
+  margin-left: 0.5em;
+  font-size: 1.2em;
 }

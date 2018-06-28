@@ -71,7 +71,7 @@ export function loginAction(user) {
     username: user.username,
     password: user.password
   });
-  // console.log("in the reducer", loggedinUser);
+  // console.log("in the action", loggedinUser);
   return {
     type: LOGIN_USER,
     payload: loggedinUser
