@@ -5,9 +5,9 @@ module.exports = {
     client: "pg",
     connection: {
       host: "127.0.0.1",
-      user: "fywuser",
+      user: "appuser",
       password: "password",
-      database: "fywuser",
+      database: "appuser",
       charset: "utf8"
     },
     migrations: {
