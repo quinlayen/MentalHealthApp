@@ -3,7 +3,7 @@ import React from 'react';
 import SearchBar from '../containers/searchBar';
 import navigatorImg from '../styles/static/800x600.jpg';
 import streamsImg from '../styles/static/ocs_cropped.jpg';
-import ScrollReveal from 'scrollreveal';
+
 
 import '../styles/home.css';
 
@@ -20,7 +20,8 @@ const Main = props => {
       </div>
       <div className="row">
         <div className="info">
-          <h1>INFO HERE</h1>
+        <p>So many of us know that we need some help, but just making that first call can seem impossible.  Its so important for you to know though, that people care.  Let us take your burden.  Let us help you find your way.</p>
+
         </div>
       </div>
       <div className="row justify-content-start">
@@ -35,7 +36,5 @@ const Main = props => {
     </div>
   );
 };
-window.sr = ScrollReveal();
-window.sr.reveal('.info');
-window.sr.reveal('.float-left');
+
 export default Main;

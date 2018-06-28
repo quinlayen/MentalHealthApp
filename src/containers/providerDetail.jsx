@@ -4,13 +4,13 @@ import { getDetails, pushNotifs, tellTwilio } from '../actions/index';
 import { bindActionCreators } from 'redux';
 import '../styles/providerDetail.css';
 import { Link } from 'react-router-dom';
-import ScrollReveal from 'scrollreveal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class ProviderDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoggedIn: false,
       // pushNotifs: false,
       user: {},
       contact: '',
@@ -51,6 +51,10 @@ class ProviderDetail extends Component {
     );
   }
 
+  isEnable(){
+    this.state.isLoggedIn === true;
+  }
+
   render() {
     console.log('state after rendering',this.state)
     return this.props.doctors.map(doctorData => {
@@ -78,17 +82,13 @@ class ProviderDetail extends Component {
 
                 <section>{doctorData.bio}</section>
                 <div className="button-bank">
-                  <Link to="/register">
-                    <button className="btn-detail btn-primary btn-sm-1">
-                      I'm Interested
-                    </button>
-                  </Link>
                   <button
                     key="message"
                     className="btn-detail btn-primary btn-sm-2"
+                    // disabled={!this.isEnabled}
                     onClick={this.sendMessage}
                   >
-                    Testing Messages
+                    I’m Interested
                   </button>
                 </div>
               </div>
@@ -106,8 +106,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps({ doctors, details, users }) {
   return { doctors, details, users };
 }
-window.sr = ScrollReveal();
-window.sr.reveal('button-bank');
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
