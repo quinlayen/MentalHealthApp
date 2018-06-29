@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
-import scrollReveal from './scrollReveal';
+import scrollReveal from "./scrollReveal";
 
 export default function reveal(WrappedComponent) {
   return class RevealEnhancer extends Component {
@@ -9,7 +9,7 @@ export default function reveal(WrappedComponent) {
       this.component = c;
     }
     componentDidMount() {
-      console.log('component mounted');
+      // console.log('component mounted');
       const domElement = ReactDOM.findDOMNode(this.component);
       scrollReveal.reveal(domElement);
     }
