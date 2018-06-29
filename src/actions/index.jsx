@@ -40,17 +40,19 @@ export function getDetails(providerID) {
   };
 }
 
-export function openModal(obj) {
+export function openModal() {
+  // console.log("modal button clicked open");
   return {
     type: OPEN_MODAL,
-    payload: obj
+    payload: false
   };
 }
 
-export function closeModal(obj) {
+export function closeModal() {
+  // console.log("modal button clicked closed");
   return {
     type: CLOSE_MODAL,
-    payload: obj
+    payload: true
   };
 }
 
@@ -75,7 +77,6 @@ export function loginAction(user) {
     username: user.username,
     password: user.password
   });
-  // console.log("in the action", loggedinUser);
   return {
     type: LOGIN_USER,
     payload: loggedinUser

@@ -52,7 +52,9 @@ class ProviderDetail extends Component {
         contact: this.props.users.user.contact
       },
       () => {
-        this.props.tellTwilio(this.state);
+        setTimeout(() => {
+          this.props.tellTwilio(this.state);
+        }, 5000);
       }
     );
   }
