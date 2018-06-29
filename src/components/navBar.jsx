@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import '../styles/navBar.css';
-import '../styles/searchBar.css';
-import { logoutAction } from '../actions/index';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import "../styles/navBar.css";
+import "../styles/searchBar.css";
+import { logoutAction } from "../actions/index";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class NavBar extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class NavBar extends Component {
     this.state = {
       isLoggedIn: false,
       user: {},
-      currentUser: ''
+      currentUser: ""
     };
     this.changeUser = this.changeUser.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -26,14 +26,14 @@ class NavBar extends Component {
     if (this.state.isLoggedIn === true) {
       return (this.state.currentUser = `Welcome: ${this.state.user.username}`);
     } else {
-      return 'Login';
+      return "Login";
     }
   }
 
   handleLogout() {
     if (this.state.isLoggedIn === true) {
       this.props.logoutAction(this.state);
-      console.log('COMPONENT LOGGEDOUT');
+      console.log("COMPONENT LOGGEDOUT");
       // this.props.history.push("/login");
     }
   }
@@ -87,6 +87,16 @@ class NavBar extends Component {
                   Logout
                 </Link>
               </li>
+              {/* <li className="nav-link">|</li>
+              <li className="nav-item">
+                <Link
+                  to="/profile"
+                  className="nav-link"
+                  onClick={this.handleLogout}
+                >
+                  Profile
+                </Link>
+              </li> */}
             </ul>
           </div>
         </div>

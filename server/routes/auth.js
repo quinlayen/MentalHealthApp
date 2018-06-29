@@ -108,12 +108,13 @@ router.post("/logout", (req, res) => {
   return res.json({ message: "User logged out~!!" });
 });
 
-router.get("/profile/:id", isAuthenticated, (req, res) => {
+router.get("/:client_id", isAuthenticated, (req, res) => {
   const client_id = req.params.id;
   console.log("get this client's details", client_id);
   return Client.where({ client_id })
     .fetch()
     .then(result => {
+      console.log("USER PROFILE", result);
       return res.json(result);
     })
     .catch(err => res.status(400).json({ message: err.message }));
