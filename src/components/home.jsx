@@ -20,7 +20,7 @@ const Main = props => {
       </div>
       <div className="row">
         <div className="info">
-        <p>So many of us know that we need some help, but just making that first call can seem impossible.  Its so important for you to know though, that people care.  Let us take your burden.  Let us help you find your way.</p>
+        <p>So many of us know that we need some help, but just making that first call can seem impossible.  Its so important for you to know though, that people care.  Let us help you find your way.</p>
 
         </div>
       </div>

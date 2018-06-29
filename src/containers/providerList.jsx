@@ -43,16 +43,9 @@ class ProviderList extends Component {
     );
   }
 
-  // doctorHeading(doctorData) {
-  //   return (
-  //     <h2 className="results" key={doctorData.provider_id}>
-  //       {doctorData.type} in {doctorData.location}
-  //     </h2>
-  //   );
-  // }
+  
 
   render() {
-    // console.log(this.props.doctorData);
     return (
       <div className="container">
         <ul className="list-inline">

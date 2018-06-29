@@ -73,7 +73,6 @@ export function loginAction(user) {
     username: user.username,
     password: user.password
   });
-  // console.log("in the action", loggedinUser);
   return {
     type: LOGIN_USER,
     payload: loggedinUser
@@ -81,7 +80,6 @@ export function loginAction(user) {
 }
 
 export function logoutAction() {
-  // localStorage.clear();
   const loggedOutUser = axios.post(`${HOST}/auth/logout`);
 
   console.log("in the action", loggedOutUser);
@@ -90,18 +88,7 @@ export function logoutAction() {
     payload: loggedOutUser
   };
 
-  // return dispatch => {
-  //   return fetch(`${HOST}/auth/logout`)
-  //     .then(logout => {
-  //       dispatch({
-  //         type: LOGOUT_USER,
-  //         payload: logout
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log({ err: err.message });
-  //     });
-  // };
+ 
 }
 
 export function itemsIsLoading(bool) {

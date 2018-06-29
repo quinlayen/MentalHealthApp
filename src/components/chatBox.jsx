@@ -17,4 +17,3 @@ export default class ChatBox extends Component {
     );
   }
 }
-// export default ChatBox;

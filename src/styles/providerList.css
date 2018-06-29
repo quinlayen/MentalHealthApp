@@ -5,8 +5,10 @@ body {
   z-index: 2;
 }
 .container {
-  margin-top: 2em;
+  position: relative;
+  margin-top: 5em;
   display: inline-block;
+  left: 80px;
 }
 
 h2 {
