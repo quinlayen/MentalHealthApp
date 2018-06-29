@@ -4,9 +4,12 @@ body {
   background-position: inherit;
   z-index: 2;
 }
+
 .container {
-  margin-top: 2em;
+  position: relative;
+  margin-top: 5em;
   display: inline-block;
+  left: 80px;
 }
 
 h2 {
@@ -30,14 +33,15 @@ a {
 .alert {
   padding: 0.5rem 1.25rem;
 }
+
 .alert.alert-danger {
   white-space: nowrap;
   overflow: scroll;
   padding-top: 0.5em;
-
   background-color: #ff9d84 !important;
   text-align: center;
 }
+
 .card-img-top {
   max-height: 20em;
   max-width: auto;
@@ -51,9 +55,11 @@ a {
 .card:hover .alert-link {
   text-shadow: 1px 0 0#202326;
 }
+
 .card-body {
   padding: 1em;
 }
+
 p {
   text-overflow: ellipsis;
   max-height: 3em;

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchDoctors } from '../actions/index';
-import '../styles/searchBar.css';
-import WOW from 'wow.js/dist/wow.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchDoctors } from "../actions/index";
+import "../styles/searchBar.css";
+import WOW from "wow.js/dist/wow.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class SearchBar extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="container flex-center">
+      <div className="flex-center">
         <br />
         <div className="row flex-center">
           <div className="col-lg text-center text-md-left margins">
