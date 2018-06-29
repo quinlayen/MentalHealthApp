@@ -8,6 +8,7 @@ import {
 import "./styles/App.css";
 import UserRegistrationForm from "./containers/userRegistrationForm";
 import UserLoginForm from "./containers/userLoginForm";
+// import UserProfile from "./components/userProfile";
 import Home from "./components/home";
 import NavBar from "./components/navBar";
 import NavDrawer from "./components/navDrawer";
@@ -44,7 +45,7 @@ class App extends Component {
                       component={UserRegistrationForm}
                     />
                     <Route exact path="/login" component={UserLoginForm} />
-
+                    {/* <Route exact path="/profile" component={UserProfile} /> */}
                     <Route exact path="/" component={Home} />
                     <Redirect from="/*" to="/" />
                   </Switch>

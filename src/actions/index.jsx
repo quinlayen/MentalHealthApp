@@ -9,6 +9,8 @@ export const TELL_TWILIO = "TELL_TWILIO";
 export const REGISTER_USER = "REGISTER_USER";
 export const LOGIN_USER = "LOGIN_USER";
 export const LOGOUT_USER = "LOGOUT_USER";
+// export const SET_USER = "SET_USER";
+// export const GET_USER = "GET_USER";
 export const PUSH_NOTIFS = "PUSH_NOTIFS";
 
 const HOST = "https://www.findyourway.site";
@@ -38,17 +40,19 @@ export function getDetails(providerID) {
   };
 }
 
-export function openModal(obj) {
+export function openModal() {
+  // console.log("modal button clicked open");
   return {
     type: OPEN_MODAL,
-    payload: obj
+    payload: false
   };
 }
 
-export function closeModal(obj) {
+export function closeModal() {
+  // console.log("modal button clicked closed");
   return {
     type: CLOSE_MODAL,
-    payload: obj
+    payload: true
   };
 }
 
@@ -73,7 +77,6 @@ export function loginAction(user) {
     username: user.username,
     password: user.password
   });
-  // console.log("in the action", loggedinUser);
   return {
     type: LOGIN_USER,
     payload: loggedinUser
@@ -81,28 +84,22 @@ export function loginAction(user) {
 }
 
 export function logoutAction() {
-  // localStorage.clear();
   const loggedOutUser = axios.post(`${HOST}/auth/logout`);
-
-  console.log("in the action", loggedOutUser);
+  // console.log("in the action", loggedOutUser);
   return {
     type: LOGOUT_USER,
     payload: loggedOutUser
   };
-
-  // return dispatch => {
-  //   return fetch(`${HOST}/auth/logout`)
-  //     .then(logout => {
-  //       dispatch({
-  //         type: LOGOUT_USER,
-  //         payload: logout
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log({ err: err.message });
-  //     });
-  // };
 }
+
+// export function getUser(client_id) {
+//   const getUserInfo = axios.get(`${HOST}/auth/${client_id}`);
+//   console.log("in the action", getUserInfo);
+//   return {
+//     type: SET_USER,
+//     payload: getUserInfo
+//   };
+// }
 
 export function itemsIsLoading(bool) {
   return {

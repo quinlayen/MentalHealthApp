@@ -3,7 +3,7 @@ import React from 'react';
 import SearchBar from '../containers/searchBar';
 import navigatorImg from '../styles/static/800x600.jpg';
 import streamsImg from '../styles/static/ocs_cropped.jpg';
-import ScrollReveal from 'scrollreveal';
+import AddHome from './additionalhome';
 
 import '../styles/home.css';
 
@@ -18,24 +18,8 @@ const Main = props => {
       <div className="search">
         <SearchBar history={props.history} />
       </div>
-      <div className="row">
-        <div className="info">
-          <h1>INFO HERE</h1>
-        </div>
-      </div>
-      <div className="row justify-content-start">
-        <div className="col-*">
-          <img
-            src={streamsImg}
-            className="float-left"
-            alt="background-stream"
-          />
-        </div>
-      </div>
+      <AddHome />
     </div>
   );
 };
-window.sr = ScrollReveal();
-window.sr.reveal('.info');
-window.sr.reveal('.float-left');
 export default Main;
