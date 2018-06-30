@@ -88,11 +88,6 @@ class ProviderDetail extends Component {
 
                 <section>{doctorData.bio}</section>
                 <div className="button-bank">
-                  {/* <Link to="/register">
-                    <button className="btn-detail btn-primary btn-sm-1">
-                      I'm Interested
-                    </button>
-                  </Link> */}
                   <button
                     key="message"
                     className="btn-detail btn-primary btn-sm-1"
@@ -108,7 +103,7 @@ class ProviderDetail extends Component {
                         ? "Loading..."
                         : data.confirmationSnackbarMessage || ""
                     }
-                    autoHideDuration={10000}
+                    autoHideDuration={7000}
                     onClose={this.handleClose}
                     action={[
                       <IconButton

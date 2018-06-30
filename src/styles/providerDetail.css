@@ -6,6 +6,7 @@
 h1 {
   color: #343a3f;
 }
+
 .doc-image {
   min-height: 20em;
   max-width: auto;
@@ -24,16 +25,19 @@ h1 {
 .card .card-detail .card-detail-picture :hover {
   box-shadow: none !important;
 }
+
 .card-columns .card {
   display: inline-block;
   width: auto;
 }
+
 .card-detail-picture {
   padding: 1em;
   margin-left: -3em;
   position: absolute;
   z-index: 2;
 }
+
 .card-detail {
   position: absolute;
   max-width: 50em;
@@ -42,28 +46,28 @@ h1 {
   margin-top: 8em;
   z-index: 3;
 }
+
 .button-bank {
   padding-top: 0.5em;
 }
+
 .btn-detail {
   margin-top: 0.3em;
   margin-bottom: 0.3em;
   background-color: #ff9d84 !important;
 }
+
 .btn-detail:hover {
   text-shadow: 1px 0 0#202326 !important;
   color: #343a3f;
 }
+
 .btn-primary {
   border-color: #343a3f;
   color: #343a3f;
 }
+
 .btn-sm-1 {
   margin-right: 0.5em;
-
-  font-size: 1.2em;
-}
-.btn-sm-2 {
-  margin-left: 0.5em;
   font-size: 1.2em;
 }

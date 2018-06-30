@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { registerAction } from '../actions/index';
-import { bindActionCreators } from 'redux';
-import { FormControl, ControlLabel } from 'react-bootstrap';
-import '../styles/userRegistrationForm.css';
-import archway from '../styles/static/bemocs_rei_4_dribbble.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { registerAction } from "../actions/index";
+import { bindActionCreators } from "redux";
+import { FormControl, ControlLabel } from "react-bootstrap";
+import "../styles/userRegistrationForm.css";
+import archway from "../styles/static/bemocs_rei_4_dribbble.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class UserRegistrationForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      first_name: '',
-      last_name: '',
-      method: 'sms',
-      contact: '',
-      username: '',
-      password: '',
-      type: 'input',
+      first_name: "",
+      last_name: "",
+      method: "sms",
+      contact: "",
+      username: "",
+      password: "",
+      type: "password",
       submitted: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -30,7 +30,7 @@ class UserRegistrationForm extends Component {
     event.preventDefault();
     event.stopPropagation();
     this.setState({
-      type: this.state.type === 'input' ? 'password' : 'input'
+      type: this.state.type === "input" ? "password" : "input"
     });
   }
 
@@ -43,9 +43,9 @@ class UserRegistrationForm extends Component {
     event.preventDefault();
 
     this.setState({ submitted: true });
-    if (this.state.username !== '' && this.state.password !== '') {
+    if (this.state.username !== "" && this.state.password !== "") {
       this.props.registerAction(this.state);
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
@@ -65,10 +65,10 @@ class UserRegistrationForm extends Component {
               <form onSubmit={this.handleRegister}>
                 <div
                   className={
-                    'form-group' +
+                    "form-group" +
                     (this.state.submitted && !this.state.first_name
-                      ? ' has-error'
-                      : '')
+                      ? " has-error"
+                      : "")
                   }
                 >
                   <ControlLabel>First Name</ControlLabel>
@@ -85,10 +85,10 @@ class UserRegistrationForm extends Component {
                 </div>
                 <div
                   className={
-                    'form-group' +
+                    "form-group" +
                     (this.state.submitted && !this.state.last_name
-                      ? ' has-error'
-                      : '')
+                      ? " has-error"
+                      : "")
                   }
                 >
                   <ControlLabel>Last Name</ControlLabel>
@@ -104,10 +104,10 @@ class UserRegistrationForm extends Component {
                 </div>
                 <div
                   className={
-                    'form-group' +
+                    "form-group" +
                     (this.state.submitted && !this.state.username
-                      ? ' has-error'
-                      : '')
+                      ? " has-error"
+                      : "")
                   }
                 >
                   <ControlLabel>Username</ControlLabel>
@@ -123,10 +123,10 @@ class UserRegistrationForm extends Component {
                 </div>
                 <div
                   className={
-                    'form-group' +
+                    "form-group" +
                     (this.state.submitted && !this.state.password
-                      ? ' has-error'
-                      : '')
+                      ? " has-error"
+                      : "")
                   }
                 >
                   <ControlLabel>Password</ControlLabel>
@@ -141,7 +141,7 @@ class UserRegistrationForm extends Component {
                       className="btn btn-primary btn-sm"
                       onClick={this.handleClickShowPassword}
                     >
-                      {this.state.type === 'input' ? 'Hide' : 'Show'}
+                      {this.state.type === "input" ? "Hide" : "Show"}
                     </button>
                   </div>
                   {this.state.submitted &&
@@ -151,10 +151,10 @@ class UserRegistrationForm extends Component {
                 </div>
                 <div
                   className={
-                    'form-group' +
+                    "form-group" +
                     (this.state.submitted && !this.state.contact
-                      ? ' has-error'
-                      : '')
+                      ? " has-error"
+                      : "")
                   }
                 >
                   <ControlLabel>Preferred Contact</ControlLabel>
@@ -195,7 +195,7 @@ class UserRegistrationForm extends Component {
                 <button className="btn btn-primary btn-sm" type="submit">
                   <strong>Submit</strong>
                 </button>
-                <Link to={'/login'} className="btn btn-link">
+                <Link to={"/login"} className="btn btn-link">
                   <small className="text-muted">Already have an account?</small>
                   <strong> Login</strong>
                 </Link>

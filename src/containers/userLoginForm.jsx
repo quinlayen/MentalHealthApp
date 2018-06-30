@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { loginAction } from '../actions/index';
-import { bindActionCreators } from 'redux';
-import '../styles/userLoginForm.css';
-import camp from '../styles/static/bemocs_rei_4th_of_july_dribbble.jpg';
+import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginAction } from "../actions/index";
+import { bindActionCreators } from "redux";
+import "../styles/userLoginForm.css";
+import camp from "../styles/static/bemocs_rei_4th_of_july_dribbble.jpg";
 
 class UserLoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       submitted: false,
-      type: 'input'
+      type: "password"
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,8 +22,8 @@ class UserLoginForm extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('id')) {
-      this.props.history.push('/login');
+    if (localStorage.getItem("id")) {
+      this.props.history.push("/login");
     }
   }
 
@@ -31,7 +31,7 @@ class UserLoginForm extends Component {
     event.preventDefault();
     event.stopPropagation();
     this.setState({
-      type: this.state.type === 'input' ? 'password' : 'input'
+      type: this.state.type === "input" ? "password" : "input"
     });
   }
 
@@ -43,10 +43,10 @@ class UserLoginForm extends Component {
     event.preventDefault();
 
     this.setState({ submitted: true });
-    if (this.state.username !== '' && this.state.password !== '') {
+    if (this.state.username !== "" && this.state.password !== "") {
       this.props.loginAction(this.state);
       // console.log("LOGGINED IN");
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
@@ -65,10 +65,10 @@ class UserLoginForm extends Component {
             <form name="form" onSubmit={this.handleLogin}>
               <div
                 className={
-                  'form-group' +
+                  "form-group" +
                   (this.state.submitted && !this.state.username
-                    ? ' has-error'
-                    : '')
+                    ? " has-error"
+                    : "")
                 }
               >
                 <label htmlFor="username">Username</label>
@@ -86,10 +86,10 @@ class UserLoginForm extends Component {
               </div>
               <div
                 className={
-                  'form-group' +
+                  "form-group" +
                   (this.state.submitted && !this.state.password
-                    ? ' has-error'
-                    : '')
+                    ? " has-error"
+                    : "")
                 }
               >
                 <label htmlFor="password">Password</label>
@@ -103,7 +103,7 @@ class UserLoginForm extends Component {
                   />
                   <span onClick={this.handleClickShowPassword}>
                     <button className="btn btn-primary btn-sm">
-                      {this.state.type === 'input' ? 'Hide' : 'Show'}
+                      {this.state.type === "input" ? "Hide" : "Show"}
                     </button>
                   </span>
                 </div>
