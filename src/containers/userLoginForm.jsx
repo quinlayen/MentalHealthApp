@@ -73,6 +73,7 @@ class UserLoginForm extends Component {
               >
                 <label htmlFor="username">Username</label>
                 <input
+                  autoFocus
                   type="text"
                   className="form-control"
                   name="username"

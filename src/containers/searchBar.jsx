@@ -61,6 +61,7 @@ class SearchBar extends Component {
                   </div>
                   <div>
                     <input
+                      autoFocus
                       type="text"
                       className="form-control"
                       aria-label="Text input with dropdown button"
